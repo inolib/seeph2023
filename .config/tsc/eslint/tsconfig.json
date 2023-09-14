@@ -1,0 +1,15 @@
+{
+  "extends": "../../../tsconfig.json",
+  "files": [
+    "../../prettier/jsdoc/prettier.config.js",
+    "../../prettier/jsxattribute-sort/prettier.config.js",
+    "../../prettier/packagejson/prettier.config.js",
+    "../../prettier/sort-imports/prettier.config.js",
+    "../../prettier/tailwindcss/prettier.config.js",
+    "../../../.eslintrc.cjs",
+    "../../../.markdownlint.cjs",
+    "../../../postcss.config.cjs",
+    "../../../prettier.config.js",
+    "../../../tailwind.config.cjs"
+  ]
+}
