@@ -1,5 +1,4 @@
 import { Heading as BaseHeading, type Props as BaseProps } from "../Heading";
-
 import { useLandmark } from "./Landmark";
 
 export type Props = Omit<BaseProps, "level">;

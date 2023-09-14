@@ -44,11 +44,13 @@ export const useLandmark = () => {
   };
 };
 
-export const Landmark = ({ children, role, ...rest }: Props) => {
+export const Landmark = (props: Props) => {
   const { level } = useLandmark();
 
-  switch (role) {
+  switch (props.role) {
     case "banner": {
+      const { children, ...rest } = props;
+
       return (
         <header {...rest}>
           <LevelContext.Provider value={level + 1}>
@@ -59,9 +61,11 @@ export const Landmark = ({ children, role, ...rest }: Props) => {
     }
 
     case "complementary": {
+      const { children, ...rest } = props;
+
       return (
         <aside {...rest}>
-          <LevelContext.Provider value={level + 1}>
+          <LevelContext.Provider value={(level === 0 ? level + 1 : level) + 1}>
             {children}
           </LevelContext.Provider>
         </aside>
@@ -69,9 +73,11 @@ export const Landmark = ({ children, role, ...rest }: Props) => {
     }
 
     case "contentinfo": {
+      const { children, ...rest } = props;
+
       return (
         <footer {...rest}>
-          <LevelContext.Provider value={level + 1}>
+          <LevelContext.Provider value={(level === 0 ? level + 1 : level) + 1}>
             {children}
           </LevelContext.Provider>
         </footer>
@@ -79,9 +85,11 @@ export const Landmark = ({ children, role, ...rest }: Props) => {
     }
 
     case "form": {
+      const { children, ...rest } = props;
+
       return (
         <form {...rest}>
-          <LevelContext.Provider value={level + 1}>
+          <LevelContext.Provider value={(level === 0 ? level + 1 : level) + 1}>
             {children}
           </LevelContext.Provider>
         </form>
@@ -89,9 +97,11 @@ export const Landmark = ({ children, role, ...rest }: Props) => {
     }
 
     case "main": {
+      const { children, ...rest } = props;
+
       return (
         <main {...rest}>
-          <LevelContext.Provider value={level + 1}>
+          <LevelContext.Provider value={(level === 0 ? level + 1 : level) + 1}>
             {children}
           </LevelContext.Provider>
         </main>
@@ -99,9 +109,11 @@ export const Landmark = ({ children, role, ...rest }: Props) => {
     }
 
     case "navigation": {
+      const { children, ...rest } = props;
+
       return (
         <nav {...rest}>
-          <LevelContext.Provider value={level + 1}>
+          <LevelContext.Provider value={(level === 0 ? level + 1 : level) + 1}>
             {children}
           </LevelContext.Provider>
         </nav>
@@ -109,9 +121,11 @@ export const Landmark = ({ children, role, ...rest }: Props) => {
     }
 
     case "region": {
+      const { children, ...rest } = props;
+
       return (
         <section {...rest}>
-          <LevelContext.Provider value={level + 1}>
+          <LevelContext.Provider value={(level === 0 ? level + 1 : level) + 1}>
             {children}
           </LevelContext.Provider>
         </section>
@@ -119,9 +133,11 @@ export const Landmark = ({ children, role, ...rest }: Props) => {
     }
 
     case "search": {
+      const { children, ...rest } = props;
+
       return (
-        <div role="search" {...rest}>
-          <LevelContext.Provider value={level + 1}>
+        <div {...rest}>
+          <LevelContext.Provider value={(level === 0 ? level + 1 : level) + 1}>
             {children}
           </LevelContext.Provider>
         </div>

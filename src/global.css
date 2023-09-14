@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.background {
+  background:
+    linear-gradient(135deg, #4f1269 0%, #192a69 100%),
+    url("/background_img.png") center center no-repeat;
+}

@@ -5,9 +5,5 @@ type Props = {
 };
 
 export const CallToActionLink = ({ label }: Props) => {
-  return (
-    <Link className="" to={}>
-      {label}
-    </Link>
-  );
+  return <Link className="rounded-3xl bg-cyan-400 p-4 text-2xl">{label}</Link>;
 };
