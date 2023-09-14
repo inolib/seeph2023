@@ -4,14 +4,9 @@ import { Content } from "./Content";
 import { Heading } from "./Heading";
 import { Image } from "./Image";
 
-type Props = DetailedHTMLProps<
-  HTMLAttributes<HTMLDivElement>,
-  HTMLDivElement
-> & {
-  variant: "";
-};
+type Props = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
 
-export const Card = ({ children, variant, ...rest }: Props) => {
+export const Card = ({ children, ...rest }: Props) => {
   return <div {...rest}>{children}</div>;
 };
 

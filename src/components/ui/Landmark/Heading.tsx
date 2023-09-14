@@ -1,11 +1,11 @@
 import { Heading as BaseHeading, type Props as BaseProps } from "../Heading";
 
-import { useSection } from "./Section";
+import { useLandmark } from "./Landmark";
 
-type Props = Omit<BaseProps, "level">;
+export type Props = Omit<BaseProps, "level">;
 
 export const Heading = ({ children, ...rest }: Props) => {
-  const { level } = useSection();
+  const { level } = useLandmark();
 
   return (
     <BaseHeading level={level} {...rest}>
