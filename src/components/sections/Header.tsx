@@ -4,7 +4,7 @@ import { Landmark } from "../ui/Landmark/Landmark";
 
 export const Header = () => {
   return (
-    <Landmark className="background p-4 text-white" role="banner">
+    <Landmark className="background p-4 text-white" landmarkRole="banner">
       <div className="mx-auto w-11/12 sm:mx-4 sm:w-2/4">
         <div className="my-4 flex items-center">
           <img alt="" className="mx-auto" src="/logo_inolib.png" />

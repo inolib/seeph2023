@@ -13,7 +13,7 @@ type Props =
       DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>,
       "role"
     > & {
-      role:
+      landmarkRole:
         | "banner"
         | "complementary"
         | "contentinfo"
@@ -25,13 +25,13 @@ type Props =
       DetailedHTMLProps<FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>,
       "role"
     > & {
-      role: "form";
+      landmarkRole: "form";
     })
   | (Omit<
       DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>,
       "role"
     > & {
-      role: "search";
+      landmarkRole: "search";
     });
 
 const LevelContext = createContext(0);
@@ -47,9 +47,9 @@ export const useLandmark = () => {
 export const Landmark = (props: Props) => {
   const { level } = useLandmark();
 
-  switch (props.role) {
+  switch (props.landmarkRole) {
     case "banner": {
-      const { children, ...rest } = props;
+      const { children, landmarkRole, ...rest } = props;
 
       return (
         <header {...rest}>
@@ -61,7 +61,7 @@ export const Landmark = (props: Props) => {
     }
 
     case "complementary": {
-      const { children, ...rest } = props;
+      const { children, landmarkRole, ...rest } = props;
 
       return (
         <aside {...rest}>
@@ -73,7 +73,7 @@ export const Landmark = (props: Props) => {
     }
 
     case "contentinfo": {
-      const { children, ...rest } = props;
+      const { children, landmarkRole, ...rest } = props;
 
       return (
         <footer {...rest}>
@@ -85,7 +85,7 @@ export const Landmark = (props: Props) => {
     }
 
     case "form": {
-      const { children, ...rest } = props;
+      const { children, landmarkRole, ...rest } = props;
 
       return (
         <form {...rest}>
@@ -97,11 +97,11 @@ export const Landmark = (props: Props) => {
     }
 
     case "main": {
-      const { children, ...rest } = props;
+      const { children, landmarkRole, ...rest } = props;
 
       return (
         <main {...rest}>
-          <LevelContext.Provider value={(level === 0 ? level + 1 : level) + 1}>
+          <LevelContext.Provider value={level + 1}>
             {children}
           </LevelContext.Provider>
         </main>
@@ -109,7 +109,7 @@ export const Landmark = (props: Props) => {
     }
 
     case "navigation": {
-      const { children, ...rest } = props;
+      const { children, landmarkRole, ...rest } = props;
 
       return (
         <nav {...rest}>
@@ -121,7 +121,7 @@ export const Landmark = (props: Props) => {
     }
 
     case "region": {
-      const { children, ...rest } = props;
+      const { children, landmarkRole, ...rest } = props;
 
       return (
         <section {...rest}>
@@ -133,10 +133,10 @@ export const Landmark = (props: Props) => {
     }
 
     case "search": {
-      const { children, ...rest } = props;
+      const { children, landmarkRole, ...rest } = props;
 
       return (
-        <div {...rest}>
+        <div role="search" {...rest}>
           <LevelContext.Provider value={(level === 0 ? level + 1 : level) + 1}>
             {children}
           </LevelContext.Provider>

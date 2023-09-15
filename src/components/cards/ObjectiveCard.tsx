@@ -8,12 +8,12 @@ type Props = {
 
 export const ObjectiveCard = ({ content, heading, imageUrl }: Props) => {
   return (
-    <div className="">
+    <div className="my-12">
       <img alt="" className="" src={imageUrl} />
 
-      <Landmark.Heading className="">{heading}</Landmark.Heading>
+      <Landmark.Heading className="my-7 text-3xl">{heading}</Landmark.Heading>
 
-      <p className="">{content}</p>
+      <p className="text-xl">{content}</p>
     </div>
   );
 };
