@@ -9,27 +9,22 @@ export const FourthRegion = () => {
   return (
     <Landmark
       aria-labelledby={id}
-      className="background p-8 text-white"
+      className="background-full p-8 text-white"
       landmarkRole="region"
     >
       <Landmark.Heading className="my-4 text-center text-3xl" id={id}>
         Nos intervenants lors de la conférence
       </Landmark.Heading>
-      <p className="my-4 text-center text-3xl">
-        ‟Nos spécialistes expérimentés de l’accessibilité‟
-      </p>
-      <div className="my-4">
-        <SpeakerCard
-          jobTitle="PDG CEO Inolib"
-          name="Djebrine ALOUI"
-          photoUrl="/photo_djebrine.png"
-        />
-        <SpeakerCard
-          jobTitle="PDG CEO Inolib"
-          name="Djebrine ALOUI"
-          photoUrl="/photo_djebrine.png"
-        />
-      </div>
+
+      <SpeakerCard
+        jobTitle="CEO d’Inolib et Spécialiste expérimenté en accessibilité et solutions digitales
+
+        "
+        name="Djebrine ALOUI"
+        photoUrl="/photo_djebrine-circle.png"
+        quote="“Venez explorer les clés de la révolution numérique avec mes idées fortes, mes sensibilités, mes expériences. Il reste encore de nombreux défis à relever dans ce domaine, et je suis là pour vous aider à percevoir l'accessibilité sous un nouvel angle.”"
+        quoteAuthor="Djebrine"
+      />
     </Landmark>
   );
 };
