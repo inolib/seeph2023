@@ -4,44 +4,62 @@ import { Landmark } from "../ui/Landmark/Landmark";
 export const Header = () => {
   return (
     <Landmark className="background p-4 px-12 text-white" landmarkRole="banner">
-      <div className="mx-auto sm:mx-4 sm:w-2/4">
-        <div className="my-4 flex items-center">
-          <img alt="" className="" src="/logo_inolib2.png" />
-          <p className="mx-4 hidden w-2/4 sm:block">
-            Votre allié en accessibilité numérique et solutions digitales
-          </p>
-        </div>
+      <div className="my-4 flex items-center md:w-2/5">
+        <img alt="" className="" src="/logo_inolib2.png" />
+        <p className="mx-4 hidden w-2/4 md:block">
+          Votre allié en accessibilité numérique et solutions digitales
+        </p>
+      </div>
 
+      <div className="md:mx-8 md:w-2/5">
         <div className="my-8">
           <GreenLabel label="Conférence" />
         </div>
 
-        <Landmark.Heading className="my-4 text-4xl font-bold">
+        <Landmark.Heading className="my-4 text-4xl font-bold md:text-5xl">
           L’Accessibilité numérique, un monde d’opportunités
         </Landmark.Heading>
 
-        <div>
-          <img alt="" src="/photo_djebrine-circle.png" />
-          <p className="my-4 text-2xl font-bold">Djebrine ALOUI</p>
-          <p className="text-xl">
-            Venez explorer les clés de la révolution numérique.
+        <div className="hidden md:flex md:items-center md:gap-10">
+          <img alt="" className="" src="/ion_calendar-outline-green.png" />
+          <p className="text-xl font-bold text-green-400">
+            4 sessions en novembre
           </p>
         </div>
+      </div>
 
-        <div className="flex gap-4">
-          <a href="http://">
-            <img
-              alt="aller sur la page Youtube d'Inolib"
-              src="/icone_youtube.png"
-            />
-          </a>
-          <a href="http://">
-            <img
-              alt="aller sur la page Linkedin d'Inolib"
-              src="/icone_linkedin.png"
-            />
-          </a>
+      <div>
+        <div className="md:mx-8 md:flex md:w-2/5 md:items-center">
+          <img
+            alt=""
+            className="md:h-60 md:w-60"
+            src="/photo_djebrine-circle.png"
+          />
+          <div className="md:mx-4">
+            <p className="my-4 text-2xl font-bold md:text-3xl">
+              Djebrine ALOUI
+            </p>
+            <p className="hidden md:my-2 md:block md:text-2xl">CEO Inolib</p>
+            <p className="text-xl md:text-2xl md:italic">
+              “ Venez explorer les clés de la révolution numérique.”
+            </p>
+          </div>
         </div>
+      </div>
+
+      <div className="my-4 flex gap-4 md:mx-8 md:w-2/5">
+        <a href="http://">
+          <img
+            alt="aller sur la page Youtube d'Inolib"
+            src="/icone_youtube.png"
+          />
+        </a>
+        <a href="http://">
+          <img
+            alt="aller sur la page Linkedin d'Inolib"
+            src="/icone_linkedin.png"
+          />
+        </a>
       </div>
     </Landmark>
   );
