@@ -1,29 +1,33 @@
 import { useId } from "react";
 
 import { ObjectiveCard } from "../cards/ObjectiveCard";
+import { CallToActionLink } from "../links/CallToActionLink";
 import { Landmark } from "../ui/Landmark/Landmark";
 
 export const ThirdRegion = () => {
   const id = useId();
   return (
-    <Landmark aria-labelledby={id} className="p-8 " landmarkRole="region">
-      <Landmark.Heading className="my-4 text-3xl text-indigo-700" id={id}>
-        Avantages de l’accessibilité
-      </Landmark.Heading>
+    <Landmark aria-labelledby={id} className="my-8" landmarkRole="region">
+      <div className="background-full ml-12 rounded-l-3xl p-8 text-white">
+        <Landmark.Heading className="my-4 text-3xl " id={id}>
+          Avantages de l’accessibilité
+        </Landmark.Heading>
 
-      <div>
-        <p className="my-5 text-3xl">
-          Vous repartez avec un plan d’action “accessibilité” facile à appliquer
-        </p>
-        <p className="text-xl">
-          À la fin de la conférence, vous repartirez avec des directives
-          précises pour faciliter les premières étapes vers l’accessibilité
-          numérique, vous orientant vers des solutions pratiques et tangibles
-          pour vous lancer avec succès.
-        </p>
+        <div>
+          <p className="my-5 text-3xl">
+            Vous repartez avec un plan d’action “accessibilité” facile à
+            appliquer
+          </p>
+          <p className="text-xl">
+            À la fin de la conférence, vous repartirez avec des directives
+            précises pour faciliter les premières étapes vers l’accessibilité
+            numérique, vous orientant vers des solutions pratiques et tangibles
+            pour vous lancer avec succès.
+          </p>
+        </div>
       </div>
 
-      <div>
+      <div className="px-12 text-center">
         <ObjectiveCard
           content="Elargissez votre réseau dans le domaine de l'accessibilité numérique et repartez de cette conférence avec des idées concrètes pour influencer positivement votre organisation ou projet."
           heading="Étendez votre influence au delà de votre clientèle"
@@ -39,6 +43,8 @@ export const ThirdRegion = () => {
           heading="Un Aperçu Exclusif de nos méthodes de travail"
           imageUrl="/icone3.png"
         />
+
+        <CallToActionLink label="Réservez maintenant" />
       </div>
     </Landmark>
   );
