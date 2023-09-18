@@ -22,10 +22,25 @@ export const Header = () => {
 
         <div>
           <img alt="" src="/photo_djebrine-circle.png" />
-          <p className="text-2xl font-bold">Djebrine ALOUI</p>
+          <p className="my-4 text-2xl font-bold">Djebrine ALOUI</p>
           <p className="text-xl">
             Venez explorer les clés de la révolution numérique.
           </p>
+        </div>
+
+        <div className="flex gap-4 my-8">
+          <a href="http://">
+            <img
+              alt="aller sur la page Youtube d'Inolib"
+              src="/icone_youtube.png"
+            />
+          </a>
+          <a href="http://">
+            <img
+              alt="aller sur la page Linkedin d'Inolib"
+              src="/icone_linkedin.png"
+            />
+          </a>
         </div>
       </div>
     </Landmark>
