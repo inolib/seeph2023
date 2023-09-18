@@ -31,13 +31,6 @@ export const FirstRegion = () => {
         </p>
       </div>
 
-      <div className="flex place-content-between items-center gap-10 md:hidden">
-        <img alt="" className="" src="/ion_calendar-outline-green.png" />
-        <p className="text-xl font-bold text-green-400">
-          4 sessions en novembre
-        </p>
-      </div>
-
       <div className="my-8 sm:grid sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
         <ConferenceCard date="20 NOV. 2023" time="12h-14h" />
         <ConferenceCard date="21 NOV. 2023" time="12h-14h" />
