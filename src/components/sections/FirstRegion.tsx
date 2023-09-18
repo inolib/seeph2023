@@ -1,5 +1,6 @@
 import { useId } from "react";
 
+import { CallToActionLink } from "../links/CallToActionLink";
 import { ConferenceCard } from "../../components/cards/ConferenceCard";
 import { Landmark } from "../ui/Landmark/Landmark";
 
@@ -12,6 +13,10 @@ export const FirstRegion = () => {
         Réservez votre place pour une expérience transformative sur
         l’accessibilité numérique
       </Landmark.Heading>
+
+      <div className="flex justify-center">
+        <CallToActionLink label="Réservez maintenant" />
+      </div>
 
       <div className="my-8 flex flex-col items-center">
         <img alt="" src="/logo_inolib.png" />
