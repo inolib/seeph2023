@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import { FifthRegion } from "../components/sections/FifthRegion";
 import { FirstRegion } from "../components/sections/FirstRegion";
 import { Footer } from "../components/sections/Footer";
@@ -7,6 +9,7 @@ import { SecondRegion } from "../components/sections/SecondRegion";
 import { SixthRegion } from "../components/sections/SixthRegion";
 import { ThirdRegion } from "../components/sections/ThirdRegion";
 import { Landmark } from "../components/ui/Landmark/Landmark";
+import { SeventhRegion } from "../components/sections/SeventhRegion";
 
 export const Root = () => {
   return (
@@ -25,6 +28,8 @@ export const Root = () => {
         <FifthRegion />
 
         <SixthRegion />
+
+        <SeventhRegion />
       </Landmark>
 
       <Footer />

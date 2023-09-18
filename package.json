@@ -5,8 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
-    "format": "pnpm run format:prettier && pnpm run format:jsdoc && pnpm run format:jsxattribute-sort && pnpm run format:packagejson && pnpm run format:sort-imports && pnpm run format:tailwindcss",
-    "format:jsdoc": "prettier --config ./.config/prettier/jsdoc/prettier.config.js --write ./**/*.cjs ./**/*.js ./**/*.ts ./**/*.tsx",
+    "format": "pnpm run format:prettier && pnpm run format:jsxattribute-sort && pnpm run format:packagejson && pnpm run format:sort-imports && pnpm run format:tailwindcss",
     "format:jsxattribute-sort": "prettier --config ./.config/prettier/jsxattribute-sort/prettier.config.js --write ./**/*.tsx",
     "format:packagejson": "prettier --config ./.config/prettier/packagejson/prettier.config.js --write ./package.json",
     "format:prettier": "prettier --write .",
@@ -23,7 +22,7 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.15.0"
+    "react-router-dom": "^6.16.0"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.1.0",
@@ -33,7 +32,7 @@
     "@tailwindcss/typography": "^0.5.10",
     "@testing-library/jest-dom": "^6.1.3",
     "@testing-library/react": "^14.0.0",
-    "@testing-library/user-event": "^14.4.3",
+    "@testing-library/user-event": "^14.5.0",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
     "@types/react-router-dom": "^5.3.3",
@@ -44,17 +43,15 @@
     "autoprefixer": "^10.4.15",
     "eslint": "^8.49.0",
     "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-jsdoc": "^46.6.0",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-markdown": "^3.0.1",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-tailwindcss": "^3.13.0",
     "eslint-plugin-testing-library": "^6.0.1",
-    "happy-dom": "^11.0.5",
+    "happy-dom": "^11.2.0",
     "postcss": "^8.4.29",
     "prettier": "^3.0.3",
-    "prettier-plugin-jsdoc": "^1.0.2",
     "prettier-plugin-jsxattribute-sort": "^1.0.1",
     "prettier-plugin-packagejson": "^2.4.5",
     "prettier-plugin-tailwindcss": "^0.5.4",
