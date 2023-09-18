@@ -3,7 +3,7 @@ import { Landmark } from "../ui/Landmark/Landmark";
 export const Footer = () => {
   return (
     <Landmark
-      className="my-4 p-4 bg-blue-950 text-white text-xl"
+      className="my-4 bg-blue-950 p-4 text-xl text-white"
       landmarkRole="contentinfo"
     >
       <p className="my-4">Copyright @ Tous droits réservés Inolib</p>

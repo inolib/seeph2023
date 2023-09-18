@@ -21,7 +21,7 @@ export const Header = () => {
         </Landmark.Heading>
 
         <div>
-          <img src="/photo_djebrine-circle.png" alt="" />
+          <img alt="" src="/photo_djebrine-circle.png" />
           <p className="text-2xl font-bold">Djebrine ALOUI</p>
           <p className="text-xl">
             Venez explorer les clés de la révolution numérique.
