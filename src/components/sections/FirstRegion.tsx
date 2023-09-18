@@ -1,7 +1,6 @@
 import { useId } from "react";
 
 import { ConferenceCard } from "../../components/cards/ConferenceCard";
-import { CallToActionLink } from "../links/CallToActionLink";
 import { Landmark } from "../ui/Landmark/Landmark";
 
 export const FirstRegion = () => {
