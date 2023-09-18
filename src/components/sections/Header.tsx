@@ -1,4 +1,3 @@
-import { GreenLabel } from "../labels/GreenLabel";
 import { Landmark } from "../ui/Landmark/Landmark";
 
 export const Header = () => {

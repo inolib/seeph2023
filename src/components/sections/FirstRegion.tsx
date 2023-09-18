@@ -13,16 +13,15 @@ export const FirstRegion = () => {
       className="p-8 px-12 md:mx-8"
       landmarkRole="region"
     >
-      <Landmark.Heading className="my-4 text-3xl font-bold" id={id}>
+      <Landmark.Heading
+        className="my-4 text-3xl font-bold md:text-right md:text-5xl"
+        id={id}
+      >
         Réservez votre place pour une expérience transformative sur
         l’accessibilité numérique
       </Landmark.Heading>
 
-      <div className="my-8 flex justify-center">
-        <CallToActionLink label="Réservez maintenant" />
-      </div>
-
-      <div className="my-8 flex flex-col items-center">
+      <div className="my-8 flex flex-col items-center md:my-12">
         <img alt="" src="/logo_inolib.png" />
         <p className=" my-4 text-2xl">
           Inolib, l’agence digitale pionnière en responsabilité et innovation

@@ -7,19 +7,18 @@ export const SecondRegion = () => {
   const id = useId();
 
   return (
-    <Landmark aria-labelledby={id} className="p-8 " landmarkRole="region">
-      <div>
-        {/* TODO IMG */}
-        <Landmark.Heading className="my-4 text-4xl font-bold" id={id}>
-          Explorons les opportunités pour votre entreprise
-        </Landmark.Heading>
-      </div>
+    <Landmark
+      aria-labelledby={id}
+      className="p-8 md:mx-8"
+      landmarkRole="region"
+    >
+      <Landmark.Heading className="my-4 text-4xl font-bold" id={id}>
+        Explorons les opportunités pour votre entreprise
+      </Landmark.Heading>
 
-      <p className="my-4 text-2xl font-bold">
-        <span className="text-green-400">Au programme</span> de la conférence
-      </p>
+      <p className="my-4 text-2xl font-bold">Au programme de la conférence</p>
 
-      <div>
+      <div className="my-4 grid grid-cols-1 md:my-12 md:grid-cols-2">
         <ProgramCard headingContent="Une sensibilisation “pratique” à l'Accessibilité Numérique">
           Appréhender l’aspect crucial de l’accessibilité et son influence
           significative sur l’expérience des utilisateurs. Venez découvrir
