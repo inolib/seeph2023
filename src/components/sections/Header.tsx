@@ -3,8 +3,8 @@ import { Landmark } from "../ui/Landmark/Landmark";
 
 export const Header = () => {
   return (
-    <Landmark className="background p-4 text-white" landmarkRole="banner">
-      <div className="mx-auto w-11/12 sm:mx-4 sm:w-2/4">
+    <Landmark className="background p-4 px-12 text-white" landmarkRole="banner">
+      <div className="mx-auto sm:mx-4 sm:w-2/4">
         <div className="my-4 flex items-center">
           <img alt="" className="" src="/logo_inolib2.png" />
           <p className="mx-4 hidden w-2/4 sm:block">
@@ -28,7 +28,7 @@ export const Header = () => {
           </p>
         </div>
 
-        <div className="flex gap-4 my-8">
+        <div className="flex gap-4">
           <a href="http://">
             <img
               alt="aller sur la page Youtube d'Inolib"
