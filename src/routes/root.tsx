@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 import { FifthRegion } from "../components/sections/FifthRegion";
 import { FirstRegion } from "../components/sections/FirstRegion";
 import { Footer } from "../components/sections/Footer";

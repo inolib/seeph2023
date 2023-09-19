@@ -1,8 +1,7 @@
 import { useId } from "react";
-import { Link } from "react-router-dom";
 
-import { Landmark } from "../ui/Landmark/Landmark";
 import { CallToActionLink } from "../links/CallToActionLink";
+import { Landmark } from "../ui/Landmark/Landmark";
 
 export const SeventhRegion = () => {
   const id = useId();
