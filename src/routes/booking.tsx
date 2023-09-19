@@ -1,12 +1,12 @@
-import { Footer } from "../components/section/Footer";
-import { Header } from "../components/section/Header";
+import { Footer } from "../components/sections/Footer";
+import { Header } from "../components/sections/Header";
 
 export const Booking = () => {
   return (
     <>
       <Header />
 
-      <main></main>
+      <main>TEST</main>
 
       <Footer />
     </>
