@@ -2,6 +2,7 @@ import { useId } from "react";
 import { Link } from "react-router-dom";
 
 import { Landmark } from "../ui/Landmark/Landmark";
+import { CallToActionLink } from "../links/CallToActionLink";
 
 export const SeventhRegion = () => {
   const id = useId();
@@ -19,12 +20,7 @@ export const SeventhRegion = () => {
         Conférence online : <br /> L’ Accessibilité Numérique, un Monde
         d’Opportunités
       </Landmark.Heading>
-      <Link
-        className="mx-auto my-8 block w-11/12 rounded-lg bg-orange-700 p-4"
-        to=""
-      >
-        Réservez Maintenant
-      </Link>
+      <CallToActionLink label="Réservez maintenant !" />
     </Landmark>
   );
 };
