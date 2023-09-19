@@ -3,16 +3,30 @@ import { Landmark } from "../ui/Landmark/Landmark";
 export const Footer = () => {
   return (
     <Landmark
-      className="my-4 bg-blue-950 p-4 text-xl text-white"
+      className="mt-4 bg-blue-950 p-4 px-12 text-xl text-white"
       landmarkRole="contentinfo"
     >
-      <p className="my-4">Copyright @ Tous droits réservés Inolib</p>
-      <ul>
-        <li>Politique d’accessibilité</li>
-        <li>Mentions légales</li>
-        <li>Glossaire</li>
-        <li>FAQ</li>
-      </ul>
+      <div className="flex items-center justify-between">
+        <p className="my-4">Copyright @ Tous droits réservés Inolib</p>
+        <ul className="flex">
+          <li>
+            <a href="http://">
+              <img
+                alt="aller sur la page Youtube d'Inolib"
+                src="/icone_youtube.png"
+              />
+            </a>
+          </li>
+          <li>
+            <a href="http://">
+              <img
+                alt="aller sur la page Linkedin d'Inolib"
+                src="/icone_linkedin.png"
+              />
+            </a>
+          </li>
+        </ul>
+      </div>
     </Landmark>
   );
 };
