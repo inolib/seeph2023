@@ -15,15 +15,22 @@ export const SpeakerCard = ({
 }: Props) => {
   return (
     <div className="my-8 px-8 text-center">
-      <p className="my-4 text-2xl ">
+      <p className="my-4 text-2xl md:text-5xl ">
         <span className="font-bold">{name}</span>,<br /> {jobTitle}
       </p>
 
-      <img alt="" className="mx-auto h-60 w-60" src={photoUrl} />
+      <div className="md:flex md:items-center">
+        <img
+          alt=""
+          className="mx-auto h-60 w-60 md:h-72 md:w-72"
+          src={photoUrl}
+        />
+        <div className="text-right text-2xl italic md:ml-4">
+          <p className="my-4 ">{quote}</p>
 
-      <p className="my-4 text-right text-2xl italic">{quote}</p>
-
-      <p className="text-right text-2xl font-bold italic">{quoteAuthor}</p>
+          <p className="font-bold">{quoteAuthor}</p>
+        </div>
+      </div>
     </div>
   );
 };
