@@ -17,6 +17,7 @@ export const Booking = () => {
               confId="20-11"
               date="20 Novembre"
               hours="12h-14h"
+              countId="20-11-Count"
             />
             <ConferenceCheck
               confId="21-11"

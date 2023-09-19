@@ -4,9 +4,10 @@ type Props = {
   date: string;
   hours: string;
   confId: string;
+  countId: string;
 };
 
-export const ConferenceCheck = ({ date, hours, confId }: Props) => {
+export const ConferenceCheck = ({ date, hours, confId, countId }: Props) => {
   const [count, setCount] = useState(0);
 
   const decrement: MouseEventHandler<HTMLButtonElement> = (event) => {
@@ -39,7 +40,7 @@ export const ConferenceCheck = ({ date, hours, confId }: Props) => {
         </button>
         <input
           className="w-8 text-center"
-          id="test"
+          id={countId}
           name=""
           readOnly
           type="text"
