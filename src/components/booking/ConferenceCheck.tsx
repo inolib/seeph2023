@@ -3,9 +3,10 @@ import { useState, type MouseEventHandler } from "react";
 type Props = {
   date: string;
   hours: string;
+  confId: string;
 };
 
-export const ConferenceCheck = ({ date, hours }: Props) => {
+export const ConferenceCheck = ({ date, hours, confId }: Props) => {
   const [count, setCount] = useState(0);
 
   const decrement: MouseEventHandler<HTMLButtonElement> = (event) => {
@@ -21,20 +22,32 @@ export const ConferenceCheck = ({ date, hours }: Props) => {
   };
 
   return (
-    <div className="my-8 flex justify-center">
-      <input id="20-11" name="20-11" type="checkbox" />
-      <label htmlFor="20-11">
+    <div className="my-8 flex items-center justify-center gap-8">
+      <input id={confId} name="20-11" type="checkbox" />
+      <label className="flex flex-col text-center" htmlFor={confId}>
         <span>{date}</span>
         <span>{hours}</span>
       </label>
 
-      <div>
-        <button aria-label="Diminuez la quantité de places" onClick={decrement}>
+      <div className="">
+        <button
+          aria-label={`Diminuez la quantité de places pour le ${date}`}
+          className="rounded-lg bg-green-400 px-4 py-2 hover:bg-blue-500"
+          onClick={decrement}
+        >
           -
         </button>
-        <input id="" name="" readOnly type="text" value={count} />
+        <input
+          className="w-8 text-center"
+          id="test"
+          name=""
+          readOnly
+          type="text"
+          value={count}
+        />
         <button
-          aria-label="Augmentez la quantité de places"
+          aria-label={`Augmentez la quantité de places pour le ${date}`}
+          className="rounded-lg bg-green-400 px-4 py-2 hover:bg-blue-500"
           onClick={increment}
         >
           +
