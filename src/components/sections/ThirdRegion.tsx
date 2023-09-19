@@ -48,7 +48,9 @@ export const ThirdRegion = () => {
           imageUrl="/icon_3-color.png"
         />
       </div>
-      <CallToActionLink label="Réservez maintenant" />
+      <div className="text-center">
+        <CallToActionLink label="Réservez maintenant" />
+      </div>
     </Landmark>
   );
 };
