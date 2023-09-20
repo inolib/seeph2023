@@ -23,7 +23,7 @@ type Props = {
 export const ConferenceBooking = ({ date, time }: Props) => {
   const confId = useId();
 
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
   const [isChecked, setIsChecked] = useState(false);
 
   const { registerConferenceBooking } = useBooking();
@@ -31,11 +31,13 @@ export const ConferenceBooking = ({ date, time }: Props) => {
   const decrement: MouseEventHandler<HTMLButtonElement> = useCallback(
     (event) => {
       event.preventDefault();
-      if (count > 0) {
+      if (count > 1) {
         setCount(count - 1);
+      } else {
+        setIsChecked(!isChecked);
       }
     },
-    [count],
+    [count, isChecked],
   );
 
   const increment: MouseEventHandler<HTMLButtonElement> = useCallback(
@@ -49,6 +51,7 @@ export const ConferenceBooking = ({ date, time }: Props) => {
   const handleCheckbox: MouseEventHandler<HTMLInputElement> =
     useCallback(() => {
       setIsChecked(!isChecked);
+      isChecked ? setCount(1) : "";
     }, [isChecked]);
 
   useEffect(() => {
@@ -72,7 +75,7 @@ export const ConferenceBooking = ({ date, time }: Props) => {
       />
       <label
         className={`flex flex-col rounded-lg px-4 py-2 text-center ${
-          isChecked ? "bg-indigo-500" : ""
+          isChecked ? "bg-Blue" : ""
         }`}
         htmlFor={confId}
       >
@@ -83,7 +86,9 @@ export const ConferenceBooking = ({ date, time }: Props) => {
       <div className="">
         <button
           aria-label={`Diminuez la quantité de places pour le ${date}`}
-          className="rounded-lg bg-green-400 px-4 py-2 hover:bg-blue-500"
+          className={`rounded-lg px-4 py-2 ${
+            !isChecked ? "bg-gray-500" : "bg-Green hover:bg-Blue"
+          }`}
           disabled={!isChecked}
           onClick={decrement}
         >
@@ -96,11 +101,13 @@ export const ConferenceBooking = ({ date, time }: Props) => {
           name=""
           readOnly
           type="text"
-          value={count}
+          value={!isChecked ? "-" : count}
         />
         <button
           aria-label={`Augmentez la quantité de places pour le ${date}`}
-          className="rounded-lg bg-green-400 px-4 py-2 hover:bg-blue-500"
+          className={`rounded-lg px-4 py-2 ${
+            !isChecked ? "bg-gray-500" : "bg-Green hover:bg-Blue"
+          }`}
           disabled={!isChecked}
           onClick={increment}
         >

@@ -8,6 +8,11 @@ module.exports = {
     "@tailwindcss/typography",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        Blue: "#1890ff",
+        Green: "#53dbbb",
+      },
+    },
   },
 };
