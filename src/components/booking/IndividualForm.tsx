@@ -1,11 +1,15 @@
+import { useId } from "react";
+
 export const IndividualForm = () => {
+  const id = useId();
+
   return (
     <div>
       <div className="my-4 flex flex-col">
-        <label htmlFor="gender">Genre</label>
+        <label htmlFor={`${id}-gender`}>Genre</label>
         <input
           className="border border-solid border-black sm:w-2/3 lg:w-1/3"
-          id="gender"
+          id={`${id}-gender`}
           name="gender"
           required
           type="text"
@@ -13,10 +17,10 @@ export const IndividualForm = () => {
       </div>
 
       <div className="my-4 flex flex-col">
-        <label htmlFor="firstname">Prénom</label>
+        <label htmlFor={`${id}-firstname`}>Prénom</label>
         <input
           className="border border-solid border-black sm:w-2/3 lg:w-1/3"
-          id="firstname"
+          id={`${id}-firstname`}
           name="firstname"
           required
           type="text"
@@ -24,10 +28,10 @@ export const IndividualForm = () => {
       </div>
 
       <div className="my-4 flex flex-col">
-        <label htmlFor="name">Nom</label>
+        <label htmlFor={`${id}-lastname`}>Nom</label>
         <input
           className="border border-solid border-black sm:w-2/3 lg:w-1/3"
-          id="name"
+          id={`${id}-lastname`}
           name="name"
           required
           type="text"
@@ -35,32 +39,32 @@ export const IndividualForm = () => {
       </div>
 
       <div className="my-4 flex flex-col">
-        <label htmlFor="society">Entreprise</label>
+        <label htmlFor={`${id}-company`}>Entreprise</label>
         <input
           className="border border-solid border-black sm:w-2/3 lg:w-1/3"
-          id="society"
-          name="society"
+          id={`${id}-company`}
+          name="company"
           required
           type="text"
         />
       </div>
 
       <div className="my-4 flex flex-col">
-        <label htmlFor="fonction">Fonction</label>
+        <label htmlFor={`${id}-jobTitle`}>Fonction</label>
         <input
           className="border border-solid border-black sm:w-2/3 lg:w-1/3"
-          id="fonction"
-          name="fonction"
+          id={`${id}-jobTitle`}
+          name="jobTitle"
           required
           type="text"
         />
       </div>
 
       <div className="my-4 flex flex-col">
-        <label htmlFor="email">E-mail</label>
+        <label htmlFor={`${id}-email`}>E-mail</label>
         <input
           className="border border-solid border-black sm:w-2/3 lg:w-1/3"
-          id="email"
+          id={`${id}-email`}
           name="email"
           required
           type="email"
@@ -68,11 +72,11 @@ export const IndividualForm = () => {
       </div>
 
       <div className="my-4 flex flex-col">
-        <label htmlFor="tel">Téléphone</label>
+        <label htmlFor={`${id}-phone`}>Téléphone</label>
         <input
           className="border border-solid border-black sm:w-2/3 lg:w-1/3"
-          id="tel"
-          name="tel"
+          id={`${id}-phone`}
+          name="phone"
           required
           type="tel"
         />

@@ -1,12 +1,18 @@
-import { useEffect, useId, useState, type MouseEventHandler } from "react";
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useState,
+  type MouseEventHandler,
+} from "react";
 
 import { useBooking } from "../../routes/booking";
 
-export type ConferenceCheckData = {
-  count: number;
+export type Data = {
   date: Props["date"];
-  isChecked: boolean;
   time: Props["time"];
+  attendeeCount: number;
+  isBooked: boolean;
 };
 
 type Props = {
@@ -14,44 +20,51 @@ type Props = {
   time: string;
 };
 
-export const ConferenceCheck = ({ date, time }: Props) => {
+export const ConferenceBooking = ({ date, time }: Props) => {
   const confId = useId();
 
   const [count, setCount] = useState(0);
   const [isChecked, setIsChecked] = useState(false);
 
-  const { registerConferenceCheck } = useBooking();
+  const { registerConferenceBooking } = useBooking();
 
-  const decrement: MouseEventHandler<HTMLButtonElement> = (event) => {
-    event.preventDefault();
-    if (count > 0) {
-      setCount(count - 1);
-    }
-  };
+  const decrement: MouseEventHandler<HTMLButtonElement> = useCallback(
+    (event) => {
+      event.preventDefault();
+      if (count > 0) {
+        setCount(count - 1);
+      }
+    },
+    [count],
+  );
 
-  const increment: MouseEventHandler<HTMLButtonElement> = (event) => {
-    event.preventDefault();
-    setCount(count + 1);
-  };
+  const increment: MouseEventHandler<HTMLButtonElement> = useCallback(
+    (event) => {
+      event.preventDefault();
+      setCount(count + 1);
+    },
+    [count],
+  );
 
-  const handleCheckbox: MouseEventHandler<HTMLInputElement> = () => {
-    setIsChecked(!isChecked);
-  };
+  const handleCheckbox: MouseEventHandler<HTMLInputElement> =
+    useCallback(() => {
+      setIsChecked(!isChecked);
+    }, [isChecked]);
 
   useEffect(() => {
-    registerConferenceCheck({
-      count,
+    registerConferenceBooking({
       date,
-      isChecked,
       time,
+      attendeeCount: count,
+      isBooked: isChecked,
     });
-  }, [count, date, isChecked, registerConferenceCheck, time]);
+  }, [count, date, isChecked, registerConferenceBooking, time]);
 
   return (
     <div className="my-8 flex items-center justify-center gap-4">
       <input
-        checked={isChecked}
         className="sr-only"
+        defaultChecked={isChecked}
         id={confId}
         name=""
         onClick={handleCheckbox}
