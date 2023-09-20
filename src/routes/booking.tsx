@@ -15,22 +15,25 @@ export const Booking = () => {
             <legend>Réservez vos sessions</legend>
             <ConferenceCheck
               confId="20-11"
+              countId="20-11count"
               date="20 Novembre"
               hours="12h-14h"
-              countId="20-11-Count"
             />
             <ConferenceCheck
               confId="21-11"
+              countId="21-11count"
               date="21 Novembre"
               hours="12h-14h"
             />
             <ConferenceCheck
               confId="23-11"
+              countId="23-11count"
               date="23 Novembre"
               hours="17h-19h"
             />
             <ConferenceCheck
               confId="24-11"
+              countId="24-11count"
               date="24 Novembre"
               hours="17h-19h"
             />
