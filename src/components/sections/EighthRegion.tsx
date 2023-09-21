@@ -44,7 +44,7 @@ export const EighthRegion = () => {
         rendre accessibles vos sites et applications.
       </Landmark.Heading>
 
-      <img alt="" className="my-8 mx-auto" src="image_a11y.png" />
+      <img alt="" className="mx-auto my-8" src="image_a11y.png" />
 
       <div className="m-4 rounded-b-3xl rounded-tl-3xl bg-Blue p-4 text-center">
         <p className="my-4 text-2xl">Tentez de remporter un audit gratuit</p>

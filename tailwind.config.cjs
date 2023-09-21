@@ -16,6 +16,9 @@ module.exports = {
         Grey: "#EBEDF0",
         Purple: "#4C1369",
       },
+      fontFamily: {
+        custom: "Atkinson Hyperlegible",
+      },
     },
   },
 };
