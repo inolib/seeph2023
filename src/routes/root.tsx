@@ -1,3 +1,4 @@
+import { EighthRegion } from "../components/sections/EighthRegion";
 import { FifthRegion } from "../components/sections/FifthRegion";
 import { FirstRegion } from "../components/sections/FirstRegion";
 import { Footer } from "../components/sections/Footer";
@@ -18,6 +19,8 @@ export const Root = () => {
         <FirstRegion />
 
         <SecondRegion />
+
+        <EighthRegion />
 
         <ThirdRegion />
 
