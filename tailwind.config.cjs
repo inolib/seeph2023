@@ -15,6 +15,7 @@ module.exports = {
         Green: "#53DBBB",
         Grey: "#EBEDF0",
         Purple: "#4C1369",
+        PurpleBG: "#A3169F",
       },
     },
   },
