@@ -86,7 +86,7 @@ export const Booking = () => {
       <Header />
 
       <Landmark className=" my-4" landmarkRole="main">
-        <form action="" className="mx-8 my-8">
+        <form action="" className="m-8">
           <fieldset>
             <legend className="text-center text-2xl">
               <span className="mx-2 rounded-full bg-Blue px-4 py-2">1</span>
@@ -107,7 +107,7 @@ export const Booking = () => {
           </fieldset>
         </form>
 
-        <div className="my-4 bg-Grey p-12 text-2xl md:flex md:flex-row md:gap-8 items-start">
+        <div className="my-4 items-start bg-Grey p-12 text-3xl md:flex md:flex-row md:justify-between md:gap-12">
           <p className="hidden md:block">Votre réservation</p>
 
           <div>
@@ -157,18 +157,18 @@ export const Booking = () => {
                   </p>
 
                   {[...new Array(data.attendeeCount)].map((_, index) => (
-                    <Fragment key={index}>
+                    <div className="my-8" key={index}>
                       <p className="text-lg font-bold">
                         Participant {index + 1}
                       </p>
 
                       <IndividualForm />
-                    </Fragment>
+                    </div>
                   ))}
                 </Fragment>
               );
             })}
-            <div className="my-8 flex flex-col justify-center md:justify-end gap-4 text-center sm:flex-row">
+            <div className="my-8 flex flex-col justify-center gap-4 text-center sm:flex-row md:justify-end">
               <button className=" rounded-xl bg-Grey px-4 py-2 text-2xl text-black">
                 Retour
               </button>

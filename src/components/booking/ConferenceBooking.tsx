@@ -64,7 +64,7 @@ export const ConferenceBooking = ({ date, time }: Props) => {
   }, [count, date, isChecked, registerConferenceBooking, time]);
 
   return (
-    <div className="my-8 flex flex-col md:flex-row items-center justify-center gap-4 text-2xl">
+    <div className="my-8 flex flex-col items-center justify-center gap-4 text-2xl md:flex-row">
       <div>
         <input
           className="sr-only"
@@ -76,7 +76,7 @@ export const ConferenceBooking = ({ date, time }: Props) => {
         />
         <label
           className={`flex flex-col rounded-lg px-4 py-2 text-center ${
-            isChecked ? "bg-Blue" : ""
+            isChecked ? "bg-BlueDark text-white" : ""
           }`}
           htmlFor={confId}
         >

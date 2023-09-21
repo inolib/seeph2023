@@ -6,9 +6,14 @@ export const IndividualForm = () => {
   return (
     <div>
       <div className="my-4 flex flex-col">
-        <label htmlFor={`${id}-gender`}>Genre</label>
+        <label
+          className="after:ml-2 after:text-red-500 after:content-['*']"
+          htmlFor={`${id}-gender`}
+        >
+          Genre
+        </label>
         <input
-          className="border border-solid border-black sm:w-2/3 lg:w-1/3"
+          className="rounded-lg border border-solid border-black p-2 sm:w-2/3 lg:w-2/5"
           id={`${id}-gender`}
           name="gender"
           required
@@ -17,9 +22,14 @@ export const IndividualForm = () => {
       </div>
 
       <div className="my-4 flex flex-col">
-        <label htmlFor={`${id}-firstname`}>Prénom</label>
+        <label
+          className="after:ml-2 after:text-red-500 after:content-['*']"
+          htmlFor={`${id}-firstname`}
+        >
+          Prénom
+        </label>
         <input
-          className="border border-solid border-black sm:w-2/3 lg:w-1/3"
+          className="rounded-lg border border-solid border-black p-2 sm:w-2/3 lg:w-2/5"
           id={`${id}-firstname`}
           name="firstname"
           required
@@ -28,9 +38,14 @@ export const IndividualForm = () => {
       </div>
 
       <div className="my-4 flex flex-col">
-        <label htmlFor={`${id}-lastname`}>Nom</label>
+        <label
+          className="after:ml-2 after:text-red-500 after:content-['*']"
+          htmlFor={`${id}-lastname`}
+        >
+          Nom
+        </label>
         <input
-          className="border border-solid border-black sm:w-2/3 lg:w-1/3"
+          className="rounded-lg border border-solid border-black p-2 sm:w-2/3 lg:w-2/5"
           id={`${id}-lastname`}
           name="name"
           required
@@ -39,9 +54,14 @@ export const IndividualForm = () => {
       </div>
 
       <div className="my-4 flex flex-col">
-        <label htmlFor={`${id}-company`}>Entreprise</label>
+        <label
+          className="after:ml-2 after:text-red-500 after:content-['*']"
+          htmlFor={`${id}-company`}
+        >
+          Entreprise
+        </label>
         <input
-          className="border border-solid border-black sm:w-2/3 lg:w-1/3"
+          className="rounded-lg border border-solid border-black p-2 sm:w-2/3 lg:w-2/5"
           id={`${id}-company`}
           name="company"
           required
@@ -50,9 +70,14 @@ export const IndividualForm = () => {
       </div>
 
       <div className="my-4 flex flex-col">
-        <label htmlFor={`${id}-jobTitle`}>Fonction</label>
+        <label
+          className="after:ml-2 after:text-red-500 after:content-['*']"
+          htmlFor={`${id}-jobTitle`}
+        >
+          Fonction
+        </label>
         <input
-          className="border border-solid border-black sm:w-2/3 lg:w-1/3"
+          className="rounded-lg border border-solid border-black p-2 sm:w-2/3 lg:w-2/5"
           id={`${id}-jobTitle`}
           name="jobTitle"
           required
@@ -61,9 +86,14 @@ export const IndividualForm = () => {
       </div>
 
       <div className="my-4 flex flex-col">
-        <label htmlFor={`${id}-email`}>E-mail</label>
+        <label
+          className="after:ml-2 after:text-red-500 after:content-['*']"
+          htmlFor={`${id}-email`}
+        >
+          E-mail (format: monadresse@mail.fr)
+        </label>
         <input
-          className="border border-solid border-black sm:w-2/3 lg:w-1/3"
+          className="rounded-lg border border-solid border-black p-2 sm:w-2/3 lg:w-2/5"
           id={`${id}-email`}
           name="email"
           required
@@ -72,9 +102,14 @@ export const IndividualForm = () => {
       </div>
 
       <div className="my-4 flex flex-col">
-        <label htmlFor={`${id}-phone`}>Téléphone</label>
+        <label
+          className="after:ml-2 after:text-red-500 after:content-['*']"
+          htmlFor={`${id}-phone`}
+        >
+          Téléphone (format: 0123456789)
+        </label>
         <input
-          className="border border-solid border-black sm:w-2/3 lg:w-1/3"
+          className="rounded-lg border border-solid border-black p-2 sm:w-2/3 lg:w-2/5"
           id={`${id}-phone`}
           name="phone"
           required
