@@ -85,10 +85,15 @@ export const Booking = () => {
     <>
       <Header />
 
-      <Landmark className="mx-8 my-4" landmarkRole="main">
-        <form action="">
+      <Landmark className=" my-4" landmarkRole="main">
+        <form action="" className="mx-8 my-8">
           <fieldset>
-            <legend>Réservez vos sessions</legend>
+            <legend className="text-center text-2xl">
+              <span className="mx-2 rounded-full bg-Blue px-4 py-2">1</span>
+              <span className="text-left">
+                Réservez votre session de conférence
+              </span>
+            </legend>
 
             <BookingContext.Provider value={{ registerConferenceBooking }}>
               {conferences.map((data) => (
@@ -102,17 +107,19 @@ export const Booking = () => {
           </fieldset>
         </form>
 
-        <div>
-          <p>Votre réservation</p>
+        <div className="my-4 bg-Grey p-12 text-2xl md:flex md:flex-row md:gap-8 items-start">
+          <p className="hidden md:block">Votre réservation</p>
 
           <div>
-            <p>Conférence l’Accesibilité numérique, un monde d’opportunité</p>
+            <p className="font-bold">
+              Conférence l’Accesibilité numérique, un monde d’opportunité
+            </p>
 
             {conferences.map((data) => {
               if (!data.isBooked) return;
 
               return (
-                <p key={data.date}>
+                <p className="my-4" key={data.date}>
                   <span>
                     {data.date} / {data.time}
                   </span>
@@ -126,25 +133,34 @@ export const Booking = () => {
             })}
           </div>
 
-          <button>Confirmer</button>
+          <div className="my-4 text-center">
+            <button className="rounded-xl bg-Green px-4 py-2 text-2xl text-black">
+              Confirmer
+            </button>
+          </div>
         </div>
 
-        <form action="">
+        <form action="" className="mx-12 my-8">
           <fieldset>
-            <legend>Complétez votre inscription</legend>
+            <legend className="text-center text-2xl">
+              <span className="mx-2 rounded-full bg-Blue px-4 py-2">2</span>
+              <span className="text-left">Complétez votre inscription </span>
+            </legend>
 
             {conferences.map((data) => {
               if (!data.isBooked) return;
 
               return (
                 <Fragment key={data.date}>
-                  <p>
+                  <p className="mb-4 mt-8 text-xl font-bold">
                     {data.date} / {data.time}
                   </p>
 
                   {[...new Array(data.attendeeCount)].map((_, index) => (
                     <Fragment key={index}>
-                      <p>Participant {index + 1}</p>
+                      <p className="text-lg font-bold">
+                        Participant {index + 1}
+                      </p>
 
                       <IndividualForm />
                     </Fragment>
@@ -152,10 +168,16 @@ export const Booking = () => {
                 </Fragment>
               );
             })}
+            <div className="my-8 flex flex-col justify-center md:justify-end gap-4 text-center sm:flex-row">
+              <button className=" rounded-xl bg-Grey px-4 py-2 text-2xl text-black">
+                Retour
+              </button>
+              <button className="rounded-xl bg-Green px-4 py-2 text-2xl text-black">
+                Confirmer
+              </button>
+            </div>
           </fieldset>
         </form>
-
-        <button type="submit">Valider</button>
       </Landmark>
 
       <Footer />

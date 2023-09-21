@@ -12,6 +12,7 @@ module.exports = {
       colors: {
         Blue: "#1890ff",
         Green: "#53dbbb",
+        Grey: "#EBEDF0",
       },
     },
   },

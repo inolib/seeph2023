@@ -64,24 +64,26 @@ export const ConferenceBooking = ({ date, time }: Props) => {
   }, [count, date, isChecked, registerConferenceBooking, time]);
 
   return (
-    <div className="my-8 flex items-center justify-center gap-4">
-      <input
-        className="sr-only"
-        defaultChecked={isChecked}
-        id={confId}
-        name=""
-        onClick={handleCheckbox}
-        type="checkbox"
-      />
-      <label
-        className={`flex flex-col rounded-lg px-4 py-2 text-center ${
-          isChecked ? "bg-Blue" : ""
-        }`}
-        htmlFor={confId}
-      >
-        <span>{date}</span>
-        <span>{time}</span>
-      </label>
+    <div className="my-8 flex flex-col md:flex-row items-center justify-center gap-4 text-2xl">
+      <div>
+        <input
+          className="sr-only"
+          defaultChecked={isChecked}
+          id={confId}
+          name=""
+          onClick={handleCheckbox}
+          type="checkbox"
+        />
+        <label
+          className={`flex flex-col rounded-lg px-4 py-2 text-center ${
+            isChecked ? "bg-Blue" : ""
+          }`}
+          htmlFor={confId}
+        >
+          <span>{date}</span>
+          <span>{time}</span>
+        </label>
+      </div>
 
       <div className="">
         <button
