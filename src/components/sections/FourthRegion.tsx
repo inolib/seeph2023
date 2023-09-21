@@ -9,7 +9,7 @@ export const FourthRegion = () => {
   return (
     <Landmark
       aria-labelledby={id}
-      className="background-full p-8 text-white"
+      className="bg-Purple p-8 text-white"
       landmarkRole="region"
     >
       <div className="md:mx-8">

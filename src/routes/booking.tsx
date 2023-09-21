@@ -144,7 +144,7 @@ export const Booking = () => {
           <fieldset>
             <legend className="text-center text-2xl">
               <span className="mx-2 rounded-full bg-Blue px-4 py-2">2</span>
-              <span className="text-left">Complétez votre inscription </span>
+              <span className="text-left">Complétez votre inscription</span>
             </legend>
 
             {conferences.map((data) => {
@@ -156,6 +156,7 @@ export const Booking = () => {
                     {data.date} / {data.time}
                   </p>
 
+                  {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
                   {[...new Array(data.attendeeCount)].map((_, index) => (
                     <div className="my-8" key={index}>
                       <p className="text-lg font-bold">
@@ -172,6 +173,7 @@ export const Booking = () => {
               <button className=" rounded-xl bg-Grey px-4 py-2 text-2xl text-black">
                 Retour
               </button>
+
               <button className="rounded-xl bg-Green px-4 py-2 text-2xl text-black">
                 Confirmer
               </button>

@@ -10,14 +10,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        Blue: "#1890ff",
+        Blue: "#1890FF",
         BlueDark: "#232569",
-        Green: "#53dbbb",
+        Green: "#53DBBB",
         Grey: "#EBEDF0",
         Purple: "#4C1369",
-      },
-      fontFamily: {
-        custom: "Atkinson Hyperlegible",
       },
     },
   },

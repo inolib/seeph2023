@@ -3,13 +3,12 @@ import { useId } from "react";
 export const IndividualForm = () => {
   const id = useId();
 
+  // TODO: pattern for phone input
+
   return (
     <div>
       <div className="my-4 flex flex-col">
-        <label
-          className="after:ml-2 after:text-red-500 after:content-['*']"
-          htmlFor={`${id}-gender`}
-        >
+        <label className="form-label" htmlFor={`${id}-gender`}>
           Genre
         </label>
         <input

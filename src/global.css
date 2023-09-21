@@ -2,16 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: "Atkinson Hyperlegible";
-  src: url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap");
-  font-weight: normal;
-  font-style: normal;
-}
+@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 @layer base {
   html {
-    font-family: "Atkinson Hyperlegible";
+    font-family: "Atkinson Hyperlegible", sans-serif;
+  }
+}
+
+@layer components {
+  .form-label {
+    @apply after:ml-2 after:text-red-500 after:content-['*'];
   }
 }
 

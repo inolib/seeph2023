@@ -12,16 +12,19 @@ export const ThirdRegion = () => {
       className="my-8 md:mx-8"
       landmarkRole="region"
     >
-      <div className="background-full ml-12 rounded-l-3xl p-8 text-white">
-        <Landmark.Heading className="my-4 text-3xl " id={id}>
-          Avantages de l’accessibilité
-        </Landmark.Heading>
+      <div className="ml-12 rounded-l-3xl bg-Purple p-8 text-white md:bg-white md:text-black">
+        <p className="my-5 text-3xl md:hidden">
+          Les avantages de l’accessibilité
+        </p>
 
         <div>
-          <p className="my-5 text-3xl">
-            Vous repartez avec un plan d’action “accessibilité” facile à
-            appliquer
-          </p>
+          <Landmark.Heading
+            className="my-4 text-3xl font-bold md:mx-16 md:text-5xl"
+            id={id}
+          >
+            Repartez avec des directives claires pour entreprendre vos premières
+            démarches vers l’accessibilité numérique.
+          </Landmark.Heading>
           <p className="text-xl">
             À la fin de la conférence, vous repartirez avec des directives
             précises pour faciliter les premières étapes vers l’accessibilité
