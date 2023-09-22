@@ -27,34 +27,45 @@ export const EighthRegion = () => {
         </p>
       </div>
 
-      <div className="flex flex-col">
+      <div className="flex md:items-center">
         <img
+          className="hidden md:block md:h-96 md:mx-auto"
+          src="image_a11y.png"
           alt=""
-          className="my-12 ml-auto h-14 md:pr-8"
-          src="/logo_inolib2.png"
         />
 
-        <PurpleLabel
-          label="En avant-première"
-          labelStyle="text-right ml-auto"
-        />
+        <div className="flex flex-col md:w-1/2 md:ml-auto md:mr-12">
+          <img
+            alt=""
+            className="my-12 ml-auto h-14 md:pr-8"
+            src="/logo_inolib2.png"
+          />
 
-        <Landmark.Heading
-          className="my-8 text-right text-4xl font-bold "
-          id={id}
-        >
-          Accédez à la nouvelle plateforme interactive d’Inolib pour tester et
-          rendre accessibles vos sites et applications.
-        </Landmark.Heading>
-      </div>
-      <img alt="" className="mx-auto my-8" src="image_a11y.png" />
+          <PurpleLabel
+            label="En avant-première"
+            labelStyle="text-right ml-auto"
+          />
 
-      <div className="m-4 rounded-b-3xl rounded-tl-3xl bg-Blue p-4 text-center">
-        <p className="my-4 text-2xl">Tentez de remporter un audit gratuit</p>
-        <p className="text-xl">
-          En prime, un gagnant par tirage au sort pour un audit en accessibilité
-          de votre site web ou application
-        </p>
+          <Landmark.Heading
+            className="my-8 text-right text-4xl font-bold "
+            id={id}
+          >
+            Accédez à la nouvelle plateforme interactive d’Inolib pour tester et
+            rendre accessibles vos sites et applications.
+          </Landmark.Heading>
+
+          <img alt="" className="mx-auto my-8 md:hidden" src="image_a11y.png" />
+
+          <div className="m-4 rounded-b-3xl rounded-tl-3xl bg-Blue p-4 text-center md:ml-auto lg:w-1/2">
+            <p className="my-4 text-2xl">
+              Tentez de remporter un audit gratuit
+            </p>
+            <p className="text-xl">
+              En prime, un gagnant par tirage au sort pour un audit en
+              accessibilité de votre site web ou application
+            </p>
+          </div>
+        </div>
       </div>
     </Landmark>
   );
