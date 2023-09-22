@@ -9,7 +9,7 @@ export const FifthRegion = () => {
   return (
     <Landmark
       aria-labelledby={id}
-      className="m-8 bg-OrangeBG p-4 px-8 text-white orange-shadow"
+      className="orange-shadow m-8 bg-OrangeBG p-4 px-8 text-white"
       landmarkRole="region"
     >
       <div className="md:flex md:items-center md:justify-between">
@@ -37,11 +37,17 @@ export const FifthRegion = () => {
             C’est simple, l’accessibilité adapté à vos besoins
           </p>
 
-          <div>
-            <img alt="" className="my-8 md:ml-auto" src="/logo_ato.png" />
-
-            <CallToActionLink label="Réservez" />
-          </div>
+          <a
+            className="flex items-center justify-around gap-8 rounded-3xl bg-Blue px-4 hover:bg-Green"
+            href="http://"
+          >
+            <span className="text-center text-xl sm:text-3xl">
+              Réservez avec
+            </span>
+            <span className="text-center">
+              <img alt="" className="my-8 md:ml-auto" src="/logo_ato.png" />
+            </span>
+          </a>
         </div>
       </div>
     </Landmark>
