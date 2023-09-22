@@ -14,13 +14,11 @@ export const FourthRegion = () => {
     >
       <div className="md:mx-8">
         <Landmark.Heading className="my-4 text-center text-3xl" id={id}>
-          Nos intervenants lors de la conférence
+          Conférencier
         </Landmark.Heading>
 
         <SpeakerCard
-          jobTitle="CEO d’Inolib et Spécialiste expérimenté en accessibilité et solutions digitales
-
-        "
+          jobTitle="CEO fondateur d’Inolib | Expert en accessibilité numérique"
           name="Djebrine ALOUI"
           photoUrl="/photo_djebrine-circle.png"
           quote="“Venez explorer les clés de la révolution numérique avec mes idées fortes, mes sensibilités, mes expériences. Il reste encore de nombreux défis à relever dans ce domaine, et je suis là pour vous aider à percevoir l'accessibilité sous un nouvel angle.”"
