@@ -1,4 +1,0 @@
-module.exports = {
-  MD013: false,
-  MD024: { siblings_only: true },
-};
