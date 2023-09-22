@@ -85,13 +85,23 @@ export const Booking = () => {
     <>
       <Header />
 
-      <Landmark className=" my-4" landmarkRole="main">
+      <Landmark className="p-8 px-12 md:mx-8" landmarkRole="main">
+        <Landmark.Heading className="my-4 text-center text-4xl  font-bold md:mx-auto md:w-4/6 md:text-5xl">
+          Réservez vos places pour la conférence Inolib sur les challenges de
+          l’accessibilité numérique
+        </Landmark.Heading>
+
         <form action="" className="m-8">
           <fieldset>
-            <legend className="text-center text-2xl">
+            <legend className="flex items-center text-center text-2xl">
               <span className="mx-2 rounded-full bg-Blue px-4 py-2">1</span>
-              <span className="text-left">
-                Réservez votre session de conférence
+              <span className="flex flex-col">
+                <span className="text-left">
+                  Réservez votre session de conférence
+                </span>
+                <span className="text-sm">
+                  (Sélectionnez une date, puis le nombre de places)
+                </span>
               </span>
             </legend>
 
@@ -142,9 +152,14 @@ export const Booking = () => {
 
         <form action="" className="mx-12 my-8">
           <fieldset>
-            <legend className="text-center text-2xl">
+            <legend className="flex items-center text-center text-2xl">
               <span className="mx-2 rounded-full bg-Blue px-4 py-2">2</span>
-              <span className="text-left">Complétez votre inscription</span>
+              <span className="flex flex-col">
+                <span className="text-left">Complétez votre inscription</span>
+                <span className="text-sm">
+                  (Tous les champs sont obligatoires)
+                </span>
+              </span>
             </legend>
 
             {conferences.map((data) => {
@@ -152,13 +167,13 @@ export const Booking = () => {
 
               return (
                 <Fragment key={data.date}>
-                  <p className="mb-4 mt-8 text-xl font-bold">
+                  <p className="mt-8 text-2xl font-bold">
                     {data.date} / {data.time}
                   </p>
 
                   {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
                   {[...new Array(data.attendeeCount)].map((_, index) => (
-                    <div className="my-8" key={index}>
+                    <div className="my-4" key={index}>
                       <p className="text-lg font-bold">
                         Participant {index + 1}
                       </p>

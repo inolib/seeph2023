@@ -89,7 +89,7 @@ export const ConferenceBooking = ({ date, time }: Props) => {
         <button
           aria-label={`Diminuez la quantité de places pour le ${date}`}
           className={`rounded-lg px-4 py-2 ${
-            !isChecked ? "bg-gray-300" : "bg-Green hover:bg-Blue"
+            !isChecked ? "bg-gray-300 opacity-25" : "bg-Green hover:bg-Blue"
           }`}
           disabled={!isChecked}
           onClick={decrement}
@@ -108,7 +108,7 @@ export const ConferenceBooking = ({ date, time }: Props) => {
         <button
           aria-label={`Augmentez la quantité de places pour le ${date}`}
           className={`rounded-lg px-4 py-2 ${
-            !isChecked ? "bg-gray-300" : "bg-Green hover:bg-Blue"
+            !isChecked ? "bg-gray-300 opacity-25" : "bg-Green hover:bg-Blue"
           }`}
           disabled={!isChecked}
           onClick={increment}

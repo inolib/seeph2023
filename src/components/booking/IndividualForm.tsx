@@ -6,7 +6,7 @@ export const IndividualForm = () => {
   // TODO: pattern for phone input
 
   return (
-    <div>
+    <div className="mb-8">
       <div className="my-4 flex flex-col">
         <label className="form-label" htmlFor={`${id}-gender`}>
           Genre
