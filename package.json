@@ -15,9 +15,7 @@
     "lint:eslint": "eslint --ext .cjs,.js,.ts,.tsx .",
     "lint:tsc": "tsc",
     "serve:dev": "vite",
-    "serve:preview": "vite preview",
-    "test": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "serve:preview": "vite preview"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -57,7 +55,6 @@
     "prettier-plugin-tailwindcss": "^0.5.4",
     "tailwindcss": "^3.3.3",
     "typescript": "^5.2.2",
-    "vite": "^4.4.9",
-    "vitest": "^0.34.4"
+    "vite": "^4.4.9"
   }
 }

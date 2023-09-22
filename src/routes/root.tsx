@@ -9,8 +9,13 @@ import { SeventhRegion } from "../components/sections/SeventhRegion";
 import { SixthRegion } from "../components/sections/SixthRegion";
 import { ThirdRegion } from "../components/sections/ThirdRegion";
 import { Landmark } from "../components/ui/Landmark/Landmark";
+import { useDocumentTitle } from "../hooks/useDocumentTitle";
 
 export const Root = () => {
+  useDocumentTitle(
+    "INOLIB - L’accessibilité numérique, un monde d’opportunités",
+  );
+
   return (
     <>
       <Header />

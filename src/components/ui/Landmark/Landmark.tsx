@@ -2,13 +2,12 @@ import {
   createContext,
   useContext,
   type DetailedHTMLProps,
-  type FormHTMLAttributes,
   type HTMLAttributes,
 } from "react";
 
 import { Heading } from "./Heading";
 
-type Props =
+export type Props =
   | (Omit<
       DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>,
       "role"
@@ -19,19 +18,11 @@ type Props =
         | "contentinfo"
         | "main"
         | "navigation"
-        | "region";
+        | "region"
+        | "search";
     })
-  | (Omit<
-      DetailedHTMLProps<FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>,
-      "role"
-    > & {
+  | (Omit<JSX.IntrinsicElements["form"], "role"> & {
       landmarkRole: "form";
-    })
-  | (Omit<
-      DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>,
-      "role"
-    > & {
-      landmarkRole: "search";
     });
 
 const LevelContext = createContext(0);
@@ -136,11 +127,11 @@ export const Landmark = (props: Props) => {
       const { children, landmarkRole, ...rest } = props;
 
       return (
-        <div role="search" {...rest}>
+        <search {...rest}>
           <LevelContext.Provider value={(level === 0 ? level + 1 : level) + 1}>
             {children}
           </LevelContext.Provider>
-        </div>
+        </search>
       );
     }
   }
