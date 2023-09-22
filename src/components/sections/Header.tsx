@@ -23,7 +23,7 @@ export const Header = () => {
 
             <div className="my-4 hidden md:flex md:items-center md:gap-10">
               <img alt="" className="" src="/ion_calendar-outline-green.png" />
-              <p className="text-xl font-bold text-green-400">
+              <p className="text-xl font-bold text-Green">
                 4 sessions en novembre
               </p>
             </div>

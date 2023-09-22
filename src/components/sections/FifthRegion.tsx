@@ -15,7 +15,7 @@ export const FifthRegion = () => {
         <div className="md:w-1/2">
           <div className="my-8">
             <Landmark.Heading className="text-4xl font-bold" id={id}>
-              WORKSHOP Accessiblité !
+              WORKSHOP Accessibilité !
             </Landmark.Heading>
             <p className="text-3xl">Les bons conseils aux entreprises</p>
           </div>
