@@ -1,7 +1,4 @@
 {
-  "name": "@inolib/react-bada11y",
-  "version": "0.0.0",
-  "description": "",
   "type": "module",
   "scripts": {
     "build": "vite build",
