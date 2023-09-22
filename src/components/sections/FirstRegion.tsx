@@ -20,7 +20,7 @@ export const FirstRegion = () => {
         l’accessibilité numérique
       </Landmark.Heading>
 
-      <div className="my-8 flex flex-col items-center gap-8 md:my-12 md:flex-row">
+      <div className="my-8 flex flex-col items-center gap-8 md:my-12 md:flex-row lg:w-3/4 lg:ml-auto">
         <img alt="" src="/logo_inolib.png" />
         <img alt="" className="hidden md:block" src="/logo_seeph2023.png" />
         <p className="my-4 text-2xl md:text-right">
