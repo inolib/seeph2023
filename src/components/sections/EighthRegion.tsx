@@ -27,14 +27,14 @@ export const EighthRegion = () => {
         </p>
       </div>
 
-      <div className="flex md:items-center">
+      <div className="flex md:mx-auto md:items-center lg:w-10/12">
         <img
-          className="hidden md:block md:h-96 md:mx-auto"
-          src="image_a11y.png"
           alt=""
+          className="hidden md:mx-auto md:block md:h-72 lg:h-96"
+          src="image_a11y.png"
         />
 
-        <div className="flex flex-col md:w-1/2 md:ml-auto md:mr-12">
+        <div className="flex flex-col md:ml-auto md:mr-12 md:w-1/2">
           <img
             alt=""
             className="my-12 ml-auto h-14 md:pr-8"
