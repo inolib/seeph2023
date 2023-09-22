@@ -1,5 +1,3 @@
-import { Landmark } from "../ui/Landmark/Landmark";
-
 type Props = {
   content: string;
   heading: string;

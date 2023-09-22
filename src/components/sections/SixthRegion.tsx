@@ -7,7 +7,7 @@ export const SixthRegion = () => {
   return (
     <Landmark
       aria-labelledby={id}
-      className="m-8 p-4 text-center"
+      className="m-8 my-16 p-4 text-center"
       landmarkRole="region"
     >
       <Landmark.Heading className="text-3xl" id={id}>

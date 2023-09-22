@@ -23,3 +23,7 @@
 .background-full {
   background-color: #48237d;
 }
+
+.orange-shadow {
+  box-shadow: -40px 40px 6px 10px rgba(226, 108, 89, 0.25);
+}
