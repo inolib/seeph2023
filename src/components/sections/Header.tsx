@@ -5,7 +5,7 @@ export const Header = () => {
   return (
     <Landmark className="relative  text-white" landmarkRole="banner">
       <div className="background px-16 py-12">
-        <div className="flex items-center md:w-2/5 mb-8">
+        <div className="mb-8 flex items-center md:w-2/5">
           <img alt="" className="" src="/logo_inolib2.png" />
           <p className="mx-4 hidden w-2/4 md:block">
             Votre allié en accessibilité numérique et solutions digitales

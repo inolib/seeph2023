@@ -1,5 +1,6 @@
 import { useId } from "react";
 
+import { PurpleLabel } from "../labels/PurpleLabel";
 import { Landmark } from "../ui/Landmark/Landmark";
 
 export const EighthRegion = () => {
@@ -26,24 +27,26 @@ export const EighthRegion = () => {
         </p>
       </div>
 
-      <img
-        alt=""
-        className="my-12 ml-auto h-14 md:pr-8"
-        src="/logo_inolib2.png"
-      />
+      <div className="flex flex-col">
+        <img
+          alt=""
+          className="my-12 ml-auto h-14 md:pr-8"
+          src="/logo_inolib2.png"
+        />
 
-      <Landmark.Heading className="my-4 text-right text-3xl md:hidden" id={id}>
-        Vous découvrirez nos méthodes, nos outils de simulation d’accessibilité
-      </Landmark.Heading>
+        <PurpleLabel
+          label="En avant-première"
+          labelStyle="text-right ml-auto"
+        />
 
-      <Landmark.Heading
-        className="my-4 hidden text-right text-3xl md:block"
-        id={id}
-      >
-        Accédez à la nouvelle plateforme interactive d’Inolib pour tester et
-        rendre accessibles vos sites et applications.
-      </Landmark.Heading>
-
+        <Landmark.Heading
+          className="my-8 text-right text-4xl font-bold "
+          id={id}
+        >
+          Accédez à la nouvelle plateforme interactive d’Inolib pour tester et
+          rendre accessibles vos sites et applications.
+        </Landmark.Heading>
+      </div>
       <img alt="" className="mx-auto my-8" src="image_a11y.png" />
 
       <div className="m-4 rounded-b-3xl rounded-tl-3xl bg-Blue p-4 text-center">

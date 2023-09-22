@@ -20,24 +20,23 @@ export const SecondRegion = () => {
 
       <div className="my-4 grid grid-cols-1 md:my-12 md:grid-cols-2">
         <ProgramCard headingContent="Une sensibilisation “pratique” à l'Accessibilité Numérique">
-          Appréhender l’aspect crucial de l’accessibilité et son influence
-          significative sur l’expérience des utilisateurs. Venez découvrir
-          comment cela peut réellement faire la différence !
+          Plongez au cœur des enjeux de l’accessibilité numérique : Pour qui ?
+          Pourquoi ? Élargissez votre audience en améliorant l’expérience
+          utilisateur et faites la différence.
         </ProgramCard>
-        <ProgramCard headingContent="Les législations et règles en vigueur pour 2024">
-          Expliquer le cadre légal entourant l’accessibilité numérique, ainsi
-          que les sanctions potentielles en cas de non-conformité.
+        <ProgramCard headingContent="Une vision du cadre législatif et normatif en vigueur : De la Conformité à l'Opportunité">
+          La loi française impose l’accessibilité numérique. Cette conférence
+          vous éclaire sur comment maîtriser les risques juridiques en vous
+          alignant aux normes en vigueur (RGAA, WCAG). Réduisez les risques de
+          contentieux et d’amendes et renforcez votre image de marque. Pour
+          aller plus loin, agissez dès à présent !
         </ProgramCard>
-        <ProgramCard headingContent="Des success stories d’accessibilité réussies">
-          Nous vous inspirerons avec des témoignages de réussite et des
-          démonstrations pratiques de l’accessibilité numérique. Venez découvrir
-          comment cela peut réellement faire la différence !
+        <ProgramCard headingContent="Soyez le futur, soyez inclusif !">
+          Découvrez les innombrables avantages d’une démarche en accessibilité
+          numérique, comme l’amélioration de votre réputation
         </ProgramCard>
-        <ProgramCard headingContent="Vos futurs pouvoirs en vous rendant “accessible”">
-          Découvrez les innombrables avantages qu’une stratégie centrée sur
-          l’accessibilité numérique peut apporter aux entreprises, des retombées
-          positives sur leur réputation à l’expansion de leur public. Cette
-          approche vous ouvre les portes vers un succès inégalé !
+        <ProgramCard headingContent="Des témoignages inspirants, des démonstrations">
+          Venez découvrir l’accessibilité numérique en pratique.
         </ProgramCard>
       </div>
     </Landmark>
