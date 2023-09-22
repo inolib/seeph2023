@@ -3,6 +3,7 @@ import {
   Fragment,
   useCallback,
   useContext,
+  useId,
   useState,
 } from "react";
 
@@ -81,12 +82,21 @@ export const Booking = () => {
       });
     }, []);
 
+  const id = useId();
+
   return (
     <>
       <Header />
 
-      <Landmark className="p-8 px-12 md:mx-8" landmarkRole="main">
-        <Landmark.Heading className="my-4 text-center text-4xl  font-bold md:mx-auto md:w-4/6 md:text-5xl">
+      <Landmark
+        aria-labelledby={id}
+        className="p-8 px-12 md:mx-8"
+        landmarkRole="main"
+      >
+        <Landmark.Heading
+          className="my-4 text-center text-4xl  font-bold md:mx-auto md:w-4/6 md:text-5xl"
+          id={id}
+        >
           Réservez vos places pour la conférence Inolib sur les challenges de
           l’accessibilité numérique
         </Landmark.Heading>
