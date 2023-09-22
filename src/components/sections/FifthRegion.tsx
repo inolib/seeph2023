@@ -1,6 +1,5 @@
 import { useId } from "react";
 
-import { CallToActionLink } from "../links/CallToActionLink";
 import { Landmark } from "../ui/Landmark/Landmark";
 
 export const FifthRegion = () => {

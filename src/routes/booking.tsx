@@ -6,6 +6,7 @@ import {
   useId,
   useState,
 } from "react";
+import { Link } from "react-router-dom";
 
 import {
   ConferenceBooking,
@@ -195,9 +196,12 @@ export const Booking = () => {
               );
             })}
             <div className="my-8 flex flex-col justify-center gap-4 text-center sm:flex-row md:justify-end">
-              <button className=" rounded-xl bg-Grey px-4 py-2 text-2xl text-black">
+              <Link
+                className=" rounded-xl bg-Grey px-4 py-2 text-2xl text-black"
+                to={"/"}
+              >
                 Retour
-              </button>
+              </Link>
 
               <button className="rounded-xl bg-Green px-4 py-2 text-2xl text-black">
                 Confirmer
