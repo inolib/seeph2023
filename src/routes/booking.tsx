@@ -8,11 +8,11 @@ import {
   type JSX,
 } from "react";
 
-import { AttendeeForm } from "../components/Booking/AttendeeForm";
+import { AttendeeForm } from "../components/Booking_/AttendeeForm";
 import {
   ConferenceBooking,
   type Data as ConferenceBookingData,
-} from "../components/Booking/ConferenceBooking";
+} from "../components/Booking_/ConferenceBooking";
 import { ContentBoxLayout } from "../components/Layout/ContentBoxLayout";
 import { Footer } from "../components/Section/Footer";
 import { Header } from "../components/Section/Header";
