@@ -1,10 +1,4 @@
-import {
-  useCallback,
-  useEffect,
-  useId,
-  useState,
-  type MouseEventHandler,
-} from "react";
+import { useCallback, useEffect, useId, useState, type JSX } from "react";
 
 import { useBooking } from "../../routes/booking";
 
@@ -23,36 +17,28 @@ type Props = {
 export const ConferenceBooking = ({ date, time }: Props) => {
   const confId = useId();
 
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(0);
   const [isChecked, setIsChecked] = useState(false);
 
   const { registerConferenceBooking } = useBooking();
 
-  const decrement: MouseEventHandler<HTMLButtonElement> = useCallback(
-    (event) => {
-      event.preventDefault();
-      if (count > 1) {
-        setCount(count - 1);
-      } else {
-        setIsChecked(!isChecked);
-      }
-    },
-    [count, isChecked],
-  );
-
-  const increment: MouseEventHandler<HTMLButtonElement> = useCallback(
-    (event) => {
-      event.preventDefault();
-      setCount(count + 1);
-    },
-    [count],
-  );
-
-  const handleCheckbox: MouseEventHandler<HTMLInputElement> =
+  const decrement: NonNullable<JSX.IntrinsicElements["button"]["onClick"]> =
     useCallback(() => {
-      setIsChecked(!isChecked);
-      isChecked ? setCount(1) : "";
-    }, [isChecked]);
+      setCount((count) => (count > 0 ? count - 1 : count));
+      setIsChecked(() => (count === 1 ? false : true));
+    }, [count]);
+
+  const increment: NonNullable<JSX.IntrinsicElements["button"]["onClick"]> =
+    useCallback(() => {
+      setCount((count) => count + 1);
+    }, []);
+
+  const handleCheckbox: NonNullable<
+    JSX.IntrinsicElements["input"]["onChange"]
+  > = useCallback(() => {
+    setCount(() => (!isChecked ? 1 : 0));
+    setIsChecked((isChecked) => !isChecked);
+  }, [isChecked]);
 
   useEffect(() => {
     registerConferenceBooking({
@@ -64,54 +50,63 @@ export const ConferenceBooking = ({ date, time }: Props) => {
   }, [count, date, isChecked, registerConferenceBooking, time]);
 
   return (
-    <div className="my-8 flex flex-col items-center justify-center gap-4 text-2xl md:flex-row">
+    <div className="flex items-center justify-center gap-3">
       <div>
-        <input
-          className="sr-only"
-          defaultChecked={isChecked}
-          id={confId}
-          name=""
-          onClick={handleCheckbox}
-          type="checkbox"
-        />
         <label
-          className={`flex flex-col rounded-lg px-4 py-2 text-center ${
-            isChecked ? "bg-BlueDark text-white" : ""
+          className={`flex cursor-pointer flex-col rounded-0.5 px-2 py-1 text-center ${
+            isChecked ? "bg-blue-dark text-white" : "bg-gray"
           }`}
           htmlFor={confId}
         >
-          <span>{date}</span>
-          <span>{time}</span>
+          {date}
+          <br />
+          <span className={`${isChecked ? "text-turquoise" : ""}`}>{time}</span>
         </label>
+
+        <input
+          checked={isChecked}
+          className="sr-only"
+          id={confId}
+          onChange={handleCheckbox}
+          readOnly
+          type="checkbox"
+        />
       </div>
 
-      <div className="">
+      <div className="flex gap-1">
         <button
-          aria-label={`Diminuez la quantité de places pour le ${date}`}
-          className={`rounded-lg px-4 py-2 ${
-            !isChecked ? "bg-gray-300 opacity-25" : "bg-Green hover:bg-Blue"
+          aria-label={`Supprimez la dernière place ajoutée pour le ${date}`}
+          className={`rounded-0.5 px-1 py-0.5 disabled:cursor-not-allowed ${
+            !isChecked
+              ? "bg-gray"
+              : "bg-turquoise hover:bg-blue hover:text-white"
           }`}
           disabled={!isChecked}
           onClick={decrement}
+          type="button"
         >
           &minus;
         </button>
+
         <input
-          aria-label={`Nombre de places pour le ${date} ${count}`}
+          aria-label={`${count} place(s) pour le ${date}`}
           aria-live="polite"
-          className="w-8 text-center"
-          name=""
+          className="w-2 text-center"
           readOnly
           type="text"
           value={!isChecked ? "-" : count}
         />
+
         <button
-          aria-label={`Augmentez la quantité de places pour le ${date}`}
-          className={`rounded-lg px-4 py-2 ${
-            !isChecked ? "bg-gray-300 opacity-25" : "bg-Green hover:bg-Blue"
+          aria-label={`Ajoutez une place pour le ${date}`}
+          className={`rounded-0.5 px-1 py-0.5 disabled:cursor-not-allowed ${
+            !isChecked
+              ? "bg-gray"
+              : "bg-turquoise hover:bg-blue hover:text-white"
           }`}
           disabled={!isChecked}
           onClick={increment}
+          type="button"
         >
           +
         </button>

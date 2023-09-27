@@ -1,13 +1,12 @@
-import { EighthRegion } from "../components/sections/EighthRegion";
-import { FifthRegion } from "../components/sections/FifthRegion";
-import { FirstRegion } from "../components/sections/FirstRegion";
-import { Footer } from "../components/sections/Footer";
-import { FourthRegion } from "../components/sections/FourthRegion";
-import { Header } from "../components/sections/Header";
-import { SecondRegion } from "../components/sections/SecondRegion";
-import { SeventhRegion } from "../components/sections/SeventhRegion";
-import { SixthRegion } from "../components/sections/SixthRegion";
-import { ThirdRegion } from "../components/sections/ThirdRegion";
+import { BookingSection } from "../components/Section/BookingSection";
+import { Footer } from "../components/Section/Footer";
+import { Header } from "../components/Section/Header";
+import { KeypointSection } from "../components/Section/KeypointSection";
+import { LastChanceSection } from "../components/Section/LastChanceSection";
+import { ProgramSection } from "../components/Section/ProgramSection";
+import { SpeakerSection } from "../components/Section/SpeakerSection";
+import { ToolkitSection } from "../components/Section/ToolkitSection";
+import { WorkshopSection } from "../components/Section/WorkshopSection";
 import { Landmark } from "../components/ui/Landmark/Landmark";
 import { useDocumentTitle } from "../hooks/useDocumentTitle";
 
@@ -20,27 +19,23 @@ export const Root = () => {
     <>
       <Header />
 
-      <Landmark className="my-4" landmarkRole="main">
-        <FirstRegion />
+      <Landmark TagName="main">
+        <BookingSection />
 
-        <SecondRegion />
+        <ProgramSection />
 
-        <EighthRegion />
+        <ToolkitSection />
 
-        <ThirdRegion />
+        <KeypointSection />
 
-        <FourthRegion />
+        <SpeakerSection />
 
-        <FifthRegion />
+        <WorkshopSection />
 
-        <SixthRegion />
-
-        <SeventhRegion />
+        <LastChanceSection />
       </Landmark>
 
       <Footer />
     </>
   );
 };
-
-//TODO a effacer

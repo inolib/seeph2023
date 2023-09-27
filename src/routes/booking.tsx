@@ -1,24 +1,27 @@
 import {
   createContext,
-  Fragment,
   useCallback,
   useContext,
   useId,
+  useMemo,
   useState,
+  type JSX,
 } from "react";
 
+import { AttendeeForm } from "../components/Booking/AttendeeForm";
 import {
   ConferenceBooking,
   type Data as ConferenceBookingData,
-} from "../components/booking/ConferenceBooking";
-import { IndividualForm } from "../components/booking/IndividualForm";
-import { Footer } from "../components/sections/Footer";
-import { Header } from "../components/sections/Header";
+} from "../components/Booking/ConferenceBooking";
+import { ContentBoxLayout } from "../components/Layout/ContentBoxLayout";
+import { Footer } from "../components/Section/Footer";
+import { Header } from "../components/Section/Header";
 import { Accordion } from "../components/ui/Accordion/Accordion";
 import { Landmark } from "../components/ui/Landmark/Landmark";
+import { conferences } from "../data/conferences";
 import { useDocumentTitle } from "../hooks/useDocumentTitle";
 
-type Conferences = ConferenceBookingData[];
+type BookingData = ConferenceBookingData[];
 
 type BookingContextType = {
   registerConferenceBooking: (data: ConferenceBookingData) => void;
@@ -27,10 +30,6 @@ type BookingContextType = {
 const BookingContext = createContext<BookingContextType | null>(null);
 
 export const useBooking = () => {
-  useDocumentTitle(
-    "INOLIB - Réservez vos places pour la conférence INOLIB  sur les challenges de l’accessibilité numérique",
-  );
-
   const context = useContext(BookingContext);
 
   if (context === null) {
@@ -41,34 +40,35 @@ export const useBooking = () => {
 };
 
 export const Booking = () => {
+  useDocumentTitle(
+    "INOLIB - Réservez vos places pour la conférence INOLIB sur les challenges de l’accessibilité numérique",
+  );
+
   const headingId = useId();
 
-  const [conferences, setConferences] = useState<Conferences>([
-    {
-      date: "20 novembre",
-      time: "12h - 14h",
-      attendeeCount: 0,
-      isBooked: false,
-    },
-    {
-      date: "21 novembre",
-      time: "12h - 14h",
-      attendeeCount: 0,
-      isBooked: false,
-    },
-    {
-      date: "23 novembre",
-      time: "17h - 19h",
-      attendeeCount: 0,
-      isBooked: false,
-    },
-    {
-      date: "24 novembre",
-      time: "17h - 19h",
-      attendeeCount: 0,
-      isBooked: false,
-    },
-  ]);
+  const [bookingData, setBookingData] = useState<BookingData>(() => {
+    const bookingData = [];
+
+    for (const conference of conferences) {
+      bookingData.push({
+        ...conference,
+        attendeeCount: 0,
+        isBooked: false,
+      });
+    }
+
+    return bookingData;
+  });
+
+  const count = useMemo(() => {
+    let count = 0;
+
+    for (const data of bookingData) {
+      count += data.attendeeCount;
+    }
+
+    return count;
+  }, [bookingData]);
 
   const [sections, setSections] = useState([
     { open: true },
@@ -77,40 +77,42 @@ export const Booking = () => {
   ]);
 
   const goToNextStep = useCallback(() => {
-    const index = sections.findIndex((section) => section.open);
+    setSections((sections) => {
+      const index = sections.findIndex((section) => section.open);
 
-    if (index < sections.length - 1) {
-      setSections((sections) => {
-        console.log(sections);
+      if (index < sections.length - 1) {
+        return sections.toSpliced(index, 2, { open: false }, { open: true });
+      }
 
-        const newSections = sections.toSpliced(
-          index,
-          2,
-          { open: false },
-          { open: true },
-        );
-
-        console.log(sections);
-        console.log(newSections);
-
-        return newSections;
-      });
-    }
-  }, [sections]);
+      return sections;
+    });
+  }, []);
 
   const goToPreviousStep = useCallback(() => {
-    const index = sections.findIndex((section) => section.open);
+    setSections((sections) => {
+      const index = sections.findIndex((section) => section.open);
 
-    if (index > 0) {
-      setSections((sections) =>
-        sections.toSpliced(index - 1, 2, { open: true }, { open: false }),
-      );
-    }
-  }, [sections]);
+      if (index > 0) {
+        return sections.toSpliced(
+          index - 1,
+          2,
+          { open: true },
+          { open: false },
+        );
+      }
+
+      return sections;
+    });
+  }, []);
+
+  const handleSubmit: NonNullable<JSX.IntrinsicElements["button"]["onClick"]> =
+    useCallback(() => {
+      // TODO
+    }, []);
 
   const registerConferenceBooking: BookingContextType["registerConferenceBooking"] =
     useCallback(({ attendeeCount, date, isBooked, time }) => {
-      setConferences((conferences) => {
+      setBookingData((conferences) => {
         for (const data of conferences) {
           if (
             data.date === date &&
@@ -132,148 +134,198 @@ export const Booking = () => {
     <>
       <Header />
 
-      <Landmark
-        aria-labelledby={headingId}
-        className="p-8 px-12 md:mx-8"
-        landmarkRole="main"
-      >
-        <Landmark.Heading
-          className="my-4 text-center text-4xl  font-bold md:mx-auto md:w-4/6 md:text-5xl"
-          id={headingId}
-        >
-          Réservez vos places pour la conférence INOLIB sur les challenges de
+      <Landmark TagName="main" aria-labelledby={headingId}>
+        <Landmark.Heading className="sr-only" id={headingId}>
+          Réservez vos places pour la conférence sur les challenges de
           l’accessibilité numérique
         </Landmark.Heading>
 
-        <form action="" className="m-8">
+        <form>
           <Accordion>
             <Accordion.Section open={sections[0].open}>
-              <Accordion.Header className="flex items-center text-center text-2xl">
-                <span className="mx-2 rounded-full bg-Blue px-4 py-2">1</span>
-                <span className="flex flex-col">
-                  <span className="text-left">
+              <ContentBoxLayout>
+                <Accordion.Header className="flex gap-1 text-left text-lg">
+                  <span className="relative inline-block h-2 w-2 rounded-full bg-blue p-0.25 text-center text-white">
+                    <span className="sr-only">Étape</span>
+                    <span className="absolute left-[0.25rem] top-0 inline-block h-[1.875rem] w-[1.875rem]">
+                      1
+                    </span>
+                  </span>
+
+                  <span className="flex flex-col">
                     Réservez votre session de conférence
+                    <span className="text-base">
+                      Sélectionnez une date, puis le nombre de places
+                    </span>
                   </span>
-                  <span className="text-sm">
-                    (Sélectionnez une date, puis le nombre de places)
-                  </span>
-                </span>
-              </Accordion.Header>
+                </Accordion.Header>
 
-              <Accordion.Panel>
-                <BookingContext.Provider value={{ registerConferenceBooking }}>
-                  {conferences.map((data) => (
-                    <ConferenceBooking
-                      date={data.date}
-                      key={data.date}
-                      time={data.time}
-                    />
-                  ))}
-                </BookingContext.Provider>
-
-                <div className="my-4 items-start bg-Grey p-12 text-3xl md:flex md:flex-row md:justify-between md:gap-12">
-                  <p className="hidden md:block">Votre réservation</p>
-
-                  <div>
-                    <p className="font-bold">
-                      Conférence l’Accesibilité numérique, un monde
-                      d’opportunités
-                    </p>
-
-                    {conferences.map((data) => {
-                      if (!data.isBooked) return;
-
-                      return (
-                        <p className="my-4" key={data.date}>
-                          <span>
-                            {data.date} / {data.time}
-                          </span>
-                          <br />
-                          <span>
-                            {data.attendeeCount}{" "}
-                            {data.attendeeCount > 1 ? "places" : "place"}
-                          </span>
-                        </p>
-                      );
-                    })}
+                <Accordion.Panel className="mt-4 flex flex-col gap-4">
+                  <div className="flex flex-col gap-1">
+                    <BookingContext.Provider
+                      value={{ registerConferenceBooking }}
+                    >
+                      {bookingData.map((data) => (
+                        <ConferenceBooking
+                          date={data.date}
+                          key={data.date}
+                          time={data.time}
+                        />
+                      ))}
+                    </BookingContext.Provider>
                   </div>
 
-                  <div className="my-4 text-center">
+                  {count > 0 ? (
+                    <div className="flex flex-col gap-1 px-3">
+                      <p className="text-lg">
+                        Votre réservation pour la conférence
+                        <br />
+                        {
+                          "« L’accessibilité numérique, un monde d’opportunités »"
+                        }
+                      </p>
+
+                      <ul className="flex flex-col gap-1">
+                        {bookingData.map((data) => {
+                          if (!data.isBooked) return;
+
+                          return (
+                            <li key={data.date}>
+                              <span className="font-bold">
+                                Session du {data.date} de{" "}
+                                {data.time.replace(" – ", " à ")}
+                              </span>
+                              <br />
+                              <span>
+                                {data.attendeeCount}{" "}
+                                {data.attendeeCount > 1
+                                  ? "participants"
+                                  : "participant"}
+                              </span>
+                            </li>
+                          );
+                        })}
+                      </ul>
+
+                      <button
+                        aria-label="Passer à l’inscription des participants"
+                        className="self-center rounded-0.5 bg-turquoise px-2 py-1 font-bold text-black hover:bg-blue hover:text-white"
+                        onClick={goToNextStep}
+                        type="button"
+                      >
+                        Confirmer
+                      </button>
+                    </div>
+                  ) : null}
+                </Accordion.Panel>
+              </ContentBoxLayout>
+            </Accordion.Section>
+
+            <Accordion.Section className="bg-gray" open={sections[1].open}>
+              <ContentBoxLayout>
+                <Accordion.Header className="flex gap-1 text-left text-lg">
+                  <span className="relative inline-block h-2 w-2 rounded-full bg-blue p-0.25 text-center text-white">
+                    <span className="sr-only">Étape</span>
+                    <span className="absolute left-[0.25rem] top-0 inline-block h-[1.875rem] w-[1.875rem]">
+                      2
+                    </span>
+                  </span>
+
+                  <span className="flex flex-col">
+                    Complétez votre inscription
+                    <span className="text-base">
+                      Tous les champs sont obligatoires
+                    </span>
+                  </span>
+                </Accordion.Header>
+
+                <Accordion.Panel className="mt-4 flex flex-col gap-4">
+                  {bookingData.map((data) => {
+                    if (!data.isBooked) return;
+
+                    return (
+                      <div className="flex flex-col gap-1" key={data.date}>
+                        <p className="text-lg">
+                          Session du {data.date} de{" "}
+                          {data.time.replace(" – ", " à ")}
+                        </p>
+
+                        <div className="flex flex-col gap-4">
+                          {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
+                          {[...new Array(data.attendeeCount)].map(
+                            (_, index) => (
+                              <div className="flex flex-col gap-1" key={index}>
+                                <p className="font-bold">
+                                  Participant {index + 1}
+                                </p>
+
+                                <AttendeeForm />
+                              </div>
+                            ),
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+
+                  <div className="grid grid-cols-2 gap-2 self-center">
                     <button
-                      className="rounded-xl bg-Green px-4 py-2 text-2xl text-black"
+                      aria-label="Retourner au choix des sessions"
+                      className="rounded-0.5 bg-white px-2 py-1 font-bold text-black hover:bg-blue hover:text-white"
+                      onClick={goToPreviousStep}
+                      type="button"
+                    >
+                      Retour
+                    </button>
+
+                    <button
+                      aria-label="Passer au règlement"
+                      className="rounded-0.5 bg-turquoise px-2 py-1 font-bold text-black hover:bg-blue hover:text-white"
                       onClick={goToNextStep}
                       type="button"
                     >
                       Confirmer
                     </button>
                   </div>
-                </div>
-              </Accordion.Panel>
+                </Accordion.Panel>
+              </ContentBoxLayout>
             </Accordion.Section>
 
-            <Accordion.Section className="mx-12 my-8" open={sections[1].open}>
-              <Accordion.Header className="flex items-center text-center text-2xl">
-                <span className="mx-2 rounded-full bg-Blue px-4 py-2">2</span>
-                <span className="flex flex-col">
-                  <span className="text-left">Complétez votre inscription</span>
-                  <span className="text-sm">
-                    (Tous les champs sont obligatoires)
+            <Accordion.Section open={sections[2].open}>
+              <ContentBoxLayout>
+                <Accordion.Header className="flex gap-1 text-left text-lg">
+                  <span className="relative inline-block h-2 w-2 rounded-full bg-blue p-0.25 text-center text-white">
+                    <span className="sr-only">Étape</span>
+                    <span className="absolute left-[0.25rem] top-0 inline-block h-[1.875rem] w-[1.875rem]">
+                      3
+                    </span>
                   </span>
-                </span>
-              </Accordion.Header>
 
-              <Accordion.Panel>
-                {conferences.map((data) => {
-                  if (!data.isBooked) return;
+                  <span className="flex flex-col">Réglez votre commande</span>
+                </Accordion.Header>
 
-                  return (
-                    <Fragment key={data.date}>
-                      <p className="mt-8 text-2xl font-bold">
-                        {data.date} / {data.time}
-                      </p>
+                <Accordion.Panel>
+                  <div className="grid grid-cols-2 gap-2 self-center">
+                    <button
+                      aria-label="Retourner à l’inscription des participants"
+                      className="rounded-0.5 bg-gray px-2 py-1 font-bold text-black hover:bg-blue hover:text-white"
+                      onClick={goToPreviousStep}
+                      type="button"
+                    >
+                      Retour
+                    </button>
 
-                      {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
-                      {[...new Array(data.attendeeCount)].map((_, index) => (
-                        <div className="my-4" key={index}>
-                          <p className="text-lg font-bold">
-                            Participant {index + 1}
-                          </p>
-
-                          <IndividualForm />
-                        </div>
-                      ))}
-                    </Fragment>
-                  );
-                })}
-                <div className="my-8 flex flex-col justify-center gap-4 text-center sm:flex-row md:justify-end">
-                  <button
-                    className=" rounded-xl bg-Grey px-4 py-2 text-2xl text-black"
-                    onClick={goToPreviousStep}
-                    type="button"
-                  >
-                    Retour
-                  </button>
-
-                  <button
-                    className="rounded-xl bg-Green px-4 py-2 text-2xl text-black"
-                    onClick={goToNextStep}
-                    type="button"
-                  >
-                    Confirmer
-                  </button>
-                </div>
-              </Accordion.Panel>
-            </Accordion.Section>
-
-            <Accordion.Section className="mx-12 my-8" open={sections[2].open}>
-              <Accordion.Header>
-                <span className="mx-2 rounded-full bg-Blue px-4 py-2">3</span>
-                <span className="flex flex-col">
-                  <span className="text-left">Réglez votre commande</span>
-                </span>
-              </Accordion.Header>
-
-              <Accordion.Panel></Accordion.Panel>
+                    <button
+                      aria-label="Procéder au règlement"
+                      className="rounded-0.5 bg-turquoise px-2 py-1 font-bold text-black hover:bg-blue hover:text-white"
+                      onClick={handleSubmit}
+                      type="button"
+                    >
+                      Confirmer
+                    </button>
+                  </div>
+                </Accordion.Panel>
+              </ContentBoxLayout>
             </Accordion.Section>
           </Accordion>
         </form>

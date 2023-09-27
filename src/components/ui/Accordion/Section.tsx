@@ -22,7 +22,7 @@ export type SectionObject = {
   getOpen: () => State["open"];
 };
 
-type Props = DistributedOmit<LandmarkProps, "landmarkRole"> & {
+type Props = DistributedOmit<LandmarkProps, "TagName"> & {
   collapsible?: boolean | undefined;
   open?: State["open"] | undefined;
 };
@@ -119,6 +119,12 @@ export const Section = ({
   }, [registerSection, section]);
 
   useEffect(() => {
+    if (open !== state.open) {
+      setOpen(open);
+    }
+  }, [open, setOpen, state.open]);
+
+  useEffect(() => {
     if (state.header !== null && state.panel !== null) {
       state.header.setControls(state.panel.getId());
     }
@@ -132,7 +138,7 @@ export const Section = ({
   }, [state.header, state.open, state.panel]);
 
   return (
-    <Landmark landmarkRole="region" {...rest}>
+    <Landmark TagName="section" {...rest}>
       <SetStateContext.Provider value={setState}>
         {children}
       </SetStateContext.Provider>

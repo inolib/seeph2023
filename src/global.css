@@ -3,27 +3,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer base {
-  html {
-    font-family: "Atkinson Hyperlegible", sans-serif;
-  }
-}
-
-@layer components {
-  .form-label {
-    @apply after:ml-2 after:text-red-500 after:content-['*'];
-  }
-}
-
-.background {
-  background: linear-gradient(135deg, #d72ed1 5%, #18237d 66%, #192a69 100%);
-}
-
-.background-full {
-  background-color: #48237d;
-}
-
-.orange-shadow {
-  box-shadow: -40px 40px 6px 10px rgba(226, 108, 89, 0.25);
-}

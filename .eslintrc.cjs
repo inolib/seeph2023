@@ -5,12 +5,10 @@ module.exports = {
     "plugin:@typescript-eslint/recommended-type-checked",
     "plugin:@typescript-eslint/stylistic-type-checked",
     "plugin:jsx-a11y/recommended",
-    "plugin:markdown/recommended",
     "plugin:react/jsx-runtime",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:tailwindcss/recommended",
-    "plugin:testing-library/react",
     "prettier",
   ],
   env: {
@@ -31,7 +29,6 @@ module.exports = {
     "@typescript-eslint/no-unused-vars": "warn",
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
-    "testing-library/no-manual-cleanup": "off",
   },
   settings: {
     react: {
