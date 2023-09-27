@@ -12,12 +12,20 @@ export const Footer = () => {
           className="flex gap-0.5"
         >
           <li>
-            <a href="https://www.youtube.com/@inolib287" rel="noreferrer">
+            <a
+              href="https://www.youtube.com/@inolib287"
+              rel="noreferrer"
+              target="_blank"
+            >
               <img alt="Visitez INOLIB sur YouTube" src="/icons/youtube.svg" />
             </a>
           </li>
           <li>
-            <a href="https://fr.linkedin.com/company/inolib" rel="noreferrer">
+            <a
+              href="https://fr.linkedin.com/company/inolib"
+              rel="noreferrer"
+              target="_blank"
+            >
               <img
                 alt="Visitez INOLIB sur LinkedIn"
                 src="/icons/linkedin.svg"
