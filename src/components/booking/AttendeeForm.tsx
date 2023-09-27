@@ -77,3 +77,5 @@ export const AttendeeForm = () => {
     </ul>
   );
 };
+
+// fix path
