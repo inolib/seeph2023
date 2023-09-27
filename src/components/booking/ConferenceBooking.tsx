@@ -114,5 +114,3 @@ export const ConferenceBooking = ({ date, time }: Props) => {
     </div>
   );
 };
-
-// fix path
