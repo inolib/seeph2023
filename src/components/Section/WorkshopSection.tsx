@@ -4,6 +4,8 @@ import { ContentBoxLayout } from "../Layout/ContentBoxLayout";
 import { Separator } from "../Separator";
 import { Landmark } from "../ui/Landmark/Landmark";
 
+// TODO: atomota link
+
 export const WorkshopSection = () => {
   const id = useId();
 
