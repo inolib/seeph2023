@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useId, useState, type JSX } from "react";
 
+import { cn } from "../../helpers";
 import { useBooking } from "../../routes/booking";
+import { PrimaryButton } from "../Button/PrimaryButton";
 
 export type Data = {
   date: Props["date"];
@@ -50,46 +52,41 @@ export const ConferenceBooking = ({ date, time }: Props) => {
   }, [count, date, isChecked, registerConferenceBooking, time]);
 
   return (
-    <div className="flex items-center justify-center gap-3">
+    <div className="flex flex-col items-center gap-1">
+      <label
+        className={cn(
+          "flex cursor-pointer flex-col rounded-lg bg-gray p-1 text-center",
+          {
+            "bg-blue-dark text-white": isChecked,
+          },
+        )}
+        htmlFor={confId}
+      >
+        {date}
+        <br />
+        <span className={cn({ "text-turquoise": isChecked })}>{time}</span>
+      </label>
+
+      <input
+        checked={isChecked}
+        className="sr-only"
+        id={confId}
+        onChange={handleCheckbox}
+        readOnly
+        type="checkbox"
+      />
+
       <div>
-        <label
-          className={`flex cursor-pointer flex-col rounded-0.5 px-2 py-1 text-center ${
-            isChecked ? "bg-blue-dark text-white" : "bg-gray"
-          }`}
-          htmlFor={confId}
-        >
-          {date}
-          <br />
-          <span className={`${isChecked ? "text-turquoise" : ""}`}>{time}</span>
-        </label>
-
-        <input
-          checked={isChecked}
-          className="sr-only"
-          id={confId}
-          onChange={handleCheckbox}
-          readOnly
-          type="checkbox"
-        />
-      </div>
-
-      <div className="flex gap-1">
-        <button
+        <PrimaryButton
           aria-label={`Supprimez la dernière place ajoutée pour le ${date}`}
-          className={`rounded-0.5 px-1 py-0.5 disabled:cursor-not-allowed ${
-            !isChecked
-              ? "bg-gray"
-              : "bg-turquoise hover:bg-blue hover:text-white"
-          }`}
           disabled={!isChecked}
           onClick={decrement}
-          type="button"
         >
           &minus;
-        </button>
+        </PrimaryButton>
 
         <input
-          aria-label={`${count} place(s) pour le ${date}`}
+          aria-label={`${count} places pour le ${date}`}
           aria-live="polite"
           className="w-2 text-center"
           readOnly
@@ -97,19 +94,13 @@ export const ConferenceBooking = ({ date, time }: Props) => {
           value={!isChecked ? "-" : count}
         />
 
-        <button
+        <PrimaryButton
           aria-label={`Ajoutez une place pour le ${date}`}
-          className={`rounded-0.5 px-1 py-0.5 disabled:cursor-not-allowed ${
-            !isChecked
-              ? "bg-gray"
-              : "bg-turquoise hover:bg-blue hover:text-white"
-          }`}
           disabled={!isChecked}
           onClick={increment}
-          type="button"
         >
           +
-        </button>
+        </PrimaryButton>
       </div>
     </div>
   );

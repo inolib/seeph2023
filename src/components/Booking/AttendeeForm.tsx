@@ -5,10 +5,11 @@ export const AttendeeForm = () => {
 
   return (
     <ul className="flex flex-col gap-1">
-      <li className="flex max-w-input flex-col gap-0.25">
+      <li className="flex flex-col" role="none">
         <label htmlFor={`${id}-firstname`}>Prénom</label>
+
         <input
-          className="border border-solid border-black px-0.5 py-0.25"
+          className="max-w-50 border border-solid border-black p-0.25"
           id={`${id}-firstname`}
           name="firstname"
           required
@@ -16,10 +17,11 @@ export const AttendeeForm = () => {
         />
       </li>
 
-      <li className="flex max-w-input flex-col gap-0.25">
+      <li className="flex flex-col" role="none">
         <label htmlFor={`${id}-lastname`}>Nom de famille</label>
+
         <input
-          className="border border-solid border-black px-0.5 py-0.25"
+          className="max-w-50 border border-solid border-black p-0.25"
           id={`${id}-lastname`}
           name="name"
           required
@@ -27,10 +29,11 @@ export const AttendeeForm = () => {
         />
       </li>
 
-      <li className="flex max-w-input flex-col gap-0.25">
+      <li className="flex flex-col" role="none">
         <label htmlFor={`${id}-company`}>Entreprise</label>
+
         <input
-          className="border border-solid border-black px-0.5 py-0.25"
+          className="max-w-50 border border-solid border-black p-0.25"
           id={`${id}-company`}
           name="company"
           required
@@ -38,10 +41,11 @@ export const AttendeeForm = () => {
         />
       </li>
 
-      <li className="flex max-w-input flex-col gap-0.25">
+      <li className="flex flex-col" role="none">
         <label htmlFor={`${id}-jobTitle`}>Fonction</label>
+
         <input
-          className="border border-solid border-black px-0.5 py-0.25"
+          className="max-w-50 border border-solid border-black p-0.25"
           id={`${id}-jobTitle`}
           name="jobTitle"
           required
@@ -49,10 +53,11 @@ export const AttendeeForm = () => {
         />
       </li>
 
-      <li className="flex max-w-input flex-col gap-0.25">
+      <li className="flex flex-col" role="none">
         <label htmlFor={`${id}-email`}>Adresse e-mail</label>
+
         <input
-          className="border border-solid border-black px-0.5 py-0.25"
+          className="max-w-50 border border-solid border-black p-0.25"
           id={`${id}-email`}
           name="email"
           required
@@ -60,16 +65,15 @@ export const AttendeeForm = () => {
         />
       </li>
 
-      <li className="flex max-w-input flex-col gap-0.25">
-        <label className="flex justify-between gap-3" htmlFor={`${id}-phone`}>
-          Numéro de téléphone
-          <span>(format : +33123456789)</span>
-        </label>
+      <li className="flex flex-col" role="none">
+        <label htmlFor={`${id}-phone`}>Numéro de téléphone</label>
+
         <input
-          className="border border-solid border-black px-0.5 py-0.25"
+          className="max-w-50 border border-solid border-black p-0.25"
           id={`${id}-phone`}
           name="phone"
           pattern="\+\d+"
+          placeholder="Format : +33123456789"
           required
           type="tel"
         />

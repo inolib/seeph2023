@@ -1,28 +1,34 @@
 import { useId } from "react";
 
-import { ContentBoxLayout } from "../Layout/ContentBoxLayout";
+import { cn } from "../../helpers";
+import { styles } from "../../styles";
 import { CallToActionLink } from "../Link/CallToActionLink";
-import { Separator } from "../Separator";
 import { Landmark } from "../ui/Landmark/Landmark";
 
 export const LastChanceSection = () => {
   const id = useId();
 
   return (
-    <ContentBoxLayout className=" bg-gradient-to-b from-white from-50% to-black to-50%">
-      <Landmark
-        TagName="section"
-        aria-labelledby={id}
-        className="rounded-2 bg-blue-dark p-4 text-center text-white"
-      >
-        <div className="flex flex-col gap-1">
+    <Landmark
+      TagName="section"
+      aria-labelledby={id}
+      className={cn(
+        styles.bleeding.middle,
+        "bg-gradient-to-b from-white from-50% to-black to-50%",
+      )}
+    >
+      <div className="mx-auto flex w-fit min-w-[80%] flex-col items-center gap-2 rounded-3xl bg-blue-dark p-1 text-white">
+        <div className="flex flex-col gap-1 text-center">
           <Landmark.Heading
             aria-label="Conférence L’accessibilité numérique, un monde d’opportunités"
-            className="relative mx-auto max-w-h1 text-xl font-bold"
+            className={cn(
+              styles.heading.h2,
+              styles.separator.turquoise,
+              styles.separator.center,
+            )}
             id={id}
           >
             Conférence
-            <Separator className="absolute inset-x-0 bottom-[-0.78125rem] mx-auto bg-turquoise" />
           </Landmark.Heading>
 
           <p className="text-lg font-bold">
@@ -30,13 +36,10 @@ export const LastChanceSection = () => {
           </p>
         </div>
 
-        <p className="mt-4">
-          Plus d’une centaine d’entreprises ont déja fait leur réservation.
-        </p>
-        <CallToActionLink className="mt-2 inline-block">
-          Réservez également votre place
-        </CallToActionLink>
-      </Landmark>
-    </ContentBoxLayout>
+        <p>De nombreuses entreprises ont déja fait leur réservation.</p>
+
+        <CallToActionLink>Réservez votre place</CallToActionLink>
+      </div>
+    </Landmark>
   );
 };

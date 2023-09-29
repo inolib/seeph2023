@@ -19,19 +19,13 @@ export const Root = () => {
     <>
       <Header />
 
-      <Landmark TagName="main">
+      <Landmark TagName="main" className="mt-1 flex flex-col gap-4">
         <BookingSection />
-
         <ProgramSection />
-
-        <ToolkitSection />
-
-        <KeypointSection />
-
         <SpeakerSection />
-
+        <KeypointSection />
+        <ToolkitSection />
         <WorkshopSection />
-
         <LastChanceSection />
       </Landmark>
 

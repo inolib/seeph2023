@@ -1,7 +1,8 @@
 import { useId } from "react";
 
-import { ContentBoxLayout } from "../Layout/ContentBoxLayout";
-import { Separator } from "../Separator";
+import { cn } from "../../helpers";
+import { styles } from "../../styles";
+import { ExternalLink } from "../Link/ExternalLink";
 import { Landmark } from "../ui/Landmark/Landmark";
 
 // TODO: atomota link
@@ -10,53 +11,56 @@ export const WorkshopSection = () => {
   const id = useId();
 
   return (
-    <Landmark TagName="section" aria-labelledby={id} className="text-white">
-      <ContentBoxLayout>
-        <div className="bg-orange p-4 shadow-[-3.75rem_3.75rem_0.25rem_0_rgba(226,108,89,0.25)]">
-          <div className="flex flex-col gap-1">
-            <div className="flex flex-col gap-1">
-              <Landmark.Heading
-                className="relative max-w-h1 text-xl font-bold"
-                id={id}
-              >
-                WORKSHOP Accessibilité
-                <Separator className="absolute bottom-[-0.78125rem] left-0 bg-blue" />
-              </Landmark.Heading>
+    <Landmark
+      TagName="section"
+      aria-labelledby={id}
+      className="w-fit min-w-[80%] self-center bg-orange p-1 text-white shadow-[-2rem_2rem_0.25rem_0_rgba(226,108,89,0.25)]"
+    >
+      <div className="flex flex-col items-center gap-2">
+        <div className="flex flex-col gap-1 text-center">
+          <Landmark.Heading
+            className={cn(
+              styles.heading.h2,
+              styles.separator.blue,
+              styles.separator.center,
+              "self-center",
+            )}
+            id={id}
+          >
+            WORKSHOP Accessibilité
+          </Landmark.Heading>
 
-              <p className="text-lg">
-                C’est simple, l’accessibilité adaptée à vos besoins !
-              </p>
-            </div>
-
-            <div className="flex flex-col items-start justify-between gap-3 800:flex-row 800:items-end">
-              <div className="max-w-p">
-                <p>
-                  Vous souhaitez effectuer une réservation de groupe pour vos
-                  collaborateurs ou vos salariés ?
-                </p>
-
-                <p>
-                  {
-                    "Nous vous proposons un forfait adapté aux groupes et aux entreprises, réservez pour un groupe de 12 personnes en une seule fois."
-                  }
-                </p>
-              </div>
-
-              <a
-                className="flex flex-none items-center gap-0.5 rounded-full bg-blue px-2 py-1 text-center text-white hover:bg-turquoise hover:text-black"
-                href="##"
-              >
-                Réservez avec
-                <img
-                  alt=""
-                  className="relative top-[0.25rem] h-[1.875rem]"
-                  src="/logos/atomota.png"
-                />
-              </a>
-            </div>
-          </div>
+          <p className={styles.heading.sub}>
+            C’est simple, l’accessibilité adaptée à vos besoins !
+          </p>
         </div>
-      </ContentBoxLayout>
+
+        <div className="flex max-w-lg flex-col gap-1">
+          <p>
+            Vous souhaitez effectuer une réservation de groupe pour vos salariés
+            ou vos collaborateurs ?
+          </p>
+
+          <p>
+            Nous vous proposons un forfait adapté aux entreprises et aux
+            groupes, vous pouvez réserver pour un groupe de 12 personnes en une
+            seule fois.
+          </p>
+        </div>
+
+        <ExternalLink
+          aria-label="Réservez avec atomota"
+          className="flex items-center gap-0.25 self-center"
+          href="#TODO"
+        >
+          Réservez avec
+          <img
+            alt=""
+            className="relative top-[0.2rem] h-1"
+            src="/logos/atomota.png"
+          />
+        </ExternalLink>
+      </div>
     </Landmark>
   );
 };

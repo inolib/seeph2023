@@ -25,6 +25,7 @@ module.exports = {
     tsconfigRootDir: __dirname,
   },
   rules: {
+    "no-irregular-whitespace": ["warn", { skipJSXText: true }],
     "@typescript-eslint/consistent-type-definitions": ["error", "type"],
     "@typescript-eslint/no-unused-vars": "warn",
     "react/jsx-uses-react": "off",

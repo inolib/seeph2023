@@ -1,9 +1,9 @@
 import { useId } from "react";
 
-import { conferences } from "../../data/conferences";
-import { ConferenceCard } from "../Card/ConferenceCard";
-import { ContentBoxLayout } from "../Layout/ContentBoxLayout";
-import { Separator } from "../Separator";
+import { conferences } from "../../data";
+import { cn } from "../../helpers";
+import { styles } from "../../styles";
+import { CallToActionLink } from "../Link/CallToActionLink";
 import { Tag } from "../Tag";
 import { Landmark } from "../ui/Landmark/Landmark";
 
@@ -11,47 +11,67 @@ export const BookingSection = () => {
   const id = useId();
 
   return (
-    <Landmark TagName="section" aria-labelledby={id}>
-      <ContentBoxLayout>
-        <div className="flex flex-col gap-1 800:text-right">
-          <Tag aria-hidden className="self-start 800:self-end">
-            Conférence inédite
-          </Tag>
+    <Landmark
+      TagName="section"
+      aria-labelledby={id}
+      className="flex flex-col gap-2"
+    >
+      <div className="flex flex-col gap-1">
+        <Tag aria-hidden className="self-start">
+          Conférence inédite
+        </Tag>
 
-          <div className="flex flex-col gap-1">
-            <Landmark.Heading
-              className="relative max-w-h1 text-xl font-bold 800:ml-auto"
-              id={id}
+        <Landmark.Heading
+          className={cn(
+            styles.heading.h2,
+            styles.separator.turquoise,
+            styles.shrink,
+          )}
+          id={id}
+        >
+          Réservez vos places pour la conférence sur les challenges de
+          l’accessibilité numérique
+        </Landmark.Heading>
+
+        <p className={styles.heading.sub}>Pour un monde digital inclusif</p>
+      </div>
+
+      <div className="flex flex-col items-center gap-1 sm:flex-row sm:justify-center sm:gap-2">
+        <img alt="" src="/logos/seeph_2023.png" />
+
+        <p className="text-center">
+          Un contenu inédit à l’occasion de la 27<sup>e</sup> Semaine Européenne
+          pour l’Emploi des Personnes Handicapées.
+        </p>
+      </div>
+
+      <ul className="grid w-fit grid-cols-1 gap-2 self-center sm:grid-cols-2 2xl:grid-cols-4">
+        {conferences.map((data) => (
+          <li
+            className="flex flex-col items-center gap-1 rounded-3xl rounded-tr-none bg-blue-dark p-1 text-center text-white"
+            key={data.date}
+            role="none"
+          >
+            <p
+              className={cn(
+                styles.separator.turquoise,
+                styles.separator.center,
+                "w-full text-2xl",
+              )}
             >
-              Réservez vos places pour la conférence sur les challenges de
-              l’accessibilité numérique
-              <Separator className="absolute bottom-[-0.78125rem] left-0 bg-turquoise 800:left-auto 800:right-0" />
-            </Landmark.Heading>
-
-            <p className="text-lg font-bold">Pour un monde digital inclusif</p>
-          </div>
-
-          <div className="flex flex-col items-center justify-between gap-1 900:flex-row">
-            <div className="flex items-center gap-1">
-              <img alt="" src="/logos/inolib-bg.png" />
-              <img alt="" src="/logos/seeph_2023.png" />
-            </div>
-
-            <p className="max-w-p-narrower text-center 900:text-right 1020:max-w-p-narrow 1180:max-w-p">
-              Un contenu inédit à l’occasion de la 27<sup>e</sup> Semaine
-              Européenne pour l’Emploi des Personnes Handicapées (SEEPH).
+              En ligne
             </p>
-          </div>
 
-          <ul className="grid grid-cols-1 gap-2 px-8 800:grid-cols-2 960:grid-cols-4 960:gap-1 960:px-0 1060:gap-2">
-            {conferences.map((conference) => (
-              <li key={conference.date}>
-                <ConferenceCard date={conference.date} time={conference.time} />
-              </li>
-            ))}
-          </ul>
-        </div>
-      </ContentBoxLayout>
+            <p className="text-2xl">
+              {data.date}
+              <br />
+              <span className="text-turquoise">{data.time}</span>
+            </p>
+
+            <CallToActionLink>Réserver</CallToActionLink>
+          </li>
+        ))}
+      </ul>
     </Landmark>
   );
 };

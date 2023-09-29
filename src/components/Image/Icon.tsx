@@ -1,24 +1,24 @@
 import { forwardRef, type JSX } from "react";
 
-import { cn } from "../helpers";
+import { cn } from "../../helpers";
 
-type Props = JSX.IntrinsicElements["div"];
+type Props = JSX.IntrinsicElements["span"];
 
-export const Tag = forwardRef(
+export const Icon = forwardRef(
   ({ children, className, ...rest }: Props, ref: Props["ref"]) => {
     return (
-      <div
+      <span
         className={cn(
-          "rounded-lg bg-magenta px-0.5 py-0.25 text-white",
+          "flex items-center justify-center rounded-full text-center",
           className,
         )}
         ref={ref}
         {...rest}
       >
         {children}
-      </div>
+      </span>
     );
   },
 );
 
-Tag.displayName = "Tag";
+Icon.displayName = "Icon";

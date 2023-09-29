@@ -7,7 +7,7 @@ import {
   type MouseEventHandler,
 } from "react";
 
-import { handleEvent } from "../../../helpers/handleEvent";
+import { handleEvent } from "../../../helpers";
 import { Heading } from "../Landmark/Heading";
 import { useSection } from "./Section";
 
