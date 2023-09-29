@@ -1,4 +1,6 @@
 import { useId } from "react";
+import { styles } from "../../styles";
+import { cn } from "../../helpers";
 
 export const AttendeeForm = () => {
   const id = useId();
@@ -9,7 +11,10 @@ export const AttendeeForm = () => {
         <label htmlFor={`${id}-firstname`}>Prénom</label>
 
         <input
-          className="max-w-50 border border-solid border-black p-0.25"
+          className={cn(
+            styles.shrink,
+            "border border-solid border-black p-0.25",
+          )}
           id={`${id}-firstname`}
           name="firstname"
           required
@@ -21,7 +26,10 @@ export const AttendeeForm = () => {
         <label htmlFor={`${id}-lastname`}>Nom de famille</label>
 
         <input
-          className="max-w-50 border border-solid border-black p-0.25"
+          className={cn(
+            styles.shrink,
+            "border border-solid border-black p-0.25",
+          )}
           id={`${id}-lastname`}
           name="name"
           required
@@ -33,7 +41,10 @@ export const AttendeeForm = () => {
         <label htmlFor={`${id}-company`}>Entreprise</label>
 
         <input
-          className="max-w-50 border border-solid border-black p-0.25"
+          className={cn(
+            styles.shrink,
+            "border border-solid border-black p-0.25",
+          )}
           id={`${id}-company`}
           name="company"
           required
@@ -45,7 +56,10 @@ export const AttendeeForm = () => {
         <label htmlFor={`${id}-jobTitle`}>Fonction</label>
 
         <input
-          className="max-w-50 border border-solid border-black p-0.25"
+          className={cn(
+            styles.shrink,
+            "border border-solid border-black p-0.25",
+          )}
           id={`${id}-jobTitle`}
           name="jobTitle"
           required
@@ -57,7 +71,10 @@ export const AttendeeForm = () => {
         <label htmlFor={`${id}-email`}>Adresse e-mail</label>
 
         <input
-          className="max-w-50 border border-solid border-black p-0.25"
+          className={cn(
+            styles.shrink,
+            "border border-solid border-black p-0.25",
+          )}
           id={`${id}-email`}
           name="email"
           required
@@ -69,7 +86,10 @@ export const AttendeeForm = () => {
         <label htmlFor={`${id}-phone`}>Numéro de téléphone</label>
 
         <input
-          className="max-w-50 border border-solid border-black p-0.25"
+          className={cn(
+            styles.shrink,
+            "border border-solid border-black p-0.25",
+          )}
           id={`${id}-phone`}
           name="phone"
           pattern="\+\d+"
