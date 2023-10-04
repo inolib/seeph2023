@@ -1,6 +1,6 @@
 import { useId } from "react";
 
-import { conferences } from "../../data";
+import { sessions } from "../../data";
 import { cn } from "../../helpers";
 import { styles } from "../../styles";
 import { CallToActionLink } from "../Link/CallToActionLink";
@@ -46,10 +46,10 @@ export const BookingSection = () => {
       </div>
 
       <ul className="grid w-fit grid-cols-1 gap-2 self-center sm:grid-cols-2 2xl:grid-cols-4">
-        {conferences.map((data) => (
+        {Object.entries(sessions).map(([key, session]) => (
           <li
             className="flex flex-col items-center gap-1 rounded-3xl rounded-tr-none bg-blue-dark p-1 text-center text-white"
-            key={data.date}
+            key={key}
             role="none"
           >
             <p
@@ -63,9 +63,9 @@ export const BookingSection = () => {
             </p>
 
             <p className="text-2xl">
-              {data.date}
+              {session.date}
               <br />
-              <span className="text-turquoise">{data.time}</span>
+              <span className="text-turquoise">{session.time}</span>
             </p>
 
             <CallToActionLink>Réserver</CallToActionLink>

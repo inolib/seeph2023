@@ -8,7 +8,7 @@ import { SpeakerSection } from "../components/Section/SpeakerSection";
 import { ToolkitSection } from "../components/Section/ToolkitSection";
 import { WorkshopSection } from "../components/Section/WorkshopSection";
 import { Landmark } from "../components/ui/Landmark/Landmark";
-import { useDocumentTitle } from "../hooks/useDocumentTitle";
+import { useDocumentTitle } from "../hooks";
 
 export const Root = () => {
   useDocumentTitle(

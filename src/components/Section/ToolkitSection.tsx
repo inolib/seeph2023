@@ -57,12 +57,6 @@ export const ToolkitSection = () => {
           </div>
         </div>
       </div>
-
-      <img
-        alt=""
-        className="hidden"
-        src="/illustrations/toolkit_section-side.png"
-      />
     </Landmark>
   );
 };

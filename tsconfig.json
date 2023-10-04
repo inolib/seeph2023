@@ -11,6 +11,7 @@
     "moduleResolution": "bundler",
     "noEmit": true,
     "skipLibCheck": true,
+    "target": "ESNext",
     "strict": true,
     "verbatimModuleSyntax": true
   }

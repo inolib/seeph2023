@@ -1,22 +1,3 @@
-export const conferences = [
-  {
-    date: "20 novembre 2023",
-    time: "12 h – 14 h",
-  },
-  {
-    date: "21 novembre 2023",
-    time: "12 h – 14 h",
-  },
-  {
-    date: "23 novembre 2023",
-    time: "17 h – 19 h",
-  },
-  {
-    date: "24 novembre 2023",
-    time: "17 h – 19 h",
-  },
-];
-
 export const keypoints = [
   {
     iconUrl: "/icons/sticker.svg",
@@ -87,6 +68,25 @@ export const program = [
     description: "Venez découvrir l’expérience de nos clients.",
   },
 ];
+
+export const sessions = {
+  "2023-11-20T11:00:00.000Z": {
+    date: "20 novembre 2023",
+    time: "12 h – 14 h",
+  },
+  "2023-11-21T11:00:00.000Z": {
+    date: "21 novembre 2023",
+    time: "12 h – 14 h",
+  },
+  "2023-11-23T16:00:00.000Z": {
+    date: "23 novembre 2023",
+    time: "17 h – 19 h",
+  },
+  "2023-11-24T16:00:00.000Z": {
+    date: "24 novembre 2023",
+    time: "17 h – 19 h",
+  },
+};
 
 export const speaker = {
   name: "Djebrine ALOUI",
