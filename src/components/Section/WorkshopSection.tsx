@@ -5,8 +5,6 @@ import { styles } from "../../styles";
 import { ExternalLink } from "../Link/ExternalLink";
 import { Landmark } from "../ui/Landmark/Landmark";
 
-// TODO: atomota link
-
 export const WorkshopSection = () => {
   const id = useId();
 
