@@ -57,11 +57,9 @@ export const SpeakerSection = () => {
               />
             </PhotoFrame>
 
-            <p className="-mt-0.75">
+            <p className="-mt-0.75 flex flex-col">
               <span className="text-xl font-bold">{speaker.name}</span>
-              <br />
-              {speaker.jobTitle}
-              <br />
+              <span>{speaker.jobTitle}</span>
               <span className="inline-block sm:mt-1">
                 Expert en accessibilité numérique
               </span>

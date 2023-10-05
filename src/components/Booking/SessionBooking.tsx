@@ -61,8 +61,7 @@ export const SessionBooking = ({
         )}
         htmlFor={id}
       >
-        {session.date}
-        <br />
+        <span>{session.date}</span>
         <span className={cn({ "text-turquoise": isChecked })}>
           {session.time}
         </span>

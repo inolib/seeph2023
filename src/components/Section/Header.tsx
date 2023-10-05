@@ -84,10 +84,11 @@ export const Header = () => {
             />
           </PhotoFrame>
 
-          <p className={cn(styles.separator.turquoise, "-mt-0.75")}>
+          <p
+            className={cn(styles.separator.turquoise, "-mt-0.75 flex flex-col")}
+          >
             <span className="text-xl font-bold">{speaker.name}</span>
-            <br />
-            {speaker.jobTitle}
+            <span>{speaker.jobTitle}</span>
           </p>
 
           <p className="max-w-xs italic">{speaker.shortQuote}</p>

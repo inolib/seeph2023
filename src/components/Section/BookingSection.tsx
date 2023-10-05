@@ -61,9 +61,8 @@ export const BookingSection = () => {
               En ligne
             </p>
 
-            <p className="text-2xl">
-              {session.date}
-              <br />
+            <p className="flex flex-col text-2xl">
+              <span>{session.date}</span>
               <span className="text-turquoise">{session.time}</span>
             </p>
 
