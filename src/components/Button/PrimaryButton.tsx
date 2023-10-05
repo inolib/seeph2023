@@ -7,7 +7,7 @@ type Props = JSX.IntrinsicElements["button"];
 export const PrimaryButton = ({
   children,
   className,
-  type,
+  type = "button",
   ...rest
 }: Props) => {
   return (
