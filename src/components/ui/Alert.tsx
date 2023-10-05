@@ -1,15 +1,11 @@
-import { forwardRef, type JSX, type PropsWithoutRef } from "react";
+import type { JSX } from "react";
 
-type Props = Omit<PropsWithoutRef<JSX.IntrinsicElements["div"]>, "role">;
+type Props = Omit<JSX.IntrinsicElements["div"], "role">;
 
-export const Alert = forwardRef<HTMLDivElement, Props>(
-  ({ children, ...rest }, ref) => {
-    return (
-      <div ref={ref} role="alert" {...rest}>
-        {children}
-      </div>
-    );
-  },
-);
-
-Alert.displayName = "Alert";
+export const Alert = ({ children, ...rest }: Props) => {
+  return (
+    <div role="alert" {...rest}>
+      {children}
+    </div>
+  );
+};
