@@ -8,9 +8,8 @@ export const Congratulations = () => {
       <Header />
 
       <Landmark TagName="main" className="text-center">
-        Votre inscription est terminée !
-        <br />
-        Vous recevrez bientôt un reçu par e-mail.
+        <p>Votre inscription est terminée !</p>Votre inscription est terminée !
+        <p>Vous recevrez bientôt un reçu par e-mail.</p>
       </Landmark>
 
       <Footer />

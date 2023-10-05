@@ -34,6 +34,7 @@ module.exports = {
       70: "70%",
       80: "80%",
       90: "90%",
+      body: "100rem",
       full: "100%",
       xs: "20ch",
       sm: "30ch",

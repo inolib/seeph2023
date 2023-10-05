@@ -59,7 +59,7 @@ export const Header = () => {
             })}
           >
             {keypoints.map((data) => (
-              <li className="flex gap-0.75" key={data.title} role="none">
+              <li className="flex gap-0.75" key={data.title}>
                 <Icon className="relative top-0.25 h-1.5 w-1.5 bg-magenta">
                   <img alt="" className="h-0.75 w-0.75" src={data.iconUrl} />
                 </Icon>

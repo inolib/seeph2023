@@ -1,5 +1,6 @@
 import { cn } from "../../helpers";
 import { styles } from "../../styles";
+import { ExternalLink } from "../Link/ExternalLink";
 import { Landmark } from "../ui/Landmark/Landmark";
 
 export const Footer = () => {
@@ -20,24 +21,16 @@ export const Footer = () => {
         <p className="hidden text-right sm:block">Retrouvez-nous sur</p>
 
         <ul className="flex items-center gap-0.5">
-          <li className="flex-none" role="none">
-            <a
-              href="https://www.youtube.com/@inolib287"
-              rel="noreferrer"
-              target="_blank"
-            >
+          <li className="flex-none">
+            <ExternalLink href="https://www.youtube.com/@inolib287">
               <img alt="YouTube" className="h-1" src="/icons/youtube.svg" />
-            </a>
+            </ExternalLink>
           </li>
 
-          <li className="flex-none" role="none">
-            <a
-              href="https://fr.linkedin.com/company/inolib"
-              rel="noreferrer"
-              target="_blank"
-            >
+          <li className="flex-none">
+            <ExternalLink href="https://fr.linkedin.com/company/inolib">
               <img alt="LinkedIn" className="h-1" src="/icons/linkedin.svg" />
-            </a>
+            </ExternalLink>
           </li>
         </ul>
       </div>

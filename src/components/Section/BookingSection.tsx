@@ -50,7 +50,6 @@ export const BookingSection = () => {
           <li
             className="flex flex-col items-center gap-1 rounded-3xl rounded-tr-none bg-blue-dark p-1 text-center text-white"
             key={key}
-            role="none"
           >
             <p
               className={cn(
