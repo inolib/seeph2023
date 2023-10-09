@@ -1,71 +1,87 @@
-export const keypoints = [
+export const headerKeypoints = [
   {
     iconUrl: "/icons/sticker.svg",
     title:
-      "Appréhendez les enjeux et l’importance de l’accessibilité numérique",
-    description:
-      "Élargissez votre réseau dans le domaine de l’accessibilité numérique et repartez de cette conférence avec des idées concrètes pour influencer positivement votre organisation ou projet.",
+      "Appréhendez les enjeux et l’importance de l’accessibilité numérique.",
   },
   {
     iconUrl: "/icons/line_chart.svg",
     title:
-      "Comprenez les avantages offerts par l’accessibilité numérique aux entreprises",
-    description:
-      "Découvrez les tendances émergentes incluant l’accessibilité mobile, la voix et l’IA, ainsi que l’expansion de l’accessibilité au-delà du web vers d’autres domaines numériques.",
+      "Comprenez les benéfices et les opportunités d’une démarche d’accessibilité numérique pour votre organisation.",
   },
   {
     iconUrl: "/icons/feather.svg",
     title:
-      "Découvrez des témoignages et des démonstrations pour faciliter la compréhension",
+      "Repartez avec des directives claires pour entreprendre vos premières démarches vers l’accessibilité numérique.",
+  },
+];
+
+export const keypoints = [
+  {
+    iconUrl: "/icons/sticker.svg",
+    title: "Comprenez la valeur ajoutée de l’accessibilité numérique",
     description:
-      "Accédez en avant-première à la nouvelle plateforme interactive d’INOLIB pour tester et rendre accessibles vos sites et applications.",
+      "Découvrez des témoignages et des démonstrations pour faciliter la compréhension.",
+  },
+  {
+    iconUrl: "/icons/line_chart.svg",
+    title:
+      "Au dela du web, quel futur pour l’accessibilité ? L’apport de l’intelligence artificielle, de nouveaux modes d’interactions",
+    description:
+      "Quels sont les apports de l’intelligence artificielle, des modes d’intéractions émergeants ?",
+  },
+  {
+    iconUrl: "/icons/feather.svg",
+    title:
+      "Découvrez quelques bonnes pratiques, techniques, graphiques, éditorielles, et fonctionnelles pour un support digital accessible",
+    description:
+      "Accédez en avant-première à la nouvelle plateforme interactive d’INOLIB de simulation d’accessibilité numérique.",
   },
 ];
 
 export const numbers = [
   {
     label: "Plus de 12 millions de personnes en situation de handicap",
-    title: "+ de 12 M",
-    description: "de personnes en situation de handicap en France",
+    title: "+ de 12 millions",
+    description: "de personnes en situation de handicap",
   },
   {
     label: "Plus de 3 millions de salariés en situation de handicap",
-    title: "+ de 3 M",
-    description: "de salariés en situation de handicap en France",
+    title: "+ de 3 millions",
+    description: "de salariés en situation de handicap",
   },
   {
     label: "95% des sites web présentent des problèmes d’accessibilité",
     title: "95 %",
-    description: "des sites web présentant des problèmes d’accessibilité",
+    description: "des sites web présentent des problèmes d’accessibilité",
   },
   {
     label: "65% des entreprises sont concernées par les nouvelles réformes",
     title: "65 %",
-    description: "des entreprises concernées par les nouvelles réformes",
+    description: "des entreprises sont concernées par les nouvelles réformes",
   },
 ];
 
 export const program = [
   {
-    title: "Une sensibilisation « pratique » à l’accessibilité numérique",
+    title: "Une sensibilisation « pratique » à l’accessibilité numérique",
     description:
       "Plongez au cœur des enjeux de l’accessibilité numérique : Pour qui ? Pourquoi ? Élargissez votre audience en améliorant l’expérience utilisateur et faites la différence.",
   },
   {
-    title:
-      "Les législations et règles vigueur pour 2024 : de la conformité à l’opportunité",
+    title: "Soyez le futur, soyez inclusif !",
     description:
-      "La loi française impose l’accessibilité numérique. Cette conférence vous éclaire sur comment maîtriser les risques juridiques en vous alignant sur les normes en vigueur (RGAA, WCAG). Réduisez les risques de contentieux et d’amendes et renforcez votre image de marque. Pour aller plus loin, agissez dès à présent !",
+      "Découvrez les innombrables avantages d’une démarche d’accessibilité numérique, comme l’amélioration de votre marque.",
   },
   {
-    title: "Soyez le futur, soyez inclusif !",
+    title: "Une vision du cadre législatif et normatif",
     description:
-      "Découvrez les innombrables avantages d’une démarche en accessibilité numérique, comme l’amélioration de votre réputation.",
+      "De la conformité à l’opportunité : la loi française impose l’accessibilité numérique. Cette conférence vous éclaire sur comment maîtriser les risques juridiques et vous conformer aux normes en vigueur (RGAA, WCAG). Réduisez les risques de contentieux et d’amendes et renforcez votre image de marque. Pour aller plus loin, agissez dès à présent !",
   },
   {
     title:
-      "Des témoignages inspirants et des démonstrations, venez découvrir l’accessibilité numérique en pratique",
-    description: "Venez découvrir l’expérience de nos clients.",
+      "Des témoignages inspirants et des démonstrations : venez découvrir l’accessibilité numérique en pratique",
+    description: "Soyez le futur, soyez inclusif !",
   },
 ];
 
@@ -90,9 +106,9 @@ export const sessions = {
 
 export const speaker = {
   name: "Djebrine ALOUI",
-  jobTitle: "Fondateur et CEO INOLIB",
+  jobTitle: "Fondateur et CEO d’INOLIB",
   photoUrl: "/photos/djebrine.png",
   shortQuote: "« Venez explorer les clés de la révolution numérique. »",
   longQuote:
-    "« Venez explorer les clés de la révolution numérique avec mes idées fortes, mes sensibilités, mes expériences. Il reste encore de nombreux défis à relever dans ce domaine, et je suis là pour vous aider à percevoir l’accessibilité sous un nouvel angle. »",
+    "« Venez explorer les clés de la révolution numérique. J’aurai le plaisir durant 1 h 30 de vous initier à l’accessibilité et de vous apporter les connaissances essentielles pour une stratégie gagnante. Et enfin toute l’équipe d’INOLIB restera disponible pour répondre à vos questions. »",
 };

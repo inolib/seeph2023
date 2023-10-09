@@ -1,9 +1,11 @@
 import { BookingSection } from "../components/Section/BookingSection";
 import { Footer } from "../components/Section/Footer";
 import { Header } from "../components/Section/Header";
-import { KeypointSection } from "../components/Section/KeypointSection";
+import { KeypointsSection } from "../components/Section/KeypointsSection";
 import { LastChanceSection } from "../components/Section/LastChanceSection";
+import { NumbersSection } from "../components/Section/NumbersSection";
 import { ProgramSection } from "../components/Section/ProgramSection";
+import { ReviewsSection } from "../components/Section/ReviewsSection";
 import { SpeakerSection } from "../components/Section/SpeakerSection";
 import { ToolkitSection } from "../components/Section/ToolkitSection";
 import { WorkshopSection } from "../components/Section/WorkshopSection";
@@ -12,7 +14,7 @@ import { useDocumentTitle } from "../hooks";
 
 export const Root = () => {
   useDocumentTitle(
-    "INOLIB - L’accessibilité numérique, un monde d’opportunités",
+    "INOLIB - Conférence L’accessibilité numérique, un monde d’opportunités",
   );
 
   return (
@@ -22,10 +24,12 @@ export const Root = () => {
       <Landmark TagName="main" className="mt-1 flex flex-col gap-4">
         <BookingSection />
         <ProgramSection />
-        <SpeakerSection />
-        <KeypointSection />
         <ToolkitSection />
+        <KeypointsSection />
+        <NumbersSection />
+        <SpeakerSection />
         <WorkshopSection />
+        <ReviewsSection />
         <LastChanceSection />
       </Landmark>
 

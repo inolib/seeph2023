@@ -1,6 +1,6 @@
 import { useId } from "react";
 
-import { numbers, speaker } from "../../data";
+import { speaker } from "../../data";
 import { cn } from "../../helpers";
 import { styles } from "../../styles";
 import { PhotoFrame } from "../Image/PhotoFrame";
@@ -14,28 +14,12 @@ export const SpeakerSection = () => {
       TagName="section"
       aria-labelledby={id}
       className={cn(
-        styles.background.gradientToPurple,
         styles.bleeding.middle,
-        "flex flex-col gap-4 text-center",
+        styles.tab.left,
+        "flex flex-col gap-4 bg-gray text-center",
       )}
     >
-      <ul
-        aria-label="Les chiffres du handicap en France"
-        className="grid w-fit grid-cols-1 gap-2 self-center sm:grid-cols-2 lg:grid-cols-4"
-      >
-        {numbers.map((data) => (
-          <li
-            aria-label={data.label}
-            className="flex max-w-xs flex-col gap-0.25"
-            key={data.title}
-          >
-            <span className="text-2xl font-bold">{data.title}</span>
-            {data.description}
-          </li>
-        ))}
-      </ul>
-
-      <div className="flex flex-col items-center gap-2">
+      <div className="flex flex-col items-center gap-1">
         <Landmark.Heading
           className={cn(
             styles.heading.h2,
@@ -44,10 +28,18 @@ export const SpeakerSection = () => {
           )}
           id={id}
         >
-          Votre conférencier
+          Conférencier
         </Landmark.Heading>
 
-        <div className="mt-2 flex flex-col items-center gap-1 text-center sm:items-start sm:text-left">
+        <div className="flex flex-col items-center gap-1 text-center sm:gap-2">
+          <div className="flex flex-col items-center text-center">
+            <p className={cn(styles.heading.sub, "max-w-xs sm:max-w-lg")}>
+              {speaker.name}, {speaker.jobTitle}
+            </p>
+
+            <p>Entrepreneur non voyant et expert en accessibilité numérique</p>
+          </div>
+
           <div className="flex flex-col items-center gap-1 sm:flex-row">
             <PhotoFrame>
               <img
@@ -57,16 +49,10 @@ export const SpeakerSection = () => {
               />
             </PhotoFrame>
 
-            <p className="-mt-0.75 flex flex-col">
-              <span className="text-xl font-bold">{speaker.name}</span>
-              <span>{speaker.jobTitle}</span>
-              <span className="inline-block sm:mt-1">
-                Expert en accessibilité numérique
-              </span>
+            <p className="italic sm:max-w-lg sm:text-left">
+              {speaker.longQuote}
             </p>
           </div>
-
-          <p className="max-w-base italic sm:max-w-lg">{speaker.longQuote}</p>
         </div>
       </div>
     </Landmark>

@@ -2,18 +2,21 @@ import type { FieldElementProps, FieldStore } from "@modular-forms/react";
 import { useId, type JSX } from "react";
 
 import { cn } from "../../helpers";
-import type { Booking } from "../../routes/booking";
 import { styles } from "../../styles";
 import { Alert } from "../ui/Alert";
+import type { Booking } from "./BookingForm";
 
 type Field = {
-  inputMode?: JSX.IntrinsicElements["input"]["inputMode"];
+  inputMode?: InputProps["inputMode"];
   label: string;
 };
 
 export type FieldName = keyof Omit<Booking, "datetime">;
 
+type InputProps = JSX.IntrinsicElements["input"];
+
 type Props = {
+  disabled?: InputProps["disabled"];
   field: FieldStore<Booking, FieldName>;
   fieldProps: FieldElementProps<Booking, FieldName>;
 };
@@ -41,7 +44,7 @@ const fields: Record<FieldName, Field> = {
   },
 };
 
-export const AttendeeField = ({ field, fieldProps }: Props) => {
+export const AttendeeField = ({ disabled, field, fieldProps }: Props) => {
   const id = useId();
   const fieldId = `${id}-${field.name}`;
 
@@ -55,6 +58,7 @@ export const AttendeeField = ({ field, fieldProps }: Props) => {
         aria-errormessage={`${fieldId}-error`}
         aria-invalid={field.error.value !== ""}
         className={cn(styles.shrink, "border border-solid border-black p-0.25")}
+        disabled={disabled}
         id={fieldId}
         inputMode={fields[field.name].inputMode}
         placeholder={field.name === "tel" ? "+33 1 23 45 67 89" : undefined}

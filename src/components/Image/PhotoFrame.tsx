@@ -8,7 +8,7 @@ export const PhotoFrame = ({ children, className, ...rest }: Props) => {
   return (
     <span
       className={cn(
-        "overflow-hidden rounded-full border-4 border-magenta bg-white",
+        "flex-none overflow-hidden rounded-full border-4 border-blue-dark bg-white",
         className,
       )}
       {...rest}

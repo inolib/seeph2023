@@ -1,14 +1,16 @@
 import { useLocation } from "react-router-dom";
 
-import { keypoints, speaker } from "../../data";
+import { headerKeypoints, speaker } from "../../data";
 import { cn } from "../../helpers";
 import { styles } from "../../styles";
 import { Icon } from "../Image/Icon";
+import { Logo } from "../Image/Logo";
 import { PhotoFrame } from "../Image/PhotoFrame";
 import { CallToActionLink } from "../Link/CallToActionLink";
+import { Live } from "../Live";
 import { Tag } from "../Tag";
 import { Landmark } from "../ui/Landmark/Landmark";
-import { PartnerSection } from "./PartnerSection";
+import { PartnersSection } from "./PartnersSection";
 
 export const Header = () => {
   const location = useLocation();
@@ -21,26 +23,23 @@ export const Header = () => {
       className={cn(
         styles.background.gradientToBlue,
         styles.bleeding.top,
-        "flex flex-col gap-2 overflow-hidden",
+        "relative z-0 flex flex-col gap-2 overflow-hidden pb-0 before:bottom-3 after:bottom-3 md:pb-2 md:before:absolute md:before:left-12 md:before:top-0 md:before:-z-10 md:before:h-[727px] md:before:w-[778px] md:before:bg-[url('/illustrations/header.png')] md:before:bg-contain md:after:absolute md:after:bottom-0 md:after:left-0 md:after:right-0 md:after:top-22 md:after:-z-10 md:after:origin-right md:after:-skew-y-3 md:after:bg-blue-dark lg:before:left-14 lg:before:h-[830px] lg:before:w-[889px] xl:before:left-16 xl:before:h-[934px] xl:before:w-[1000px] 2xl:before:left-18 2xl:before:h-[1038px] 2xl:before:w-[1111px]",
       )}
     >
       <div className="flex items-center gap-1">
-        <img alt="INOLIB" className="h-2" src="/logos/inolib.svg" />
+        <Logo alt="INOLIB" />
 
-        <p className="max-w-sm text-sm">
+        <p className="max-w-base text-sm">
           Votre partenaire en accessibilité numérique et solutions digitales
         </p>
       </div>
 
-      <div className="relative flex flex-col gap-2 sm:flex-row sm:justify-between">
-        <img
-          alt=""
-          className="absolute hidden h-full opacity-25 md:left-[30%] md:block lg:left-[35%]"
-          src="/illustrations/header.png"
-        />
-
-        <div className="z-0 flex flex-col items-center gap-1 text-center sm:items-start sm:text-left">
-          <Tag aria-hidden>Conférence</Tag>
+      <div className="flex flex-col items-center gap-2 sm:items-start">
+        <div className="flex flex-col items-center gap-1 text-center sm:items-start sm:text-left">
+          <div className="flex items-center gap-1">
+            <Tag aria-hidden>Conférence</Tag>
+            <Live aria-label="En direct">Live</Live>
+          </div>
 
           <Landmark.Heading className={styles.heading.h1}>
             L’accessibilité numérique, un monde d’opportunités
@@ -51,59 +50,70 @@ export const Header = () => {
 
             <p>4 sessions en novembre</p>
           </div>
+        </div>
+
+        <div
+          className={cn(
+            "flex w-full flex-col items-center gap-2 sm:flex-row sm:items-end sm:justify-around md:flex-col md:items-start md:justify-start",
+            {
+              invisible: !isHomeRoute,
+            },
+          )}
+        >
+          <div className="flex flex-col items-center gap-0.5 text-center sm:items-start sm:text-left md:flex-row md:items-center md:gap-1">
+            <PhotoFrame>
+              <img
+                alt=""
+                className="h-6 w-6 scale-x-[-1] grayscale"
+                src={speaker.photoUrl}
+              />
+            </PhotoFrame>
+
+            <div className="flex flex-col gap-1">
+              <p
+                className={cn(
+                  styles.separator.center,
+                  styles.separator.turquoise,
+                  "flex flex-col sm:before:inset-x-auto sm:before:mx-0",
+                )}
+              >
+                <span className="text-xl font-bold">{speaker.name}</span>
+                <span>{speaker.jobTitle}</span>
+              </p>
+
+              <p className="max-w-xs italic">{speaker.shortQuote}</p>
+            </div>
+          </div>
 
           <ul
             aria-label="Les points clés de la conférence"
-            className={cn("hidden sm:mt-1 sm:flex sm:flex-col sm:gap-2", {
-              invisible: !isHomeRoute,
-            })}
+            className="flex flex-col gap-1 text-left md:mt-2 md:grid md:grid-cols-3 md:gap-2"
           >
-            {keypoints.map((data) => (
+            {headerKeypoints.map((data) => (
               <li className="flex gap-0.75" key={data.title}>
                 <Icon className="relative top-0.25 h-1.5 w-1.5 bg-magenta">
                   <img alt="" className="h-0.75 w-0.75" src={data.iconUrl} />
                 </Icon>
 
-                <p className="max-w-sm">{data.title}.</p>
+                <p className="max-w-base">{data.title}</p>
               </li>
             ))}
           </ul>
         </div>
 
-        <div
+        <CallToActionLink
           className={cn(
-            "z-0 flex flex-col items-center gap-1 text-center sm:items-end sm:text-right xl:order-last",
-            { "sm:-mt-4": !isHomeRoute },
+            "sm:self-center md:absolute md:right-2 md:top-22 xl:right-4 2xl:right-12",
+            {
+              hidden: !isHomeRoute,
+            },
           )}
         >
-          <PhotoFrame>
-            <img
-              alt=""
-              className="h-6 w-6 scale-x-[-1] grayscale"
-              src={speaker.photoUrl}
-            />
-          </PhotoFrame>
-
-          <p
-            className={cn(styles.separator.turquoise, "-mt-0.75 flex flex-col")}
-          >
-            <span className="text-xl font-bold">{speaker.name}</span>
-            <span>{speaker.jobTitle}</span>
-          </p>
-
-          <p className="max-w-xs italic">{speaker.shortQuote}</p>
-        </div>
-
-        <CallToActionLink
-          className={cn("absolute bottom-0 left-[45%] hidden md:block", {
-            "md:hidden": !isHomeRoute,
-          })}
-        >
-          Réservez votre place dès maintenant
+          Réservez votre place maintenant
         </CallToActionLink>
       </div>
 
-      <PartnerSection isHomeRoute={isHomeRoute} />
+      <PartnersSection />
     </Landmark>
   );
 };

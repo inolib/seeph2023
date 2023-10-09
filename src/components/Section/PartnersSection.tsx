@@ -1,16 +1,20 @@
+import { useLocation } from "react-router-dom";
+
 import { cn } from "../../helpers";
+import { styles } from "../../styles";
 
-type Props = {
-  isHomeRoute: boolean;
-};
+export const PartnersSection = () => {
+  const location = useLocation();
 
-export const PartnerSection = ({ isHomeRoute }: Props) => {
+  const isHomeRoute = location.pathname === "/";
+
   return (
     <ul
       aria-label="Nos partenaires"
       className={cn(
-        "z-0 -mx-1 -mb-2 flex h-fit items-center justify-center gap-1 bg-white p-1 lg:-mx-2 lg:gap-2 lg:px-2 xl:-mx-4 xl:px-4",
-        { "-mt-14": !isHomeRoute },
+        styles.tab.right,
+        "z-0 -mx-1 -mb-2 mt-2 flex h-fit items-center justify-center gap-1 bg-white p-1 before:-top-2 after:-top-2 sm:gap-2 md:-mx-2 md:px-2 xl:-mx-4 xl:px-4",
+        { "-mt-25 sm:-mt-12 md:-mt-17 xl:-mt-15": !isHomeRoute },
       )}
     >
       <li role="none">

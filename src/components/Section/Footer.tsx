@@ -13,7 +13,7 @@ export const Footer = () => {
       )}
     >
       <p>
-        INOLIB © 2023{" "}
+        <span>INOLIB © 2023</span>{" "}
         <span className="hidden sm:inline-block">Tous droits réservés</span>
       </p>
 

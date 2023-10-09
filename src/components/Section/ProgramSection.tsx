@@ -7,50 +7,53 @@ import { Landmark } from "../ui/Landmark/Landmark";
 
 export const ProgramSection = () => {
   const id = useId();
-  const subsectionIds = [useId(), useId(), useId(), useId()];
 
   return (
-    <Landmark TagName="section" aria-labelledby={id}>
+    <Landmark TagName="section" aria-labelledby={id} className="mb-2">
       <div className="flex flex-col gap-1">
         <Landmark.Heading
           className={cn(
             styles.heading.h2,
             styles.separator.turquoise,
-            styles.shrink,
+            "max-w-xs",
           )}
           id={id}
         >
-          Explorons les opportunités pour votre entreprise
+          Explorez les opportunités pour votre entreprise
         </Landmark.Heading>
 
-        <p className={styles.heading.sub}>Au programme de la conférence</p>
+        <p className={styles.heading.sub}>Au programme</p>
       </div>
 
-      <div className="mt-2 flex flex-col gap-2 sm:max-h-30 sm:flex-wrap">
-        {program.map((data, index) => (
-          <Landmark
-            TagName="section"
-            aria-labelledby={subsectionIds[index]}
-            className={cn("flex flex-col gap-1 sm:max-w-[calc(50%-1.5rem)]")}
-            key={data.title}
-          >
-            <Landmark.Heading
-              className={styles.heading.h3}
-              id={subsectionIds[index]}
+      <ul className="mt-2 flex flex-col gap-2 sm:max-h-40 sm:flex-wrap">
+        {program.map((data, index) =>
+          index === 3 ? (
+            <li
+              className="flex flex-col gap-1 sm:max-w-[calc(50%-1.5rem)]"
+              key={data.title}
             >
-              {data.title}
-            </Landmark.Heading>
+              <p className={styles.heading.h3}>{data.title}</p>
 
-            <p>{data.description}</p>
-          </Landmark>
-        ))}
+              <p>{data.description}</p>
 
-        <img
-          alt=""
-          className="sm:max-w-[calc(50%-1.5rem)]"
-          src="/illustrations/program_section.png"
-        />
-      </div>
+              <img
+                alt=""
+                className="mt-1 max-h-12 self-center"
+                src="/illustrations/program_section.png"
+              />
+            </li>
+          ) : (
+            <li
+              className="flex flex-col gap-1 sm:max-w-[calc(50%-1.5rem)]"
+              key={data.title}
+            >
+              <p className={styles.heading.h3}>{data.title}</p>
+
+              <p>{data.description}</p>
+            </li>
+          ),
+        )}
+      </ul>
     </Landmark>
   );
 };

@@ -8,7 +8,7 @@ export const Icon = ({ children, className, ...rest }: Props) => {
   return (
     <span
       className={cn(
-        "flex items-center justify-center rounded-full text-center",
+        "flex flex-none items-center justify-center rounded-full text-center",
         className,
       )}
       {...rest}

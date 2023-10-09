@@ -2,10 +2,26 @@
 <html class="font-sans text-base lg:text-lg xl:text-xl" lang="fr">
   <head>
     <meta content="width=device-width, initial-scale=1" name="viewport" />
+
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-BNCWY18VPW"
+    ></script>
+
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      gtag("js", new Date());
+      gtag("config", "G-BNCWY18VPW");
+    </script>
   </head>
 
-  <body class="max-w-body mx-auto">
-    <div class="flex flex-col gap-4 p-1 lg:px-2 xl:px-4" id="root"></div>
+  <body class="mx-auto max-w-body">
+    <div class="flex flex-col gap-4 p-1 md:px-2 xl:px-4" id="root"></div>
     <script src="./src/index.tsx" type="module"></script>
   </body>
 </html>

@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import { Booking } from "./routes/booking";
-import { Congratulations } from "./routes/congratulations";
 import { Root } from "./routes/root";
+import { Thanks } from "./routes/thanks";
 
 export const router = createBrowserRouter([
   {
@@ -14,7 +14,7 @@ export const router = createBrowserRouter([
     element: <Booking />,
   },
   {
-    path: "/congratulations",
-    element: <Congratulations />,
+    path: "/thanks",
+    element: <Thanks />,
   },
 ]);

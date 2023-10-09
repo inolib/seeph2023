@@ -4,6 +4,7 @@ import { sessions } from "../../data";
 import { cn } from "../../helpers";
 import { styles } from "../../styles";
 import { CallToActionLink } from "../Link/CallToActionLink";
+import { Live } from "../Live";
 import { Tag } from "../Tag";
 import { Landmark } from "../ui/Landmark/Landmark";
 
@@ -16,32 +17,30 @@ export const BookingSection = () => {
       aria-labelledby={id}
       className="flex flex-col gap-2"
     >
-      <div className="flex flex-col gap-1">
-        <Tag aria-hidden className="self-start">
-          Conférence inédite
-        </Tag>
+      <div className="flex flex-col items-end gap-1 text-right">
+        <Tag aria-hidden>Conférence inédite</Tag>
 
         <Landmark.Heading
           className={cn(
             styles.heading.h2,
             styles.separator.turquoise,
-            styles.shrink,
+            styles.separator.right,
+            "max-w-[26ch]",
           )}
           id={id}
         >
-          Réservez vos places pour la conférence sur les challenges de
-          l’accessibilité numérique
+          Participez aux conférences INOLIB, pour un monde digital inclusif
         </Landmark.Heading>
 
-        <p className={styles.heading.sub}>Pour un monde digital inclusif</p>
+        <p className={styles.heading.sub}>Réservez votre place</p>
       </div>
 
       <div className="flex flex-col items-center gap-1 sm:flex-row sm:justify-center sm:gap-2">
         <img alt="" src="/logos/seeph_2023.png" />
 
-        <p className="text-center">
-          Un contenu inédit à l’occasion de la 27<sup>e</sup> Semaine Européenne
-          pour l’Emploi des Personnes Handicapées.
+        <p className="text-center sm:text-left">
+          Un évènement exclusif à l’occasion de la 27<sup>e</sup> Semaine
+          Européenne pour l’Emploi des Personnes Handicapées (SEEPH).
         </p>
       </div>
 
@@ -51,20 +50,9 @@ export const BookingSection = () => {
             className="flex flex-col items-center gap-1 rounded-3xl rounded-tr-none bg-blue-dark p-1 text-center text-white"
             key={key}
           >
-            <p
-              className={cn(
-                styles.separator.turquoise,
-                styles.separator.center,
-                "w-full text-2xl",
-              )}
-            >
-              En ligne
-            </p>
+            <Live>Live {session.time}</Live>
 
-            <p className="flex flex-col text-2xl">
-              <span>{session.date}</span>
-              <span className="text-turquoise">{session.time}</span>
-            </p>
+            <p className="text-xl">{session.date}</p>
 
             <CallToActionLink>Réserver</CallToActionLink>
           </li>

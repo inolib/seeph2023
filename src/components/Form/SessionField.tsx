@@ -3,13 +3,14 @@ import {
   type FieldElementProps,
   type FormStore,
 } from "@modular-forms/react";
-import { useId } from "react";
+import { useId, type JSX } from "react";
 
 import { cn } from "../../helpers";
-import type { Booking } from "../../routes/booking";
+import type { Booking } from "./BookingForm";
 
 type Props = {
   datetime: string;
+  disabled?: JSX.IntrinsicElements["input"]["disabled"];
   fieldProps: FieldElementProps<Booking, "datetime">;
   form: FormStore<Booking, undefined>;
   session: {
@@ -18,8 +19,9 @@ type Props = {
   };
 };
 
-export const SessionBooking = ({
+export const SessionField = ({
   datetime,
+  disabled,
   fieldProps,
   form,
   session,
@@ -36,6 +38,7 @@ export const SessionBooking = ({
           "peer/xxiii": datetime === "2023-11-23T16:00:00.000Z",
           "peer/xxiv": datetime === "2023-11-24T16:00:00.000Z",
         })}
+        disabled={disabled}
         id={id}
         type="radio"
         value={datetime}

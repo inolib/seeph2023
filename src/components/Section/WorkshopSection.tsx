@@ -12,9 +12,9 @@ export const WorkshopSection = () => {
     <Landmark
       TagName="section"
       aria-labelledby={id}
-      className="w-fit min-w-[80%] self-center bg-orange p-1 text-white shadow-[-2rem_2rem_0.25rem_0_rgba(226,108,89,0.25)]"
+      className={cn(styles.tab.right, "mt-2")}
     >
-      <div className="flex flex-col items-center gap-2">
+      <div className="flex w-fit min-w-[80%] flex-col items-center gap-2 self-center bg-orange px-2 py-1 text-white shadow-[-2rem_2rem_0.25rem_0_rgba(226,108,89,0.25)]">
         <div className="flex flex-col gap-1 text-center">
           <Landmark.Heading
             className={cn(
@@ -29,22 +29,15 @@ export const WorkshopSection = () => {
           </Landmark.Heading>
 
           <p className={styles.heading.sub}>
-            C’est simple, l’accessibilité adaptée à vos besoins !
+            Les bons conseils aux organisations
           </p>
         </div>
 
-        <div className="flex max-w-lg flex-col gap-1">
-          <p>
-            Vous souhaitez effectuer une réservation de groupe pour vos salariés
-            ou vos collaborateurs ?
-          </p>
-
-          <p>
-            Nous vous proposons un forfait adapté aux entreprises et aux
-            groupes, vous pouvez réserver pour un groupe de 12 personnes en une
-            seule fois.
-          </p>
-        </div>
+        <p className="flex max-w-xl flex-col gap-1">
+          Si vous souhaitez effectuer une réservation de groupe pour vos
+          collaborateurs, nous avons conçu un forfait sur mesure adapté à
+          votre structure.
+        </p>
 
         <ExternalLink
           aria-label="Réservez avec atomota"

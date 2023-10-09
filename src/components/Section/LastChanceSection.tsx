@@ -2,6 +2,7 @@ import { useId } from "react";
 
 import { cn } from "../../helpers";
 import { styles } from "../../styles";
+import { Logo } from "../Image/Logo";
 import { CallToActionLink } from "../Link/CallToActionLink";
 import { Landmark } from "../ui/Landmark/Landmark";
 
@@ -17,26 +18,26 @@ export const LastChanceSection = () => {
         "bg-gradient-to-b from-white from-50% to-black to-50%",
       )}
     >
-      <div className="mx-auto flex w-fit min-w-[80%] flex-col items-center gap-2 rounded-3xl bg-blue-dark p-1 text-white">
+      <div className="mx-auto flex w-fit min-w-[80%] flex-col items-center gap-2 rounded-3xl bg-blue-dark px-2 py-1 text-white">
+        <Logo />
+
         <div className="flex flex-col gap-1 text-center">
           <Landmark.Heading
-            aria-label="Conférence L’accessibilité numérique, un monde d’opportunités"
+            aria-label="Conférence « L’accessibilité numérique, un monde d’opportunités »"
             className={cn(
               styles.heading.h2,
               styles.separator.turquoise,
               styles.separator.center,
+              "flex flex-col gap-0.5",
             )}
             id={id}
           >
-            Conférence
+            <span>Conférence</span>
+            <span>L’accessibilité numérique, un monde d’opportunités</span>
           </Landmark.Heading>
 
-          <p className="text-lg font-bold">
-            L’accessibilité numérique, un monde d’opportunités
-          </p>
+          <p className={styles.heading.sub}>Places en quantité limitée</p>
         </div>
-
-        <p>De nombreuses entreprises ont déja fait leur réservation.</p>
 
         <CallToActionLink>Réservez votre place</CallToActionLink>
       </div>
