@@ -65,8 +65,8 @@ export const CheckoutForm = ({ clientSecret }: Props) => {
           if (stripe !== null && elements !== null) {
             const { error } = await stripe.confirmPayment({
               confirmParams: {
-                // TODO: return_url: "https://seeph2023.inolib.com/thanks",
-                return_url: "http://localhost:5173/thanks",
+                return_url: "https://seeph2023.inolib.com/thanks",
+                // return_url: "http://localhost:5173/thanks",
               },
               elements,
             });
