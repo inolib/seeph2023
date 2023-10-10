@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 import type { Booking } from "../components/Form/BookingForm";
 import { Footer } from "../components/Section/Footer";
@@ -21,30 +21,41 @@ export const Thanks = () => {
     booking: null,
   });
 
-  const { payment_intent } = useParams();
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
     void (async () => {
-      const data = await graphqlClient.request<{ readBooking: Booking | null }>(
-        /* GraphQL */ `
-          query ReadBooking($paymentIntentId: String!) {
-            readBooking(paymentIntentId: $paymentIntentId) {
-              id
-            }
-          }
-        `,
-        {
-          paymentIntentId: payment_intent,
-        },
-      );
+      const paymentIntentId = searchParams.get("payment_intent");
 
-      setState((state) =>
-        state.booking !== data.readBooking
-          ? { ...state, booking: data.readBooking }
-          : state,
-      );
+      if (paymentIntentId !== null) {
+        const data = await graphqlClient.request<{
+          readBooking: Booking | null;
+        }>(
+          /* GraphQL */ `
+            query ReadBooking($paymentIntentId: String!) {
+              readBooking(paymentIntentId: $paymentIntentId) {
+                firstName
+                lastName
+                organization
+                organizationTitle
+                email
+                tel
+              }
+            }
+          `,
+          {
+            paymentIntentId,
+          },
+        );
+
+        setState((state) =>
+          state.booking !== data.readBooking
+            ? { ...state, booking: data.readBooking }
+            : state,
+        );
+      }
     })();
-  }, [payment_intent]);
+  }, [searchParams]);
 
   return state.booking !== null ? (
     <>
