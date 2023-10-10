@@ -32,9 +32,7 @@ export const SessionField = ({
   return (
     <>
       <input
-        aria-label={`${toLocaleDateString(datetime)} ${toLocaleTimeString(
-          datetime,
-        )}`}
+        aria-label={`${session.date} ${session.time}`}
         className={cn("sr-only", {
           "peer/xx": datetime === "2023-11-20T11:00:00.000Z",
           "peer/xxi": datetime === "2023-11-21T11:00:00.000Z",
