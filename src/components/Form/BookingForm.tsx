@@ -180,7 +180,7 @@ export const BookingForm = ({ isLocked }: Props) => {
   );
 
   useEffect(() => {
-    setValue(bookingForm, "datetime", datetime);
+    setValue(bookingForm, "datetime", datetime ?? "");
   }, [bookingForm, datetime]);
 
   return (
