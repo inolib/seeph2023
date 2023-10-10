@@ -47,14 +47,16 @@ export const BookingSection = () => {
       <ul className="grid w-fit grid-cols-1 gap-2 self-center sm:grid-cols-2 2xl:grid-cols-4">
         {Object.entries(sessions).map(([key, session]) => (
           <li
-            className="flex flex-col items-center gap-1 rounded-3xl rounded-tr-none bg-blue-dark p-1 text-center text-white"
+            className="flex flex-col items-center gap-0.25 rounded-3xl rounded-tr-none bg-blue-dark p-1 text-center text-white"
             key={key}
           >
             <Live>Live {session.time}</Live>
 
-            <p className="text-xl">{session.date}</p>
+            <p aria-label={session.label} className="text-2xl">
+              {session.date}
+            </p>
 
-            <CallToActionLink>Réserver</CallToActionLink>
+            <CallToActionLink datetime={key}>Réserver</CallToActionLink>
           </li>
         ))}
       </ul>

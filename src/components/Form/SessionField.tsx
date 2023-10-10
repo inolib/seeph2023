@@ -5,7 +5,7 @@ import {
 } from "@modular-forms/react";
 import { useId, type JSX } from "react";
 
-import { cn, toLocaleDateString, toLocaleTimeString } from "../../helpers";
+import { cn } from "../../helpers";
 import type { Booking } from "./BookingForm";
 
 type Props = {
@@ -15,6 +15,7 @@ type Props = {
   form: FormStore<Booking, undefined>;
   session: {
     date: string;
+    label: string;
     time: string;
   };
 };
@@ -32,13 +33,7 @@ export const SessionField = ({
   return (
     <>
       <input
-        aria-label={`${session.date} ${session.time}`}
-        className={cn("sr-only", {
-          "peer/xx": datetime === "2023-11-20T11:00:00.000Z",
-          "peer/xxi": datetime === "2023-11-21T11:00:00.000Z",
-          "peer/xxiii": datetime === "2023-11-23T16:00:00.000Z",
-          "peer/xxiv": datetime === "2023-11-24T16:00:00.000Z",
-        })}
+        className={cn("sr-only")}
         disabled={disabled}
         id={id}
         type="radio"
@@ -52,21 +47,12 @@ export const SessionField = ({
           {
             "bg-blue-dark text-white": isChecked,
           },
-          {
-            "peer/xx:outline peer/xx:outline-2 peer/xx:outline-black":
-              datetime === "2023-11-20T11:00:00.000Z",
-            "peer/xxi:outline peer/xxi:outline-2 peer/xxi:outline-black":
-              datetime === "2023-11-21T11:00:00.000Z",
-            "peer/xxiii:outline peer/xxiii:outline-2 peer/xxiii:outline-black":
-              datetime === "2023-11-23T16:00:00.000Z",
-            "peer/xxiv:outline peer/xxiv:outline-2 peer/xxiv:outline-black":
-              datetime === "2023-11-24T16:00:00.000Z",
-          },
         )}
         htmlFor={id}
       >
-        <span>{session.date}</span>
-        <span className={cn({ "text-turquoise": isChecked })}>
+        <span aria-label={session.label}>{session.date}</span>
+        <br />
+        <span className={cn("-mt-1", { "text-turquoise": isChecked })}>
           {session.time}
         </span>
       </label>

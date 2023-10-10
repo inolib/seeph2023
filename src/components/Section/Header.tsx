@@ -29,8 +29,8 @@ export const Header = () => {
       <div className="flex items-center gap-1">
         <Logo alt="INOLIB" />
 
-        <p className="max-w-base text-sm">
-          Votre partenaire en accessibilité numérique et solutions digitales
+        <p className="max-w-[28ch] text-sm font-bold">
+          Votre allié en accessibilité numérique et solutions digitales
         </p>
       </div>
 

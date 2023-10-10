@@ -61,7 +61,11 @@ export const AttendeeField = ({ disabled, field, fieldProps }: Props) => {
         disabled={disabled}
         id={fieldId}
         inputMode={fields[field.name].inputMode}
-        placeholder={field.name === "tel" ? "+33 1 23 45 67 89" : undefined}
+        placeholder={
+          field.name === "tel"
+            ? "Format : 0123456789 ou +33123456789"
+            : undefined
+        }
         required
         type="text"
         value={field.value.value ?? ""}

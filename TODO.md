@@ -1,6 +1,7 @@
 # TODO
 
-- E-mail (Postmark) et page de confirmation avec contact@inolib.com
+- Informations de contact dans le footer
+- Tel input avec select pour le pays
 
 - Sécuriser l’API
 - Ajouter endpoint secret vérification

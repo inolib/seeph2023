@@ -36,10 +36,10 @@ export const styles = {
   shrink: cn("sm:max-w-80 md:max-w-70 lg:max-w-60 xl:max-w-50"),
   tab: {
     left: cn(
-      "relative after:h-2 after:z-0 after:w-2 after:shadow-white after:shadow-[-1.5rem_-1.5rem_0_0] after:absolute after:rounded-tl-[1.5rem] after:left-[50%] after:top-0 before:h-2 before:w-[50%] before:rounded-br-[1.5rem] before:bg-white before:absolute before:top-0 before:left-0",
+      "relative before:absolute before:left-0 before:top-0 before:h-2 before:w-[50%] before:rounded-br-[1.5rem] before:bg-white after:absolute after:left-[50%] after:top-0 after:z-0 after:h-2 after:w-2 after:rounded-tl-[1.5rem] after:shadow-[-1.5rem_-1.5rem_0_0] after:shadow-white",
     ),
     right: cn(
-      "relative after:h-2 before:-mr-1 md:before:-mr-2 xl:before:-mr-4 after:w-2 after:shadow-white after:shadow-[1.5rem_1.5rem_0_0] after:absolute after:rounded-br-[1.5rem] after:right-[50%] md:after:right-[calc(50%_-_1.5rem)] xl:after:right-[calc(50%_-_4.5rem)] after:-top-4 before:h-2 before:w-[calc(50%_+_1.5rem)] before:rounded-tl-[1.5rem] before:bg-white before:absolute before:-top-4 before:right-0",
+      "relative before:absolute before:-top-4 before:right-0 before:-mr-1 before:h-2 before:w-[calc(50%_+_1.5rem)] before:rounded-tl-[1.5rem] before:bg-white after:absolute after:-top-4 after:right-[50%] after:h-2 after:w-2 after:rounded-br-[1.5rem] after:shadow-[1.5rem_1.5rem_0_0] after:shadow-white md:before:-mr-2 md:after:right-[calc(50%_-_1.5rem)] xl:before:-mr-4 xl:after:right-[calc(50%_-_4.5rem)]",
     ),
   },
 };

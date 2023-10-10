@@ -41,14 +41,15 @@ export const keypoints = [
 
 export const numbers = [
   {
-    label: "Plus de 12 millions de personnes en situation de handicap",
+    label:
+      "Plus de 12 millions de personnes en situation de handicap en France",
     title: "+ de 12 millions",
-    description: "de personnes en situation de handicap",
+    description: "de personnes en situation de handicap en France",
   },
   {
-    label: "Plus de 3 millions de salariés en situation de handicap",
+    label: "Plus de 3 millions de salariés en situation de handicap en France",
     title: "+ de 3 millions",
-    description: "de salariés en situation de handicap",
+    description: "de salariés en situation de handicap en France",
   },
   {
     label: "95% des sites web présentent des problèmes d’accessibilité",
@@ -87,19 +88,23 @@ export const program = [
 
 export const sessions = {
   "2023-11-20T11:00:00.000Z": {
-    date: "20 novembre 2023",
+    date: "20 NOV. 2023",
+    label: "20 novembre 2023",
     time: "12 h – 14 h",
   },
   "2023-11-21T11:00:00.000Z": {
-    date: "21 novembre 2023",
+    date: "21 NOV. 2023",
+    label: "21 novembre 2023",
     time: "12 h – 14 h",
   },
   "2023-11-23T16:00:00.000Z": {
-    date: "23 novembre 2023",
+    date: "23 NOV. 2023",
+    label: "23 novembre 2023",
     time: "17 h – 19 h",
   },
   "2023-11-24T16:00:00.000Z": {
-    date: "24 novembre 2023",
+    date: "24 NOV. 2023",
+    label: "24 novembre 2023",
     time: "17 h – 19 h",
   },
 };

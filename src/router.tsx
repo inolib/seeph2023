@@ -10,7 +10,7 @@ export const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/booking",
+    path: "/booking/:datetime?",
     element: <Booking />,
   },
   {
