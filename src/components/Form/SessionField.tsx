@@ -5,7 +5,7 @@ import {
 } from "@modular-forms/react";
 import { useId, type JSX } from "react";
 
-import { cn } from "../../helpers";
+import { cn, toLocaleDateString, toLocaleTimeString } from "../../helpers";
 import type { Booking } from "./BookingForm";
 
 type Props = {
@@ -32,6 +32,9 @@ export const SessionField = ({
   return (
     <>
       <input
+        aria-label={`${toLocaleDateString(datetime)} ${toLocaleTimeString(
+          datetime,
+        )}`}
         className={cn("sr-only", {
           "peer/xx": datetime === "2023-11-20T11:00:00.000Z",
           "peer/xxi": datetime === "2023-11-21T11:00:00.000Z",

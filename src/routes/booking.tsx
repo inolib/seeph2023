@@ -49,9 +49,7 @@ export const useBooking = () => {
 const SetStateContext = createContext<SetState | null>(null);
 
 export const Booking = () => {
-  useDocumentTitle(
-    "INOLIB - Réservez votre place pour la conférence sur les challenges de l’accessibilité numérique",
-  );
+  useDocumentTitle("INOLIB - Formulaire de réservation");
 
   const [state, setState] = useState<State>({
     clientSecret: null,
@@ -61,11 +59,7 @@ export const Booking = () => {
     <>
       <Header />
 
-      <Landmark
-        TagName="main"
-        aria-label="Réservez votre place pour la conférence sur les challenges de l’accessibilité numérique"
-        className="mt-1 flex flex-col gap-4"
-      >
+      <Landmark TagName="main" className="mt-1 flex flex-col gap-4">
         <SetStateContext.Provider value={setState}>
           <BookingForm />
         </SetStateContext.Provider>
