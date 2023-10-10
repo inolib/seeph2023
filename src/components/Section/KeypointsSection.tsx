@@ -14,7 +14,7 @@ export const KeypointsSection = () => {
     <Landmark
       TagName="section"
       aria-labelledby={id}
-      className={cn(styles.tab.right, "mt-2 flex flex-col gap-2")}
+      className={cn(styles.tab.right, "mb-2 mt-2 flex flex-col gap-2")}
     >
       <div className="flex flex-col gap-1">
         <Tag aria-hidden className="self-start">

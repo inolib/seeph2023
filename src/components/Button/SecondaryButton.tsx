@@ -13,7 +13,7 @@ export const SecondaryButton = ({
   return (
     <button
       className={cn(
-        "rounded-lg bg-white px-1 py-0.5 font-bold text-black hover:bg-blue hover:text-gray disabled:cursor-not-allowed disabled:bg-white disabled:text-black",
+        "rounded-lg bg-white px-1 py-0.5 font-bold text-black hover:bg-blue hover:text-white disabled:cursor-not-allowed disabled:bg-white disabled:text-black",
         className,
       )}
       type={type}

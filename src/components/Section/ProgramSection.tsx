@@ -9,7 +9,7 @@ export const ProgramSection = () => {
   const id = useId();
 
   return (
-    <Landmark TagName="section" aria-labelledby={id} className="mb-2">
+    <Landmark TagName="section" aria-labelledby={id}>
       <div className="flex flex-col gap-1">
         <Landmark.Heading
           className={cn(

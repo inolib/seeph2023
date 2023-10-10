@@ -1,14 +1,52 @@
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+
+import type { Booking } from "../components/Form/BookingForm";
 import { Footer } from "../components/Section/Footer";
 import { Header } from "../components/Section/Header";
 import { Landmark } from "../components/ui/Landmark/Landmark";
+import { graphqlClient } from "../graphqlClient";
 import { cn } from "../helpers";
 import { useDocumentTitle } from "../hooks";
 import { styles } from "../styles";
 
-export const Thanks = () => {
-  useDocumentTitle("INOLIB - Merci pour votre réservation !");
+type State = {
+  booking: Booking | null;
+};
 
-  return (
+export const Thanks = () => {
+  useDocumentTitle("Merci pour votre réservation !");
+
+  const [state, setState] = useState<State>({
+    booking: null,
+  });
+
+  const { payment_intent } = useParams();
+
+  useEffect(() => {
+    void (async () => {
+      const data = await graphqlClient.request<{ readBooking: Booking | null }>(
+        /* GraphQL */ `
+          query ReadBooking($paymentIntentId: String!) {
+            readBooking(paymentIntentId: $paymentIntentId) {
+              id
+            }
+          }
+        `,
+        {
+          paymentIntentId: payment_intent,
+        },
+      );
+
+      setState((state) =>
+        state.booking !== data.readBooking
+          ? { ...state, booking: data.readBooking }
+          : state,
+      );
+    })();
+  }, [payment_intent]);
+
+  return state.booking !== null ? (
     <>
       <Header />
 
@@ -19,13 +57,36 @@ export const Thanks = () => {
 
         <div className="flex max-w-xl flex-col gap-1">
           <p>
-            Vous recevrez dans les 24 prochaines heures un e-mail de
-            confirmation ainsi que le reçu de votre paiement.
+            Vous recevrez bientôt un e-mail de confirmation ainsi que le reçu de
+            votre paiement.
+          </p>
+
+          <p>Voici un récapitulatif de votre réservation :</p>
+
+          <div>
+            <p>Prénom : {state.booking.firstName}</p>
+            <p>Nom : {state.booking.lastName}</p>
+            <p>Entreprise : {state.booking.organization}</p>
+            <p>Fonction : {state.booking.organizationTitle}</p>
+            <p>Adresse e-mail : {state.booking.email}</p>
+            <p>Numéro de téléphone : {state.booking.tel}</p>
+          </div>
+
+          <div>
+            <p>Prix HT : 70 €</p>
+            <p className="font-bold">Prix TTC : 84 €</p>
+          </div>
+
+          <p>
+            Vous pouvez réserver des places supplémentaires en retournant sur la{" "}
+            <Link className="underline" to="/booking">
+              page de réservation
+            </Link>
+            .
           </p>
 
           <p>
-            Nous restons à votre disposition pour vos questions et réclamations,
-            vous pouvez nous écrire à{" "}
+            Nous restons à votre disposition, vous pouvez nous écrire à{" "}
             <a
               className="underline"
               href="mailto:contact@inolib.com"
@@ -41,5 +102,5 @@ export const Thanks = () => {
 
       <Footer />
     </>
-  );
+  ) : null;
 };

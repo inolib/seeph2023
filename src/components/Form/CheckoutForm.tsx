@@ -4,14 +4,22 @@ import {
   useStripe,
 } from "@stripe/react-stripe-js";
 import type { PaymentIntent, StripeErrorType } from "@stripe/stripe-js";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState, type JSX } from "react";
+import { scroller } from "react-scroll";
 
+import { graphqlClient } from "../../graphqlClient";
+import { toLocaleDateString, toLocaleTimeString } from "../../helpers";
+import { useBooking } from "../../routes/booking";
 import { styles } from "../../styles";
 import { PrimaryButton } from "../Button/PrimaryButton";
+import { SecondaryButton } from "../Button/SecondaryButton";
 import { Alert } from "../ui/Alert";
+import type { Booking } from "./BookingForm";
 
 export type Props = {
+  booking: Booking | null;
   clientSecret: string | null;
+  paymentIntentId: string | null;
 };
 
 type State = {
@@ -21,7 +29,11 @@ type State = {
   };
 };
 
-export const CheckoutForm = ({ clientSecret }: Props) => {
+export const CheckoutForm = ({
+  booking,
+  clientSecret,
+  paymentIntentId,
+}: Props) => {
   const [state, setState] = useState<State>({
     isLoading: false,
     paymentIntent: {
@@ -29,6 +41,7 @@ export const CheckoutForm = ({ clientSecret }: Props) => {
     },
   });
 
+  const { setClientSecret, setIsLocked } = useBooking();
   const elements = useElements();
   const stripe = useStripe();
 
@@ -53,6 +66,35 @@ export const CheckoutForm = ({ clientSecret }: Props) => {
 
     return "";
   }, [state.paymentIntent.status]);
+
+  const handleEditButtonClick: NonNullable<
+    JSX.IntrinsicElements["button"]["onClick"]
+  > = useCallback(() => {
+    void (async () => {
+      setClientSecret(null);
+
+      if (paymentIntentId !== null) {
+        await graphqlClient.request(
+          /* GraphQL */ `
+            mutation CancelPaymentIntent($id: String!) {
+              cancelPaymentIntent(id: $id) {
+                id
+              }
+            }
+          `,
+          {
+            id: paymentIntentId,
+          },
+        );
+      }
+
+      setIsLocked(false);
+
+      scroller.scrollTo("step-2", {
+        duration: 0,
+      });
+    })();
+  }, [paymentIntentId, setClientSecret, setIsLocked]);
 
   const handleSubmit: NonNullable<JSX.IntrinsicElements["form"]["onSubmit"]> =
     useCallback(
@@ -121,13 +163,46 @@ export const CheckoutForm = ({ clientSecret }: Props) => {
       <div className="flex flex-col gap-2">
         <Alert className=" text-sm">{paymentMessage}</Alert>
 
-        <PrimaryButton
-          className="self-center"
-          disabled={state.isLoading}
-          type="submit"
-        >
-          Payer 84 € TTC
-        </PrimaryButton>
+        {booking !== null ? (
+          <div className="flex flex-col gap-1">
+            <p className={styles.heading.h3}>
+              Votre réservation pour la conférence du{" "}
+              {toLocaleDateString(booking.datetime)} à{" "}
+              {toLocaleTimeString(booking.datetime)}
+            </p>
+
+            <div>
+              <p>Prénom : {booking.firstName}</p>
+              <p>Nom : {booking.lastName}</p>
+              <p>Entreprise : {booking.organization}</p>
+              <p>Fonction : {booking.organizationTitle}</p>
+              <p>Adresse e-mail : {booking.email}</p>
+              <p>Numéro de téléphone : {booking.tel}</p>
+            </div>
+
+            <div>
+              <p>Prix HT : 70 €</p>
+              <p className="font-bold">Prix TTC : 84 €</p>
+            </div>
+          </div>
+        ) : null}
+
+        <div className="flex justify-center gap-2">
+          <SecondaryButton
+            className="bg-gray disabled:bg-gray"
+            onClick={handleEditButtonClick}
+          >
+            Modifier
+          </SecondaryButton>
+
+          <PrimaryButton
+            className="self-center"
+            disabled={state.isLoading}
+            type="submit"
+          >
+            Payer
+          </PrimaryButton>
+        </div>
       </div>
     </form>
   );
