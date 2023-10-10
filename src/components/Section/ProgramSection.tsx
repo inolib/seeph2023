@@ -39,7 +39,7 @@ export const ProgramSection = () => {
               <img
                 alt=""
                 className="mt-1 max-h-12 self-center"
-                src="/illustrations/program_section.png"
+                src="illustrations/program_section.png"
               />
             </li>
           ) : (

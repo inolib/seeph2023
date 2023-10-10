@@ -36,7 +36,7 @@ export const BookingSection = () => {
       </div>
 
       <div className="flex flex-col items-center gap-1 sm:flex-row sm:justify-center sm:gap-2">
-        <img alt="" src="/logos/seeph_2023.png" />
+        <img alt="" src="logos/seeph_2023.png" />
 
         <p className="text-center sm:text-left">
           Un évènement exclusif à l’occasion de la 27<sup>e</sup> Semaine

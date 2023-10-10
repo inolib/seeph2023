@@ -46,7 +46,7 @@ export const Header = () => {
           </Landmark.Heading>
 
           <div className="flex items-center gap-0.5 text-turquoise">
-            <img alt="" className="h-1" src="/icons/calendar.svg" />
+            <img alt="" className="h-1" src="icons/calendar.svg" />
 
             <p>4 sessions en novembre</p>
           </div>

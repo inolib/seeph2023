@@ -48,7 +48,7 @@ export const WorkshopSection = () => {
           <img
             alt=""
             className="relative top-[0.2rem] h-1"
-            src="/logos/atomota.png"
+            src="logos/atomota.png"
           />
         </ExternalLink>
       </div>
