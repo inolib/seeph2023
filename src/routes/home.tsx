@@ -12,7 +12,7 @@ import { WorkshopSection } from "../components/Section/WorkshopSection";
 import { Landmark } from "../components/ui/Landmark/Landmark";
 import { useDocumentTitle } from "../hooks";
 
-export const Root = () => {
+export const Home = () => {
   useDocumentTitle(
     "INOLIB - Conférence L’accessibilité numérique, un monde d’opportunités",
   );
