@@ -25,15 +25,14 @@ export const keypoints = [
   },
   {
     iconUrl: "/icons/line_chart.svg",
-    title:
-      "Au dela du web, quel futur pour l’accessibilité ? L’apport de l’intelligence artificielle, de nouveaux modes d’interactions",
+    title: "Au dela du web, quel futur pour l’accessibilité ?",
     description:
-      "Quels sont les apports de l’intelligence artificielle, des modes d’intéractions émergeants ?",
+      "Quels sont les apports de l’intelligence artificielle, des modes d’interactions émergeants ?",
   },
   {
     iconUrl: "/icons/feather.svg",
     title:
-      "Découvrez quelques bonnes pratiques, techniques, graphiques, éditorielles, et fonctionnelles pour un support digital accessible",
+      "Découvrez quelques bonnes pratiques, techniques, graphiques, éditoriales, et fonctionnelles pour un support digital accessible",
     description:
       "Accédez en avant-première à la nouvelle plateforme interactive d’INOLIB de simulation d’accessibilité numérique.",
   },
