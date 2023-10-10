@@ -35,8 +35,11 @@ export const styles = {
   },
   shrink: cn("sm:max-w-80 md:max-w-70 lg:max-w-60 xl:max-w-50"),
   tab: {
-    left: "relative after:h-2 after:z-0 after:w-2 after:shadow-white after:shadow-[-1.5rem_-1.5rem_0_0] after:absolute after:rounded-tl-[1.5rem] after:left-[50%] after:top-0 before:h-2 before:w-[50%] before:rounded-br-[1.5rem] before:bg-white before:absolute before:top-0 before:left-0",
-    right:
+    left: cn(
+      "relative after:h-2 after:z-0 after:w-2 after:shadow-white after:shadow-[-1.5rem_-1.5rem_0_0] after:absolute after:rounded-tl-[1.5rem] after:left-[50%] after:top-0 before:h-2 before:w-[50%] before:rounded-br-[1.5rem] before:bg-white before:absolute before:top-0 before:left-0",
+    ),
+    right: cn(
       "relative after:h-2 before:-mr-1 md:before:-mr-2 xl:before:-mr-4 after:w-2 after:shadow-white after:shadow-[1.5rem_1.5rem_0_0] after:absolute after:rounded-br-[1.5rem] after:right-[50%] md:after:right-[calc(50%_-_1.5rem)] xl:after:right-[calc(50%_-_4.5rem)] after:-top-4 before:h-2 before:w-[calc(50%_+_1.5rem)] before:rounded-tl-[1.5rem] before:bg-white before:absolute before:-top-4 before:right-0",
+    ),
   },
 };

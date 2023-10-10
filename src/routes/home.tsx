@@ -13,9 +13,7 @@ import { Landmark } from "../components/ui/Landmark/Landmark";
 import { useDocumentTitle } from "../hooks";
 
 export const Home = () => {
-  useDocumentTitle(
-    "INOLIB - Conférence L’accessibilité numérique, un monde d’opportunités",
-  );
+  useDocumentTitle("Conférence INOLIB");
 
   return (
     <>
