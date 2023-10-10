@@ -18,19 +18,19 @@ export const PartnersSection = () => {
       )}
     >
       <li role="none">
-        <img alt="La Poste" src="logos/la_poste.png" />
+        <img alt="La Poste" src="/logos/la_poste.png" />
       </li>
 
       <li role="none">
-        <img alt="atomota" src="logos/atomota.png" />
+        <img alt="atomota" src="/logos/atomota.png" />
       </li>
 
       <li role="none">
-        <img alt="Agence MADI" src="logos/madiweb.png" />
+        <img alt="Agence MADI" src="/logos/madiweb.png" />
       </li>
 
       <li role="none">
-        <img alt="Blurry Ads" src="logos/blurry_ads.png" />
+        <img alt="Blurry Ads" src="/logos/blurry_ads.png" />
       </li>
     </ul>
   );

@@ -1,16 +1,16 @@
 export const headerKeypoints = [
   {
-    iconUrl: "icons/sticker.svg",
+    iconUrl: "/icons/sticker.svg",
     title:
       "Appréhendez les enjeux et l’importance de l’accessibilité numérique.",
   },
   {
-    iconUrl: "icons/line_chart.svg",
+    iconUrl: "/icons/line_chart.svg",
     title:
       "Comprenez les benéfices et les opportunités d’une démarche d’accessibilité numérique pour votre organisation.",
   },
   {
-    iconUrl: "icons/feather.svg",
+    iconUrl: "/icons/feather.svg",
     title:
       "Repartez avec des directives claires pour entreprendre vos premières démarches vers l’accessibilité numérique.",
   },
@@ -18,20 +18,20 @@ export const headerKeypoints = [
 
 export const keypoints = [
   {
-    iconUrl: "icons/sticker.svg",
+    iconUrl: "/icons/sticker.svg",
     title: "Comprenez la valeur ajoutée de l’accessibilité numérique",
     description:
       "Découvrez des témoignages et des démonstrations pour faciliter la compréhension.",
   },
   {
-    iconUrl: "icons/line_chart.svg",
+    iconUrl: "/icons/line_chart.svg",
     title:
       "Au dela du web, quel futur pour l’accessibilité ? L’apport de l’intelligence artificielle, de nouveaux modes d’interactions",
     description:
       "Quels sont les apports de l’intelligence artificielle, des modes d’intéractions émergeants ?",
   },
   {
-    iconUrl: "icons/feather.svg",
+    iconUrl: "/icons/feather.svg",
     title:
       "Découvrez quelques bonnes pratiques, techniques, graphiques, éditorielles, et fonctionnelles pour un support digital accessible",
     description:
@@ -107,7 +107,7 @@ export const sessions = {
 export const speaker = {
   name: "Djebrine ALOUI",
   jobTitle: "Fondateur et CEO d’INOLIB",
-  photoUrl: "photos/djebrine.png",
+  photoUrl: "/photos/djebrine.png",
   shortQuote: "« Venez explorer les clés de la révolution numérique. »",
   longQuote:
     "« Venez explorer les clés de la révolution numérique. J’aurai le plaisir durant 1 h 30 de vous initier à l’accessibilité et de vous apporter les connaissances essentielles pour une stratégie gagnante. Et enfin toute l’équipe d’INOLIB restera disponible pour répondre à vos questions. »",

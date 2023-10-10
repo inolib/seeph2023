@@ -9,7 +9,7 @@ export const Logo = ({ alt = "", className, ...rest }: Props) => {
     <img
       alt={alt}
       className={cn("h-3", className)}
-      src="logos/inolib.svg"
+      src="/logos/inolib.svg"
       {...rest}
     />
   );

@@ -45,7 +45,7 @@ export const ToolkitSection = () => {
           <img
             alt=""
             className="max-h-12"
-            src="illustrations/toolkit_section.png"
+            src="/illustrations/toolkit_section.png"
           />
         </div>
 
