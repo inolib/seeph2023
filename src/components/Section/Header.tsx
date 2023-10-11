@@ -36,7 +36,7 @@ export const Header = () => {
 
       <div className="flex flex-col gap-2">
         <div className="flex flex-col gap-1">
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-0.5">
             <Tag aria-hidden>Conférence</Tag>
             <Live aria-label="En direct">Live</Live>
           </div>
