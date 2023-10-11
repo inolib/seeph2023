@@ -23,6 +23,10 @@ export const styles = {
     sub: cn("text-lg font-bold"),
   },
   link: cn("underline"),
+  outline: (color: string) =>
+    cn(
+      `outline-none focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-${color}`,
+    ),
   separator: {
     center: cn("before:inset-x-0 before:mx-auto"),
     right: cn("before:right-0"),

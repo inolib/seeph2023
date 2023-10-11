@@ -50,29 +50,32 @@ export const AttendeeField = ({ disabled, field, fieldProps }: Props) => {
 
   return (
     <div className="flex flex-col">
-      <label className={styles.shrink} htmlFor={fieldId}>
+      <label
+        className={cn(styles.shrink, styles.heading.h3, "cursor-pointer")}
+        htmlFor={fieldId}
+      >
         {fields[field.name].label}
       </label>
 
       <input
         aria-errormessage={`${fieldId}-error`}
         aria-invalid={field.error.value !== ""}
-        className={cn(styles.shrink, "border border-solid border-black p-0.25")}
+        className={cn(
+          styles.shrink,
+          styles.outline("black"),
+          "mt-0.25 rounded-lg p-0.25",
+        )}
         disabled={disabled}
         id={fieldId}
         inputMode={fields[field.name].inputMode}
-        placeholder={
-          field.name === "tel"
-            ? "Format : 0123456789 ou +33123456789"
-            : undefined
-        }
+        placeholder={field.name === "tel" ? "" : undefined}
         required
         type="text"
-        value={field.value.value ?? ""}
+        value={field.value.value}
         {...fieldProps}
       />
 
-      <Alert className="mt-0.25 text-sm" id={`${fieldId}-error`}>
+      <Alert className="mt-0.25" id={`${fieldId}-error`}>
         {field.error.value}
       </Alert>
     </div>

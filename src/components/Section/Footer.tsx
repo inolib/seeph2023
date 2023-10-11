@@ -29,7 +29,10 @@ export const Footer = () => {
 
         <ul className="flex items-center justify-end gap-0.25">
           <li className="flex-none">
-            <ExternalLink href="https://www.youtube.com/@inolib287">
+            <ExternalLink
+              className={styles.outline("white")}
+              href="https://www.youtube.com/@inolib287"
+            >
               <img
                 alt="YouTube"
                 className="h-[1.25rem]"
@@ -39,7 +42,10 @@ export const Footer = () => {
           </li>
 
           <li className="flex-none">
-            <ExternalLink href="https://fr.linkedin.com/company/inolib">
+            <ExternalLink
+              className={styles.outline("white")}
+              href="https://fr.linkedin.com/company/inolib"
+            >
               <img
                 alt="LinkedIn"
                 className="h-[1.25rem]"

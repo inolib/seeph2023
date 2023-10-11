@@ -7,6 +7,7 @@ import {
   type Dispatch,
   type SetStateAction,
 } from "react";
+import { useParams } from "react-router-dom";
 import { Element, scroller } from "react-scroll";
 
 import {
@@ -87,11 +88,19 @@ export const Booking = () => {
     paymentIntentId: null,
   });
 
+  const { datetime } = useParams();
+
+  useEffect(() => {
+    if (datetime !== undefined) {
+      scroller.scrollTo("step-2", { duration: 0 });
+    } else {
+      scroller.scrollTo("step-1", { duration: 0 });
+    }
+  }, [datetime]);
+
   useEffect(() => {
     if (state.clientSecret !== null) {
-      scroller.scrollTo("step-3", {
-        duration: 0,
-      });
+      scroller.scrollTo("step-3", { duration: 0 });
     }
   }, [state.clientSecret]);
 
@@ -113,13 +122,14 @@ export const Booking = () => {
                   "flex flex-col gap-1 text-left",
                 )}
               >
-                <Icon className="h-2 w-2 flex-none bg-blue text-white">
-                  <span className="sr-only">Étape</span>3
-                </Icon>
+                <div className="flex gap-0.5">
+                  <Icon className="h-2 w-2 flex-none bg-blue text-white">
+                    <span className="sr-only">Étape</span>
+                    <span>3</span>
+                  </Icon>
 
-                <span className={cn(styles.separator.turquoise, "-mt-0.5")}>
-                  Réglez votre commande
-                </span>
+                  <div className="relative top-0.25">Réglez votre commande</div>
+                </div>
               </Landmark.Heading>
 
               <Elements

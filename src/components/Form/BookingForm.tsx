@@ -1,5 +1,6 @@
 import {
   getError,
+  reset,
   setValue,
   useForm,
   valiForm,
@@ -180,7 +181,11 @@ export const BookingForm = ({ isLocked }: Props) => {
   );
 
   useEffect(() => {
-    setValue(bookingForm, "datetime", datetime ?? "");
+    if (datetime !== undefined) {
+      setValue(bookingForm, "datetime", datetime);
+    } else {
+      reset(bookingForm, datetime);
+    }
   }, [bookingForm, datetime]);
 
   return (
@@ -190,38 +195,43 @@ export const BookingForm = ({ isLocked }: Props) => {
           <Landmark.Heading
             className={cn(styles.heading.h2, "flex flex-col gap-1 text-left")}
           >
-            <Icon className="h-2 w-2 flex-none bg-blue text-white">
-              <span className="sr-only">Étape</span>1
-            </Icon>
+            <div className="flex gap-0.5">
+              <Icon className="h-2 w-2 flex-none bg-blue text-white">
+                <span className="sr-only">Étape</span>
+                <span>1</span>
+              </Icon>
 
-            <span className={cn(styles.separator.turquoise, "-mt-0.5")}>
-              Choisissez votre session de conférence
-            </span>
+              <div className="relative top-0.25">
+                <p>Choisissez votre session de conférence</p>
 
-            <span className={styles.heading.sub}>
-              Toutes les réservations sont individuelles
-            </span>
+                <p className={styles.heading.sub}>
+                  Toutes les réservations sont individuelles
+                </p>
+              </div>
+            </div>
           </Landmark.Heading>
 
-          <ul className="grid grid-cols-1 gap-2 self-center sm:grid-cols-2 lg:grid-cols-4">
-            {Object.entries(sessions).map(([datetime, session]) => (
-              <li key={datetime}>
-                <Field name="datetime">
-                  {(field, props) => (
-                    <SessionField
-                      datetime={datetime}
-                      disabled={isLocked}
-                      fieldProps={props}
-                      form={bookingForm}
-                      session={session}
-                    />
-                  )}
-                </Field>
-              </li>
-            ))}
-          </ul>
+          <div className="flex flex-col gap-0.25 text-center">
+            <ul className="grid grid-cols-2 gap-1 self-center md:grid-cols-4">
+              {Object.entries(sessions).map(([datetime, session]) => (
+                <li key={datetime}>
+                  <Field name="datetime">
+                    {(field, props) => (
+                      <SessionField
+                        datetime={datetime}
+                        disabled={isLocked}
+                        fieldProps={props}
+                        form={bookingForm}
+                        session={session}
+                      />
+                    )}
+                  </Field>
+                </li>
+              ))}
+            </ul>
 
-          <Alert className="text-sm">{getError(bookingForm, "datetime")}</Alert>
+            <Alert>{getError(bookingForm, "datetime")}</Alert>
+          </div>
         </Landmark>
       </Element>
 
@@ -236,17 +246,20 @@ export const BookingForm = ({ isLocked }: Props) => {
           <Landmark.Heading
             className={cn(styles.heading.h2, "flex flex-col gap-1 text-left")}
           >
-            <Icon className="h-2 w-2 flex-none bg-blue text-white">
-              <span className="sr-only">Étape</span>2
-            </Icon>
+            <div className="flex gap-0.5">
+              <Icon className="h-2 w-2 flex-none bg-blue text-white">
+                <span className="sr-only">Étape</span>
+                <span>2</span>
+              </Icon>
 
-            <span className={cn(styles.separator.turquoise, "-mt-0.5")}>
-              Complétez votre inscription
-            </span>
+              <div className="relative top-0.25">
+                <p>Complétez votre inscription</p>
 
-            <span className={styles.heading.sub}>
-              Tous les champs sont obligatoires
-            </span>
+                <p className={styles.heading.sub}>
+                  Tous les champs sont obligatoires
+                </p>
+              </div>
+            </div>
           </Landmark.Heading>
 
           <div className="flex flex-col gap-1">

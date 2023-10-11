@@ -41,7 +41,10 @@ export const WorkshopSection = () => {
 
         <ExternalLink
           aria-label="Réservez avec atomota"
-          className="flex flex-none items-center gap-0.25 self-center rounded-full bg-blue px-1 py-0.5 text-center font-bold text-white hover:bg-turquoise hover:text-black sm:self-end"
+          className={cn(
+            styles.outline("white"),
+            "flex flex-none items-center gap-0.25 self-center rounded-full bg-blue px-1 py-0.5 text-center font-bold text-white hover:bg-turquoise hover:text-black sm:self-end",
+          )}
           href="https://www.atomota.fr/interventions/l-accessibilite-numerique-un-monde-d-opportunites"
         >
           Réservez sur

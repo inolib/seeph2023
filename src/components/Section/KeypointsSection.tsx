@@ -59,7 +59,12 @@ export const KeypointsSection = () => {
         ))}
       </ul>
 
-      <CallToActionLink className="absolute -bottom-5 left-0 z-10">
+      <CallToActionLink
+        className={cn(
+          styles.outline("black"),
+          "absolute -bottom-5 left-0 z-10",
+        )}
+      >
         <span className="sm:hidden">Réservez maintenant</span>
         <span className="hidden sm:inline-block">
           Réservez dès maintenant pour novembre 2023
