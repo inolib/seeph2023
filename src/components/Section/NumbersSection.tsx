@@ -7,7 +7,7 @@ export const NumbersSection = () => {
     <Landmark
       TagName="section"
       aria-label="Quelques chiffres"
-      className="mb-2 flex flex-col gap-2"
+      className="flex flex-col gap-2"
     >
       <ul className="grid w-fit grid-cols-1 gap-2 self-center text-center sm:grid-cols-2 lg:grid-cols-4">
         {numbers.map((data) => (

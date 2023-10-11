@@ -35,10 +35,10 @@ export const BookingSection = () => {
         <p className={styles.heading.sub}>Réservez votre place</p>
       </div>
 
-      <div className="flex flex-col items-center gap-1 sm:flex-row sm:justify-center sm:gap-2">
+      <div className="flex flex-col items-center gap-1 self-center sm:flex-row sm:justify-center sm:gap-2">
         <img alt="" src="/logos/seeph_2023.png" />
 
-        <p className="text-center sm:text-left">
+        <p className="max-w-base text-center sm:text-left">
           Un évènement exclusif à l’occasion de la 27<sup>e</sup> Semaine
           Européenne pour l’Emploi des Personnes Handicapées (SEEPH).
         </p>

@@ -4,6 +4,7 @@ import { keypoints } from "../../data";
 import { cn } from "../../helpers";
 import { styles } from "../../styles";
 import { Icon } from "../Image/Icon";
+import { CallToActionLink } from "../Link/CallToActionLink";
 import { Tag } from "../Tag";
 import { Landmark } from "../ui/Landmark/Landmark";
 
@@ -14,7 +15,10 @@ export const KeypointsSection = () => {
     <Landmark
       TagName="section"
       aria-labelledby={id}
-      className={cn(styles.tab.right, "mb-2 mt-2 flex flex-col gap-2")}
+      className={cn(
+        "relative before:absolute before:-left-1 before:-top-6 before:h-4 before:w-[calc(75%_+_1.5rem)] before:rounded-tr-[3rem] before:bg-white after:absolute after:-top-6 after:left-[75%] after:h-4 after:w-4 after:rounded-bl-[3rem] after:shadow-[-3rem_3rem_0_0] after:shadow-white md:before:-left-2 md:before:w-[calc(75%_+_3rem)] xl:before:-left-4 xl:before:w-[calc(75%_+_6rem)]",
+        "mb-2 mt-2 flex flex-col gap-2",
+      )}
     >
       <div className="flex flex-col gap-1">
         <Tag aria-hidden className="self-start">
@@ -58,6 +62,13 @@ export const KeypointsSection = () => {
           </li>
         ))}
       </ul>
+
+      <CallToActionLink className="absolute -bottom-5 left-0 z-10">
+        <span className="sm:hidden">Réservez maintenant</span>
+        <span className="hidden sm:inline-block">
+          Réservez dès maintenant pour novembre 2023
+        </span>
+      </CallToActionLink>
     </Landmark>
   );
 };

@@ -15,8 +15,8 @@ export const SpeakerSection = () => {
       aria-labelledby={id}
       className={cn(
         styles.bleeding.middle,
-        styles.tab.left,
-        "flex flex-col gap-4 bg-gray text-center",
+        "relative before:absolute before:left-0 before:top-0 before:h-4 before:w-[calc(75%_-_1.5rem)] before:rounded-br-[3rem] before:bg-white after:absolute after:left-[calc(75%_-_1.5rem)] after:top-0 after:z-0 after:h-4 after:w-4 after:rounded-tl-[3rem] after:shadow-[-3rem_-3rem_0_0] after:shadow-white",
+        "flex flex-col gap-4 bg-gray py-6 text-center",
       )}
     >
       <div className="flex flex-col items-center gap-1">

@@ -18,7 +18,7 @@ export const LastChanceSection = () => {
         "bg-gradient-to-b from-white from-50% to-black to-50%",
       )}
     >
-      <div className="mx-auto flex w-fit min-w-[80%] flex-col items-center gap-2 rounded-3xl bg-blue-dark px-2 py-1 text-white">
+      <div className="mx-auto flex w-fit flex-col items-center gap-2 rounded-3xl bg-blue-dark p-2 text-white">
         <Logo />
 
         <div className="flex flex-col gap-1 text-center">

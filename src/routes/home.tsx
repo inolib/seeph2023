@@ -22,13 +22,13 @@ export const Home = () => {
       <Landmark TagName="main" className="mt-1 flex flex-col gap-4">
         <BookingSection />
         <ProgramSection />
-        <NumbersSection />
         <ToolkitSection />
         <KeypointsSection />
         <SpeakerSection />
         <WorkshopSection />
         <ReviewsSection />
         <LastChanceSection />
+        {/* <NumbersSection /> */}
       </Landmark>
 
       <Footer />

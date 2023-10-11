@@ -23,7 +23,7 @@ export const Header = () => {
       className={cn(
         styles.background.gradientToBlue,
         styles.bleeding.top,
-        "relative z-0 flex flex-col gap-2 overflow-hidden pb-0 before:bottom-3 after:bottom-3 md:pb-2 md:before:absolute md:before:left-12 md:before:top-0 md:before:-z-10 md:before:h-[727px] md:before:w-[778px] md:before:bg-[url('/illustrations/header.png')] md:before:bg-contain md:after:absolute md:after:bottom-0 md:after:left-0 md:after:right-0 md:after:top-22 md:after:-z-10 md:after:origin-right md:after:-skew-y-3 md:after:bg-blue-dark lg:before:left-14 lg:before:h-[830px] lg:before:w-[889px] xl:before:left-16 xl:before:h-[934px] xl:before:w-[1000px] 2xl:before:left-18 2xl:before:h-[1038px] 2xl:before:w-[1111px]",
+        "relative z-0 flex flex-col gap-2 overflow-hidden pb-0 md:before:absolute md:before:left-12 md:before:top-0 md:before:-z-10 md:before:h-[727px] md:before:w-[778px] md:before:bg-[url('/illustrations/header.png')] md:before:bg-contain md:after:absolute md:after:bottom-0 md:after:left-0 md:after:right-0 md:after:top-25 md:after:-z-10 md:after:origin-right md:after:-skew-y-3 md:after:bg-blue-dark lg:before:left-14 lg:before:h-[830px] lg:before:w-[889px] xl:before:left-16 xl:before:h-[934px] xl:before:w-[1000px] 2xl:before:left-18 2xl:before:h-[1038px] 2xl:before:w-[1111px]",
       )}
     >
       <div className="flex items-center gap-1">
@@ -45,10 +45,12 @@ export const Header = () => {
             L’accessibilité numérique, un monde d’opportunités
           </Landmark.Heading>
 
-          <div className="flex items-center gap-0.5 text-turquoise">
+          <div className="flex items-center gap-1 text-turquoise">
             <img alt="" className="h-1" src="/icons/calendar.svg" />
 
-            <p>4 sessions en novembre</p>
+            <p className="before:relative before:right-0.5 before:top-0.125 before:inline-block before:h-[1rem] before:border-[1px]">
+              4 sessions en novembre
+            </p>
           </div>
         </div>
 
@@ -74,14 +76,15 @@ export const Header = () => {
                 className={cn(
                   styles.separator.center,
                   styles.separator.turquoise,
-                  "flex flex-col sm:before:inset-x-auto sm:before:mx-0",
+                  "flex flex-col text-xl font-bold sm:before:inset-x-auto sm:before:mx-0",
                 )}
               >
-                <span className="text-xl font-bold">{speaker.name}</span>
-                <span>{speaker.jobTitle}</span>
+                {speaker.name}
               </p>
 
-              <p className="max-w-xs italic">{speaker.shortQuote}</p>
+              <p>{speaker.jobTitle}</p>
+
+              <p className="-mt-0.5 max-w-xs italic">{speaker.shortQuote}</p>
             </div>
           </div>
 
@@ -90,7 +93,10 @@ export const Header = () => {
             className="flex flex-col gap-1 text-left md:mt-2 md:grid md:grid-cols-3 md:gap-2"
           >
             {headerKeypoints.map((data) => (
-              <li className="flex gap-0.75" key={data.title}>
+              <li
+                className="relative flex gap-0.75 md:before:absolute md:before:-left-1 md:before:top-[25%] md:before:inline-block md:before:h-[50%] md:before:border-[1px] md:first:before:hidden"
+                key={data.title}
+              >
                 <Icon className="relative top-0.25 h-1.5 w-1.5 bg-magenta">
                   <img alt="" className="h-0.75 w-0.75" src={data.iconUrl} />
                 </Icon>
@@ -103,7 +109,7 @@ export const Header = () => {
 
         <CallToActionLink
           className={cn(
-            "sm:self-center md:absolute md:right-2 md:top-22 xl:right-4 2xl:right-12",
+            "sm:self-center md:absolute md:right-2 md:top-25 xl:right-4 2xl:right-12",
             {
               hidden: !isHomeRoute,
             },
