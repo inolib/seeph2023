@@ -3,8 +3,8 @@ import { useId } from "react";
 import { program } from "../../data";
 import { cn } from "../../helpers";
 import { styles } from "../../styles";
-import { Landmark } from "../ui/Landmark/Landmark";
 import { ExternalLink } from "../Link/ExternalLink";
+import { Landmark } from "../ui/Landmark/Landmark";
 
 export const ProgramSection = () => {
   const id = useId();
@@ -57,12 +57,12 @@ export const ProgramSection = () => {
       </ul>
 
       <ExternalLink
-        href="https://www.inolib.com/"
         className={cn(
           styles.link,
           styles.heading.h3,
-          "absolute right-0 -bottom-5 z-10 max-w-xs text-right sm:text-left sm:max-w-fit",
+          "absolute -bottom-5 right-0 z-10 max-w-xs text-right sm:max-w-fit sm:text-left",
         )}
+        href="https://www.inolib.com/"
       >
         En savoir plus sur les ambitions d’INOLIB
       </ExternalLink>
