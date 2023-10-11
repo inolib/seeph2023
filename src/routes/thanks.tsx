@@ -90,7 +90,7 @@ export const Thanks = () => {
 
           <p>
             Vous pouvez réserver des places supplémentaires en retournant sur la{" "}
-            <Link className="underline" to="/booking">
+            <Link className={styles.link} to="/booking">
               page de réservation
             </Link>
             .
@@ -99,7 +99,7 @@ export const Thanks = () => {
           <p>
             Nous restons à votre disposition, vous pouvez nous écrire à{" "}
             <a
-              className="underline"
+              className={styles.link}
               href="mailto:contact@inolib.com"
               rel="noreferrer"
               target="_blank"

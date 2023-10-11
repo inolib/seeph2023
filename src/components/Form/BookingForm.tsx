@@ -1,12 +1,13 @@
 import {
   getError,
+  setValue,
   useForm,
   valiForm,
   type SubmitHandler,
-  setValue,
 } from "@modular-forms/react";
 // import { isPossiblePhoneNumber } from "libphonenumber-js";
-import { useCallback, useState, type JSX, useEffect } from "react";
+import { useCallback, useEffect, useState, type JSX } from "react";
+import { useParams } from "react-router-dom";
 import { Element } from "react-scroll";
 import {
   // custom,
@@ -30,7 +31,6 @@ import { Alert } from "../ui/Alert";
 import { Landmark } from "../ui/Landmark/Landmark";
 import { AttendeeField, type FieldName } from "./AttendeeField";
 import { SessionField } from "./SessionField";
-import { useParams } from "react-router-dom";
 
 export type Booking = Input<typeof BookingSchema>;
 

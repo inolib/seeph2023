@@ -35,28 +35,28 @@ export const BookingSection = () => {
         <p className={styles.heading.sub}>Réservez votre place</p>
       </div>
 
-      <div className="flex flex-col items-center gap-1 sm:flex-row sm:justify-center sm:gap-2">
+      <div className="flex flex-col items-center gap-1 self-center sm:flex-row sm:justify-center sm:gap-2">
         <img alt="" src="/logos/seeph_2023.png" />
 
-        <p className="text-center sm:text-left">
+        <p className="max-w-base text-center sm:text-left">
           Un évènement exclusif à l’occasion de la 27<sup>e</sup> Semaine
           Européenne pour l’Emploi des Personnes Handicapées (SEEPH).
         </p>
       </div>
 
-      <ul className="grid w-fit grid-cols-1 gap-2 self-center sm:grid-cols-2 2xl:grid-cols-4">
+      <ul className="grid w-fit grid-cols-1 gap-1 self-center sm:grid-cols-2 lg:grid-cols-4">
         {Object.entries(sessions).map(([key, session]) => (
           <li
             className="flex flex-col items-center gap-0.25 rounded-3xl rounded-tr-none bg-blue-dark p-1 text-center text-white"
             key={key}
           >
-            <Live>Live {session.time}</Live>
+            <Live aria-label={session.time}>Live {session.time}</Live>
 
             <p aria-label={session.label} className="text-2xl">
               {session.date}
             </p>
 
-            <CallToActionLink datetime={key}>
+            <CallToActionLink datetime={key} className="mt-0.75">
               Réserver{" "}
               <span className="sr-only">
                 pour la session du {session.label}
