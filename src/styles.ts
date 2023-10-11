@@ -1,5 +1,15 @@
 import { cn } from "./helpers";
 
+const outline = (color: string) => {
+  return cn(
+    "outline-none focus:outline focus:outline-2 focus:outline-offset-2",
+    {
+      "focus:outline-black": color === "black",
+      "focus:outline-white": color === "white",
+    },
+  );
+};
+
 export const styles = {
   background: {
     gradientToBlue: cn("bg-gradient-to-b from-purple to-blue-dark text-white"),
@@ -23,10 +33,7 @@ export const styles = {
     sub: cn("text-lg font-bold"),
   },
   link: cn("underline"),
-  outline: (color: string) =>
-    cn(
-      `outline-none focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-${color}`,
-    ),
+  outline,
   separator: {
     center: cn("before:inset-x-0 before:mx-auto"),
     right: cn("before:right-0"),
