@@ -24,12 +24,7 @@ export const LastChanceSection = () => {
         <div className="flex flex-col gap-1 text-center">
           <Landmark.Heading
             aria-label="Conférence « L’accessibilité numérique, un monde d’opportunités »"
-            className={cn(
-              styles.heading.h2,
-              styles.separator.turquoise,
-              styles.separator.center,
-              "flex flex-col gap-0.5",
-            )}
+            className={cn(styles.heading.h2, "flex flex-col gap-0.5")}
             id={id}
           >
             <span>Conférence</span>

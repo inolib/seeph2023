@@ -27,11 +27,7 @@ export const KeypointsSection = () => {
 
         <div className="flex flex-col gap-1">
           <Landmark.Heading
-            className={cn(
-              styles.heading.h2,
-              styles.separator.turquoise,
-              "max-w-[32ch]",
-            )}
+            className={cn(styles.heading.h2, "max-w-[32ch]")}
             id={id}
           >
             Repartez avec des directives claires pour entreprendre vos premières

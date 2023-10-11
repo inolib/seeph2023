@@ -29,7 +29,6 @@ export const ToolkitSection = () => {
             <Landmark.Heading
               className={cn(
                 styles.heading.h2,
-                styles.separator.turquoise,
                 "flex w-full flex-col justify-between gap-2 sm:flex-row",
               )}
               id={id}
