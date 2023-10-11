@@ -1,5 +1,3 @@
 import { GraphQLClient } from "graphql-request";
 
-export const graphqlClient = new GraphQLClient(
-  "https://api.inolib.com/graphql",
-);
+export const graphqlClient = new GraphQLClient(process.env.API_URL ?? "");
