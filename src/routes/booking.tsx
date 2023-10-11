@@ -99,7 +99,7 @@ export const Booking = () => {
     <>
       <Header />
 
-      <Landmark TagName="main" className="mt-1 flex flex-col gap-4">
+      <Landmark TagName="main" className="flex flex-col gap-4">
         <SetStateContext.Provider value={setState}>
           <BookingForm isLocked={state.isLocked} />
         </SetStateContext.Provider>

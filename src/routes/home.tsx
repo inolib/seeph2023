@@ -19,7 +19,7 @@ export const Home = () => {
     <>
       <Header />
 
-      <Landmark TagName="main" className="mt-1 flex flex-col gap-4">
+      <Landmark TagName="main" className="flex flex-col gap-4">
         <BookingSection />
         <ProgramSection />
         <ToolkitSection />
