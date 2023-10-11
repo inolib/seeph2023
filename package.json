@@ -11,7 +11,7 @@
     "lint": "pnpm run lint:eslint && pnpm run lint:tsc",
     "lint:eslint": "eslint --ext .cjs,.js,.ts,.tsx .",
     "lint:tsc": "tsc",
-    "serve:dev": "pnpm run build && dotenv -- vercel dev"
+    "serve:dev": "pnpm run build && dotenv -- vercel dev --listen 3000"
   },
   "dependencies": {
     "@modular-forms/react": "^0.6.0",
