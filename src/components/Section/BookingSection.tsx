@@ -47,7 +47,7 @@ export const BookingSection = () => {
       <ul className="grid w-fit grid-cols-1 gap-1 self-center sm:grid-cols-2 lg:grid-cols-4">
         {Object.entries(sessions).map(([key, session]) => (
           <li
-            className="flex flex-col items-center gap-0.25 rounded-3xl rounded-tr-none bg-blue-dark px-1 py-1.5 text-center text-white"
+            className="flex flex-col items-center gap-0.25 rounded-3xl rounded-tr-none bg-blue-dark p-1 text-center text-white"
             key={key}
           >
             <Live aria-label={session.time}>Live {session.time}</Live>
