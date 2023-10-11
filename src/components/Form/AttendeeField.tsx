@@ -71,7 +71,6 @@ export const AttendeeField = ({ disabled, field, fieldProps }: Props) => {
         placeholder={field.name === "tel" ? "" : undefined}
         required
         type="text"
-        value={field.value.value}
         {...fieldProps}
       />
 
