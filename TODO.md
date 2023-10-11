@@ -2,7 +2,6 @@
 
 - Background INOLIB dans le header + touche purple
 - Picto à côté des titres
-- Icônes dans toolkit
 - Tel input avec select pour le pays
 
 - Sécuriser l’API

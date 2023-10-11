@@ -19,44 +19,42 @@ export const ToolkitSection = () => {
         "flex flex-col gap-2 py-6",
       )}
     >
-      <div className="flex justify-between gap-2">
-        <div className="flex flex-col gap-2">
-          <div className="flex flex-col gap-1">
-            <Tag aria-hidden className="self-start">
-              En exclusivité
-            </Tag>
+      <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-1">
+          <Tag aria-hidden className="self-start">
+            En exclusivité
+          </Tag>
 
-            <Landmark.Heading
-              className={cn(
-                styles.heading.h2,
-                "flex w-full flex-col justify-between gap-2 sm:flex-row",
-              )}
-              id={id}
-            >
-              <span className="max-w-sm">
-                Découvrez notre outil de simulation d’accessibilité
-              </span>
-            </Landmark.Heading>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <p className="h-fit min-w-[12rem] max-w-sm rounded-3xl rounded-tr-none bg-blue p-1 text-center">
-              En prime, tentez de remporter un audit en accessibilité de votre
-              site ou application web, par tirage au sort.
-            </p>
-
-            <div>
-              <img
-                alt=""
-                className="max-h-12"
-                src="/illustrations/toolkit.png"
-              />
-            </div>
-          </div>
+          <Landmark.Heading
+            className={cn(
+              styles.heading.h2,
+              "flex w-full flex-col justify-between gap-2 sm:flex-row",
+            )}
+            id={id}
+          >
+            <span className="max-w-sm">
+              Découvrez notre outil de simulation d’accessibilité
+            </span>
+          </Landmark.Heading>
         </div>
 
-        {/* <img alt="" src="/illustrations/toolkit_icons.png" /> */}
+        <div className="flex flex-col items-center gap-2 self-center sm:flex-row xl:self-start">
+          <p className="h-fit min-w-[12rem] max-w-sm rounded-3xl rounded-tr-none bg-blue p-1 text-center">
+            En prime, tentez de remporter un audit en accessibilité de votre
+            site ou application web, par tirage au sort.
+          </p>
+
+          <div className="order-last">
+            <img alt="" className="max-h-12" src="/illustrations/toolkit.png" />
+          </div>
+        </div>
       </div>
+
+      <img
+        alt=""
+        className="hidden xl:absolute xl:inset-y-6 xl:right-0 xl:block xl:h-20"
+        src="/illustrations/toolkit_icons.png"
+      />
     </Landmark>
   );
 };
