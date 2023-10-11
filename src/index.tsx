@@ -4,7 +4,6 @@ import { RouterProvider } from "react-router-dom";
 import { router } from "./router";
 
 import "./global.css";
-import "dotenv/config";
 
 const container = document.getElementById("root");
 
