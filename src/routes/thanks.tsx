@@ -29,7 +29,7 @@ export const Thanks = () => {
           Merci pour votre réservation !
         </Landmark.Heading>
 
-        <div className="flex max-w-2xl flex-col gap-1">
+        <div className="flex max-w-xl flex-col gap-1">
           <p>
             Vous recevrez bientôt un e-mail de confirmation ainsi que le reçu de
             votre paiement.
@@ -56,7 +56,8 @@ export const Thanks = () => {
           ) : null}
 
           <p>
-            Vous pouvez réserver des places supplémentaires en retournant sur la{" "}
+            Vous pouvez également réserver des places supplémentaires en vous
+            rendant sur la{" "}
             <Link className={styles.link} to="/booking">
               page de réservation
             </Link>
@@ -72,8 +73,8 @@ export const Thanks = () => {
               target="_blank"
             >
               contact@inolib.com
-            </a>
-            .
+            </a>{" "}
+            ou nous appeler au +33 6 47 21 86 69.
           </p>
         </div>
       </Landmark>
