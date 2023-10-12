@@ -8,7 +8,11 @@ import { useCallback, useEffect, useMemo, useState, type JSX } from "react";
 import { scroller } from "react-scroll";
 
 import { graphqlClient } from "../../graphqlClient";
-import { toLocaleDateString, toLocaleTimeString } from "../../helpers";
+import {
+  options as scrollerOptions,
+  toLocaleDateString,
+  toLocaleTimeString,
+} from "../../helpers";
 import { useBooking } from "../../routes/booking";
 import { styles } from "../../styles";
 import { PrimaryButton } from "../Button/PrimaryButton";
@@ -90,7 +94,7 @@ export const CheckoutForm = ({
 
       setIsLocked(false);
 
-      scroller.scrollTo("step-1", { duration: 0 });
+      scroller.scrollTo("step-1", scrollerOptions);
     })();
   }, [paymentIntentId, setClientSecret, setIsLocked]);
 

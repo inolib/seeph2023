@@ -22,7 +22,10 @@ import {
 
 import { sessions } from "../../data";
 import { graphqlClient } from "../../graphqlClient";
-import { cn /*, toPhoneNumber*/ } from "../../helpers";
+import {
+  cn /*, toPhoneNumber*/,
+  options as scrollerOptions,
+} from "../../helpers";
 import { useBooking } from "../../routes/booking";
 import { styles } from "../../styles";
 import { PrimaryButton } from "../Button/PrimaryButton";
@@ -112,7 +115,7 @@ export const BookingForm = ({ isLocked }: Props) => {
 
       setIsLocked(false);
 
-      scroller.scrollTo("step-1", { duration: 0 });
+      scroller.scrollTo("step-1", scrollerOptions);
     })();
   }, [setClientSecret, setIsLocked, state.paymentIntent.id]);
 
@@ -178,7 +181,7 @@ export const BookingForm = ({ isLocked }: Props) => {
         setClientSecret(data.createPaymentIntent.client_secret);
         setPaymentIntentId(data.createPaymentIntent.id);
 
-        scroller.scrollTo("step-3", { duration: 0 });
+        scroller.scrollTo("step-3", scrollerOptions);
       })();
     },
     [setBooking, setClientSecret, setIsLocked, setPaymentIntentId],

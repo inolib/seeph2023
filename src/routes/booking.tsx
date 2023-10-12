@@ -22,7 +22,7 @@ import { Icon } from "../components/Image/Icon";
 import { Footer } from "../components/Section/Footer";
 import { Header } from "../components/Section/Header";
 import { Landmark } from "../components/ui/Landmark/Landmark";
-import { cn } from "../helpers";
+import { cn, options as scrollerOptions } from "../helpers";
 import { useDocumentTitle } from "../hooks";
 import { getOptions, stripePromise } from "../stripe";
 import { styles } from "../styles";
@@ -92,9 +92,9 @@ export const Booking = () => {
 
   useEffect(() => {
     if (datetime !== undefined) {
-      scroller.scrollTo("step-2", { duration: 0 });
+      scroller.scrollTo("step-2", scrollerOptions);
     } else {
-      scroller.scrollTo("step-1", { duration: 0 });
+      scroller.scrollTo("step-1", scrollerOptions);
     }
   }, [datetime]);
 
