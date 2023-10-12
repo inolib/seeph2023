@@ -51,7 +51,7 @@ export const AttendeeField = ({ disabled, field, fieldProps }: Props) => {
   return (
     <div className="flex flex-col">
       <label
-        className={cn(styles.shrink, styles.heading.h3, "cursor-pointer")}
+        className={cn(styles.shrink, "font-bold cursor-pointer")}
         htmlFor={fieldId}
       >
         {fields[field.name].label}
@@ -63,7 +63,7 @@ export const AttendeeField = ({ disabled, field, fieldProps }: Props) => {
         className={cn(
           styles.shrink,
           styles.outline("black"),
-          "mt-0.25 rounded-lg p-0.25",
+          "mt-0.25 rounded-lg px-0.5 py-0.25 disabled:bg-white",
         )}
         disabled={disabled}
         id={fieldId}

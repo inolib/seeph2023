@@ -113,25 +113,22 @@ export const Booking = () => {
           <BookingForm isLocked={state.isLocked} />
         </SetStateContext.Provider>
 
-        {state.clientSecret !== null ? (
-          <Element name="step-3">
-            <Landmark TagName="section" className="flex flex-col gap-2">
-              <Landmark.Heading
-                className={cn(
-                  styles.heading.h2,
-                  "flex flex-col gap-1 text-left",
-                )}
-              >
-                <div className="flex gap-0.5">
-                  <Icon className="h-2 w-2 flex-none bg-blue text-white">
-                    <span className="sr-only">Étape</span>
-                    <span>3</span>
-                  </Icon>
+        <Element name="step-3">
+          <Landmark TagName="section" className="flex flex-col gap-2">
+            <Landmark.Heading
+              className={cn(styles.heading.h2, "flex flex-col gap-1 text-left")}
+            >
+              <div className="flex gap-0.5">
+                <Icon className="h-2 w-2 flex-none bg-blue text-white">
+                  <span className="sr-only">Étape</span>
+                  <span>3</span>
+                </Icon>
 
-                  <div className="relative top-0.25">Réglez votre commande</div>
-                </div>
-              </Landmark.Heading>
+                <div className="relative top-0.25">Réglez votre commande</div>
+              </div>
+            </Landmark.Heading>
 
+            {state.clientSecret !== null ? (
               <Elements
                 options={getOptions(state.clientSecret)}
                 stripe={stripePromise}
@@ -144,9 +141,14 @@ export const Booking = () => {
                   />
                 </SetStateContext.Provider>
               </Elements>
-            </Landmark>
-          </Element>
-        ) : null}
+            ) : (
+              <p className="max-w-lg">
+                Veuillez choisir une session de conférence et compléter votre
+                inscription avant de régler votre commande.
+              </p>
+            )}
+          </Landmark>
+        </Element>
       </Landmark>
 
       <Footer />

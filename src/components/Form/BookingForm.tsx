@@ -9,7 +9,7 @@ import {
 // import { isPossiblePhoneNumber } from "libphonenumber-js";
 import { useCallback, useEffect, useState, type JSX } from "react";
 import { useParams } from "react-router-dom";
-import { Element } from "react-scroll";
+import { Element, scroller } from "react-scroll";
 import {
   // custom,
   email,
@@ -111,6 +111,8 @@ export const BookingForm = ({ isLocked }: Props) => {
       );
 
       setIsLocked(false);
+
+      scroller.scrollTo("step-1", { duration: 0 });
     })();
   }, [setClientSecret, setIsLocked, state.paymentIntent.id]);
 
@@ -290,18 +292,37 @@ export const BookingForm = ({ isLocked }: Props) => {
             })}
           </div>
 
-          {isLocked ? (
-            <SecondaryButton
-              className="self-center"
-              onClick={handleEditButtonClick}
-            >
-              Modifier
-            </SecondaryButton>
-          ) : (
-            <PrimaryButton className="self-center" type="submit">
-              Confirmer
-            </PrimaryButton>
-          )}
+          <div className="flex justify-center gap-1 lg:justify-end">
+            {isLocked ? (
+              <>
+                <PrimaryButton
+                  aria-label="Modifier vos informations"
+                  disabled={!isLocked}
+                  onClick={handleEditButtonClick}
+                >
+                  Modifier
+                </PrimaryButton>
+
+                <SecondaryButton disabled={isLocked} type="submit">
+                  Confirmer
+                </SecondaryButton>
+              </>
+            ) : (
+              <>
+                <SecondaryButton
+                  aria-label="Modifier vos informations"
+                  disabled={!isLocked}
+                  onClick={handleEditButtonClick}
+                >
+                  Modifier
+                </SecondaryButton>
+
+                <PrimaryButton disabled={isLocked} type="submit">
+                  Confirmer
+                </PrimaryButton>
+              </>
+            )}
+          </div>
         </Landmark>
       </Element>
     </Form>
