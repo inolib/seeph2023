@@ -14,8 +14,8 @@ export const getOptions = (clientSecret: string): StripeElementsOptions => {
       variables: {
         borderRadius: "8px",
         colorBackground: "#f1f1f1",
-        colorDanger: "#000000",
-        colorDangerText: "#000000",
+        colorDanger: "#e31c3d",
+        colorDangerText: "#e31c3d",
         colorPrimary: "#212669",
         colorText: "#000000",
         fontFamily: "Atkinson Hyperlegible, sans-serif",

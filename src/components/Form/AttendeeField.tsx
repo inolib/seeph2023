@@ -47,11 +47,14 @@ const fields: Record<FieldName, Field> = {
 export const AttendeeField = ({ disabled, field, fieldProps }: Props) => {
   const id = useId();
   const fieldId = `${id}-${field.name}`;
+  const isInvalid = field.error.value !== "";
 
   return (
     <div className="flex flex-col">
       <label
-        className={cn(styles.shrink, "font-bold cursor-pointer")}
+        className={cn(styles.shrink, "font-bold cursor-pointer", {
+          "text-red": isInvalid,
+        })}
         htmlFor={fieldId}
       >
         {fields[field.name].label}
@@ -59,11 +62,14 @@ export const AttendeeField = ({ disabled, field, fieldProps }: Props) => {
 
       <input
         aria-errormessage={`${fieldId}-error`}
-        aria-invalid={field.error.value !== ""}
+        aria-invalid={isInvalid}
         className={cn(
           styles.shrink,
           styles.outline("black"),
           "mt-0.25 rounded-lg px-0.5 py-0.25 disabled:bg-white",
+          {
+            [styles.error]: isInvalid,
+          },
         )}
         disabled={disabled}
         id={fieldId}

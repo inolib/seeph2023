@@ -26,6 +26,9 @@ export const styles = {
       "-mx-1 -mb-2 -mt-1 px-1 pb-2 pt-1 md:-mx-2 md:px-2 xl:-mx-4 xl:px-4",
     ),
   },
+  error: cn(
+    "outline outline-2 outline-red focus:outline-red focus:outline focus:outline-2 focus:outline-offset-2",
+  ),
   heading: {
     h1: cn("max-w-[18ch] text-5xl font-bold"),
     h2: cn("text-3xl font-bold"),

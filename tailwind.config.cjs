@@ -18,6 +18,7 @@ module.exports = {
       magenta: "#c22ec7",
       orange: "#e26c59",
       purple: "#4c1369",
+      red: "#e31c3d",
       turquoise: "#53dbbb",
       white: "#ffffff",
     },
