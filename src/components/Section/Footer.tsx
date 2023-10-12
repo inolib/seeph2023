@@ -21,7 +21,7 @@ export const Footer = () => {
       <p className="text-center">
         contact@inolib.com
         <br />
-        +33 6 47 21 86 69
+        +33 6 47 21 86 69
       </p>
 
       <div className="text-right">
