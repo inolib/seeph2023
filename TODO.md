@@ -1,6 +1,6 @@
 # TODO
 
-- Background INOLIB dans le header + touche purple
+- Background INOLIB dans le header + touche purple + déplacement de l’image de background
 - Picto à côté des titres
 - Tel input avec select pour le pays
 
@@ -9,7 +9,5 @@
 - Gestion des erreurs
 - Formulaire interactif
 
-- Revoir les styles des formulaires + gestion du focus (CSS)
-- Centrer le contenu dans SessionField (CSS) + gestion du focus (CSS)
 - Créer des composants dédiés aux styles ?
 - Vérifier les contrastes

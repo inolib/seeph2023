@@ -23,7 +23,7 @@ export const Header = () => {
       className={cn(
         styles.background.gradientToBlue,
         styles.bleeding.top,
-        "relative z-0 flex flex-col gap-2 overflow-hidden pb-0 md:before:absolute md:before:left-12 md:before:top-0 md:before:-z-10 md:before:h-[727px] md:before:w-[778px] md:before:bg-[url('/illustrations/header.png')] md:before:bg-contain md:after:absolute md:after:bottom-0 md:after:left-0 md:after:right-0 md:after:top-25 md:after:-z-10 md:after:origin-right md:after:-skew-y-3 md:after:bg-blue-dark lg:before:left-14 lg:before:h-[830px] lg:before:w-[889px] xl:before:left-16 xl:before:h-[934px] xl:before:w-[1000px] 2xl:before:left-18 2xl:before:h-[1038px] 2xl:before:w-[1111px]",
+        "relative z-0 flex flex-col gap-2 overflow-hidden pb-0 md:before:absolute md:before:left-12 md:before:top-4 md:before:-z-10 md:before:h-[727px] md:before:w-[778px] md:before:bg-[url('/illustrations/header.png')] md:before:bg-contain md:after:absolute md:after:bottom-0 md:after:left-0 md:after:right-0 md:after:top-25 md:after:-z-10 md:after:origin-right md:after:-skew-y-3 md:after:bg-blue-dark lg:before:left-14 lg:before:h-[830px] lg:before:w-[889px] xl:before:left-16 xl:before:h-[934px] xl:before:w-[1000px] 2xl:before:left-18 2xl:before:h-[1038px] 2xl:before:w-[1111px]",
       )}
     >
       <div className="flex items-center gap-1">
@@ -34,9 +34,9 @@ export const Header = () => {
         </p>
       </div>
 
-      <div className="flex flex-col items-center gap-2 sm:items-start">
-        <div className="flex flex-col items-center gap-1 text-center sm:items-start sm:text-left">
-          <div className="flex items-center gap-1">
+      <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-1">
+          <div className="flex items-center gap-0.5">
             <Tag aria-hidden>Conférence</Tag>
             <Live aria-label="En direct">Live</Live>
           </div>
@@ -58,7 +58,7 @@ export const Header = () => {
           className={cn(
             "flex w-full flex-col items-center gap-2 sm:flex-row sm:items-end sm:justify-around md:flex-col md:items-start md:justify-start",
             {
-              invisible: !isHomeRoute,
+              hidden: !isHomeRoute,
             },
           )}
         >
@@ -109,7 +109,7 @@ export const Header = () => {
 
         <CallToActionLink
           className={cn(
-            "sm:self-center md:absolute md:right-2 md:top-25 xl:right-4 2xl:right-12",
+            "self-center md:absolute md:right-2 md:top-25 xl:right-4 2xl:right-12",
             {
               hidden: !isHomeRoute,
             },

@@ -1,5 +1,6 @@
 import {
   getError,
+  reset,
   setValue,
   useForm,
   valiForm,
@@ -8,7 +9,7 @@ import {
 // import { isPossiblePhoneNumber } from "libphonenumber-js";
 import { useCallback, useEffect, useState, type JSX } from "react";
 import { useParams } from "react-router-dom";
-import { Element } from "react-scroll";
+import { Element, scroller } from "react-scroll";
 import {
   // custom,
   email,
@@ -110,6 +111,8 @@ export const BookingForm = ({ isLocked }: Props) => {
       );
 
       setIsLocked(false);
+
+      scroller.scrollTo("step-1", { duration: 0 });
     })();
   }, [setClientSecret, setIsLocked, state.paymentIntent.id]);
 
@@ -174,13 +177,19 @@ export const BookingForm = ({ isLocked }: Props) => {
         setBooking(booking);
         setClientSecret(data.createPaymentIntent.client_secret);
         setPaymentIntentId(data.createPaymentIntent.id);
+
+        scroller.scrollTo("step-3", { duration: 0 });
       })();
     },
     [setBooking, setClientSecret, setIsLocked, setPaymentIntentId],
   );
 
   useEffect(() => {
-    setValue(bookingForm, "datetime", datetime ?? "");
+    if (datetime !== undefined) {
+      setValue(bookingForm, "datetime", datetime);
+    } else {
+      reset(bookingForm, datetime);
+    }
   }, [bookingForm, datetime]);
 
   return (
@@ -190,38 +199,45 @@ export const BookingForm = ({ isLocked }: Props) => {
           <Landmark.Heading
             className={cn(styles.heading.h2, "flex flex-col gap-1 text-left")}
           >
-            <Icon className="h-2 w-2 flex-none bg-blue text-white">
-              <span className="sr-only">Étape</span>1
-            </Icon>
+            <div className="flex gap-0.5">
+              <Icon className="h-2 w-2 flex-none bg-blue text-white">
+                <span className="sr-only">Étape</span>
+                <span>1</span>
+              </Icon>
 
-            <span className={cn(styles.separator.turquoise, "-mt-0.5")}>
-              Choisissez votre session de conférence
-            </span>
+              <div className="relative top-0.25">
+                <p>Choisissez votre session de conférence</p>
 
-            <span className={styles.heading.sub}>
-              Toutes les réservations sont individuelles
-            </span>
+                <p className={styles.heading.sub}>
+                  Toutes les réservations sont individuelles
+                </p>
+              </div>
+            </div>
           </Landmark.Heading>
 
-          <ul className="grid grid-cols-1 gap-2 self-center sm:grid-cols-2 lg:grid-cols-4">
-            {Object.entries(sessions).map(([datetime, session]) => (
-              <li key={datetime}>
-                <Field name="datetime">
-                  {(field, props) => (
-                    <SessionField
-                      datetime={datetime}
-                      disabled={isLocked}
-                      fieldProps={props}
-                      form={bookingForm}
-                      session={session}
-                    />
-                  )}
-                </Field>
-              </li>
-            ))}
-          </ul>
+          <div className="flex flex-col gap-0.25 text-center">
+            <ul className="grid grid-cols-2 gap-1 self-center md:grid-cols-4">
+              {Object.entries(sessions).map(([datetime, session]) => (
+                <li key={datetime}>
+                  <Field name="datetime">
+                    {(field, props) => (
+                      <SessionField
+                        datetime={datetime}
+                        disabled={isLocked}
+                        fieldProps={props}
+                        form={bookingForm}
+                        session={session}
+                      />
+                    )}
+                  </Field>
+                </li>
+              ))}
+            </ul>
 
-          <Alert className="text-sm">{getError(bookingForm, "datetime")}</Alert>
+            <Alert className="text-red">
+              {getError(bookingForm, "datetime")}
+            </Alert>
+          </div>
         </Landmark>
       </Element>
 
@@ -236,17 +252,20 @@ export const BookingForm = ({ isLocked }: Props) => {
           <Landmark.Heading
             className={cn(styles.heading.h2, "flex flex-col gap-1 text-left")}
           >
-            <Icon className="h-2 w-2 flex-none bg-blue text-white">
-              <span className="sr-only">Étape</span>2
-            </Icon>
+            <div className="flex gap-0.5">
+              <Icon className="h-2 w-2 flex-none bg-blue text-white">
+                <span className="sr-only">Étape</span>
+                <span>2</span>
+              </Icon>
 
-            <span className={cn(styles.separator.turquoise, "-mt-0.5")}>
-              Complétez votre inscription
-            </span>
+              <div className="relative top-0.25">
+                <p>Complétez votre inscription</p>
 
-            <span className={styles.heading.sub}>
-              Tous les champs sont obligatoires
-            </span>
+                <p className={styles.heading.sub}>
+                  Tous les champs sont obligatoires
+                </p>
+              </div>
+            </div>
           </Landmark.Heading>
 
           <div className="flex flex-col gap-1">
@@ -277,18 +296,37 @@ export const BookingForm = ({ isLocked }: Props) => {
             })}
           </div>
 
-          {isLocked ? (
-            <SecondaryButton
-              className="self-center"
-              onClick={handleEditButtonClick}
-            >
-              Modifier
-            </SecondaryButton>
-          ) : (
-            <PrimaryButton className="self-center" type="submit">
-              Confirmer
-            </PrimaryButton>
-          )}
+          <div className="flex justify-center gap-1 lg:justify-end">
+            {isLocked ? (
+              <>
+                <PrimaryButton
+                  aria-label="Modifier vos informations"
+                  disabled={!isLocked}
+                  onClick={handleEditButtonClick}
+                >
+                  Modifier
+                </PrimaryButton>
+
+                <SecondaryButton disabled={isLocked} type="submit">
+                  Confirmer
+                </SecondaryButton>
+              </>
+            ) : (
+              <>
+                <SecondaryButton
+                  aria-label="Modifier vos informations"
+                  disabled={!isLocked}
+                  onClick={handleEditButtonClick}
+                >
+                  Modifier
+                </SecondaryButton>
+
+                <PrimaryButton disabled={isLocked} type="submit">
+                  Confirmer
+                </PrimaryButton>
+              </>
+            )}
+          </div>
         </Landmark>
       </Element>
     </Form>

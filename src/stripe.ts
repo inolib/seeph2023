@@ -1,19 +1,27 @@
 import { loadStripe, type StripeElementsOptions } from "@stripe/stripe-js";
 
-// export const stripePromise = loadStripe(
-//   "pk_test_51Nuz8EK4mWBX9EWw6NXGevxD79xNXnbbvck0lCBFRI4NyugTORWY1zbYupk8ZgK9LboJxFitFiOgcJJvWJDbc0AL00PEsU3v2G",
-// );
-
 export const stripePromise = loadStripe(
-  "pk_live_51Nv0E2CIFicz30MSGQJbRlWaJNUkpU3i2O9mvdIMfw2K0YVsWXygZUz05CWC0HMoLTnyDsHQPa8aqaOSl3TlS7Xu00Xa9CVXFa",
+  import.meta.env.VITE_STRIPE_API_KEY ?? "",
 );
 
-export const getOptions = (clientSecret: string): StripeElementsOptions => ({
-  appearance: {
-    theme: "flat",
-    variables: {
-      fontFamily: "'Atkinson Hyperlegible', sans-serif",
+export const getOptions = (clientSecret: string): StripeElementsOptions => {
+  const fontSizeBase =
+    document.getElementsByTagName("html").item(0)?.style.fontSize ?? "16px";
+
+  return {
+    appearance: {
+      theme: "flat",
+      variables: {
+        borderRadius: "8px",
+        colorBackground: "#f1f1f1",
+        colorDanger: "#e31c3d",
+        colorDangerText: "#e31c3d",
+        colorPrimary: "#212669",
+        colorText: "#000000",
+        fontFamily: "Atkinson Hyperlegible, sans-serif",
+        fontSizeBase,
+      },
     },
-  },
-  clientSecret,
-});
+    clientSecret,
+  };
+};

@@ -31,9 +31,9 @@ export const SessionField = ({
   const isChecked = getValue(form, "datetime") === datetime;
 
   return (
-    <>
+    <div className="relative">
       <input
-        className={cn("sr-only")}
+        className="absolute left-0 top-0 -z-10 h-full w-full"
         disabled={disabled}
         id={id}
         type="radio"
@@ -56,6 +56,6 @@ export const SessionField = ({
           {session.time}
         </span>
       </label>
-    </>
+    </div>
   );
 };

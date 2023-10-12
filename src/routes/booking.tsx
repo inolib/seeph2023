@@ -7,6 +7,7 @@ import {
   type Dispatch,
   type SetStateAction,
 } from "react";
+import { useParams } from "react-router-dom";
 import { Element, scroller } from "react-scroll";
 
 import {
@@ -87,41 +88,41 @@ export const Booking = () => {
     paymentIntentId: null,
   });
 
+  const { datetime } = useParams();
+
   useEffect(() => {
-    if (state.clientSecret !== null) {
-      scroller.scrollTo("step-3", {
-        duration: 0,
-      });
+    if (datetime !== undefined) {
+      scroller.scrollTo("step-2", { duration: 0 });
+    } else {
+      scroller.scrollTo("step-1", { duration: 0 });
     }
-  }, [state.clientSecret]);
+  }, [datetime]);
 
   return (
     <>
       <Header />
 
-      <Landmark TagName="main" className="mt-1 flex flex-col gap-4">
+      <Landmark TagName="main" className="flex flex-col gap-4">
         <SetStateContext.Provider value={setState}>
           <BookingForm isLocked={state.isLocked} />
         </SetStateContext.Provider>
 
-        {state.clientSecret !== null ? (
-          <Element name="step-3">
-            <Landmark TagName="section" className="flex flex-col gap-2">
-              <Landmark.Heading
-                className={cn(
-                  styles.heading.h2,
-                  "flex flex-col gap-1 text-left",
-                )}
-              >
+        <Element name="step-3">
+          <Landmark TagName="section" className="flex flex-col gap-2">
+            <Landmark.Heading
+              className={cn(styles.heading.h2, "flex flex-col gap-1 text-left")}
+            >
+              <div className="flex gap-0.5">
                 <Icon className="h-2 w-2 flex-none bg-blue text-white">
-                  <span className="sr-only">Étape</span>3
+                  <span className="sr-only">Étape</span>
+                  <span>3</span>
                 </Icon>
 
-                <span className={cn(styles.separator.turquoise, "-mt-0.5")}>
-                  Réglez votre commande
-                </span>
-              </Landmark.Heading>
+                <div className="relative top-0.25">Réglez votre commande</div>
+              </div>
+            </Landmark.Heading>
 
+            {state.clientSecret !== null ? (
               <Elements
                 options={getOptions(state.clientSecret)}
                 stripe={stripePromise}
@@ -134,9 +135,14 @@ export const Booking = () => {
                   />
                 </SetStateContext.Provider>
               </Elements>
-            </Landmark>
-          </Element>
-        ) : null}
+            ) : (
+              <p className="max-w-lg">
+                Veuillez choisir une session de conférence et compléter votre
+                inscription avant de régler votre commande.
+              </p>
+            )}
+          </Landmark>
+        </Element>
       </Landmark>
 
       <Footer />

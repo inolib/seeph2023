@@ -90,9 +90,7 @@ export const CheckoutForm = ({
 
       setIsLocked(false);
 
-      scroller.scrollTo("step-2", {
-        duration: 0,
-      });
+      scroller.scrollTo("step-1", { duration: 0 });
     })();
   }, [paymentIntentId, setClientSecret, setIsLocked]);
 
@@ -107,8 +105,7 @@ export const CheckoutForm = ({
           if (stripe !== null && elements !== null) {
             const { error } = await stripe.confirmPayment({
               confirmParams: {
-                return_url: "https://seeph2023.inolib.com/thanks",
-                // return_url: "http://localhost:5173/thanks",
+                return_url: `${window.location.origin}/thanks`,
               },
               elements,
             });
@@ -156,54 +153,63 @@ export const CheckoutForm = ({
     })();
   }, [clientSecret, stripe]);
 
-  return (
-    <form className="flex flex-col gap-1" onSubmit={handleSubmit}>
-      <PaymentElement className={styles.shrink} />
+  return booking !== null ? (
+    <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
+      <p className={styles.heading.h3}>Votre réservation</p>
 
-      <div className="flex flex-col gap-2">
-        <Alert className=" text-sm">{paymentMessage}</Alert>
-
-        {booking !== null ? (
-          <div className="flex flex-col gap-1">
-            <p className={styles.heading.h3}>
-              Votre réservation pour la conférence du{" "}
-              {toLocaleDateString(booking.datetime)} à{" "}
+      <div className="-mt-1 grid grid-cols-1 gap-2 lg:grid-cols-2">
+        <div className="flex flex-col gap-1">
+          <p className="max-w-[38ch]">
+            <span className="text-xl font-bold">
+              Conférence « L’accessibilité numérique, un monde d’opportunités »
+            </span>
+            <br />
+            <span>
+              Le {toLocaleDateString(booking.datetime)} à{" "}
               {toLocaleTimeString(booking.datetime)}
-            </p>
+            </span>
+          </p>
 
-            <div>
-              <p>Prénom : {booking.firstName}</p>
-              <p>Nom : {booking.lastName}</p>
-              <p>Entreprise : {booking.organization}</p>
-              <p>Fonction : {booking.organizationTitle}</p>
-              <p>Adresse e-mail : {booking.email}</p>
-              <p>Numéro de téléphone : {booking.tel}</p>
-            </div>
-
-            <div>
-              <p>Prix HT : 70 €</p>
-              <p className="font-bold">Prix TTC : 84 €</p>
-            </div>
+          <div>
+            <p>Prénom : {booking.firstName}</p>
+            <p>Nom : {booking.lastName}</p>
+            <p>Entreprise : {booking.organization}</p>
+            <p>Fonction : {booking.organizationTitle}</p>
+            <p>Adresse e-mail : {booking.email}</p>
+            <p>Numéro de téléphone : {booking.tel}</p>
           </div>
-        ) : null}
 
-        <div className="flex justify-center gap-2">
-          <SecondaryButton
-            className="bg-gray disabled:bg-gray"
-            onClick={handleEditButtonClick}
-          >
-            Modifier
-          </SecondaryButton>
+          <p>
+            <span className="text-xl font-bold">84,00 € TTC</span>
+            <br />
+            <span>Soit 70,00 € HT</span>
+          </p>
+        </div>
 
-          <PrimaryButton
-            className="self-center"
-            disabled={state.isLoading}
-            type="submit"
-          >
-            Payer
-          </PrimaryButton>
+        <div>
+          <PaymentElement className="max-w-[38ch]" />
+
+          <Alert className="text-sm text-red">{paymentMessage}</Alert>
         </div>
       </div>
+
+      <div className="flex justify-center gap-1 lg:justify-end">
+        <SecondaryButton
+          aria-label="Modifier votre réservation"
+          className="bg-gray disabled:bg-gray"
+          onClick={handleEditButtonClick}
+        >
+          Modifier
+        </SecondaryButton>
+
+        <PrimaryButton
+          className="self-center"
+          disabled={state.isLoading}
+          type="submit"
+        >
+          Payer 84,00 €
+        </PrimaryButton>
+      </div>
     </form>
-  );
+  ) : null;
 };

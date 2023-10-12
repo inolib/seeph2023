@@ -47,32 +47,38 @@ const fields: Record<FieldName, Field> = {
 export const AttendeeField = ({ disabled, field, fieldProps }: Props) => {
   const id = useId();
   const fieldId = `${id}-${field.name}`;
+  const isInvalid = field.error.value !== "";
 
   return (
     <div className="flex flex-col">
-      <label className={styles.shrink} htmlFor={fieldId}>
+      <label
+        className={cn(styles.shrink, "cursor-pointer font-bold")}
+        htmlFor={fieldId}
+      >
         {fields[field.name].label}
       </label>
 
       <input
         aria-errormessage={`${fieldId}-error`}
-        aria-invalid={field.error.value !== ""}
-        className={cn(styles.shrink, "border border-solid border-black p-0.25")}
+        aria-invalid={isInvalid}
+        className={cn(
+          styles.shrink,
+          styles.outline("black"),
+          "mt-0.25 rounded-lg px-0.5 py-0.25 disabled:bg-white",
+          {
+            [styles.error]: isInvalid,
+          },
+        )}
         disabled={disabled}
         id={fieldId}
         inputMode={fields[field.name].inputMode}
-        placeholder={
-          field.name === "tel"
-            ? "Format : 0123456789 ou +33123456789"
-            : undefined
-        }
+        placeholder={field.name === "tel" ? "" : undefined}
         required
         type="text"
-        value={field.value.value ?? ""}
         {...fieldProps}
       />
 
-      <Alert className="mt-0.25 text-sm" id={`${fieldId}-error`}>
+      <Alert className="mt-0.25 text-red" id={`${fieldId}-error`}>
         {field.error.value}
       </Alert>
     </div>

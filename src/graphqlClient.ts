@@ -1,5 +1,5 @@
 import { GraphQLClient } from "graphql-request";
 
 export const graphqlClient = new GraphQLClient(
-  "https://api.inolib.com/graphql",
+  import.meta.env.VITE_API_URL ?? "",
 );
