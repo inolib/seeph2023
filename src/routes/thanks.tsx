@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import type { Booking } from "../components/Form/BookingForm";
 import { Footer } from "../components/Section/Footer";
 import { Header } from "../components/Section/Header";
 import { Landmark } from "../components/ui/Landmark/Landmark";
-import { graphqlClient } from "../graphqlClient";
 import { cn } from "../helpers";
 import { useDocumentTitle } from "../hooks";
 import { styles } from "../styles";
@@ -21,43 +20,7 @@ export const Thanks = () => {
     booking: null,
   });
 
-  const [searchParams] = useSearchParams();
-
-  useEffect(() => {
-    void (async () => {
-      const paymentIntentId = searchParams.get("payment_intent");
-
-      if (paymentIntentId !== null) {
-        const data = await graphqlClient.request<{
-          readBooking: Booking | null;
-        }>(
-          /* GraphQL */ `
-            query ReadBooking($paymentIntentId: String!) {
-              readBooking(paymentIntentId: $paymentIntentId) {
-                firstName
-                lastName
-                organization
-                organizationTitle
-                email
-                tel
-              }
-            }
-          `,
-          {
-            paymentIntentId,
-          },
-        );
-
-        setState((state) =>
-          state.booking !== data.readBooking
-            ? { ...state, booking: data.readBooking }
-            : state,
-        );
-      }
-    })();
-  }, [searchParams]);
-
-  return state.booking !== null ? (
+  return (
     <>
       <Header />
 
@@ -66,27 +29,31 @@ export const Thanks = () => {
           Merci pour votre réservation !
         </Landmark.Heading>
 
-        <div className="flex max-w-xl flex-col gap-1">
+        <div className="flex max-w-2xl flex-col gap-1">
           <p>
             Vous recevrez bientôt un e-mail de confirmation ainsi que le reçu de
             votre paiement.
           </p>
 
-          <p>Voici un récapitulatif de votre réservation :</p>
+          {state.booking !== null ? (
+            <>
+              <p>Voici un récapitulatif de votre réservation :</p>
 
-          <div>
-            <p>Prénom : {state.booking.firstName}</p>
-            <p>Nom : {state.booking.lastName}</p>
-            <p>Entreprise : {state.booking.organization}</p>
-            <p>Fonction : {state.booking.organizationTitle}</p>
-            <p>Adresse e-mail : {state.booking.email}</p>
-            <p>Numéro de téléphone : {state.booking.tel}</p>
-          </div>
+              <div>
+                <p>Prénom : {state.booking.firstName}</p>
+                <p>Nom : {state.booking.lastName}</p>
+                <p>Entreprise : {state.booking.organization}</p>
+                <p>Fonction : {state.booking.organizationTitle}</p>
+                <p>Adresse e-mail : {state.booking.email}</p>
+                <p>Numéro de téléphone : {state.booking.tel}</p>
+              </div>
 
-          <div>
-            <p>Prix HT : 70 €</p>
-            <p className="font-bold">Prix TTC : 84 €</p>
-          </div>
+              <div>
+                <p>Prix HT : 70 €</p>
+                <p className="font-bold">Prix TTC : 84 €</p>
+              </div>
+            </>
+          ) : null}
 
           <p>
             Vous pouvez réserver des places supplémentaires en retournant sur la{" "}
@@ -113,5 +80,5 @@ export const Thanks = () => {
 
       <Footer />
     </>
-  ) : null;
+  );
 };
