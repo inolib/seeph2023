@@ -177,6 +177,8 @@ export const BookingForm = ({ isLocked }: Props) => {
         setBooking(booking);
         setClientSecret(data.createPaymentIntent.client_secret);
         setPaymentIntentId(data.createPaymentIntent.id);
+
+        scroller.scrollTo("step-3", { duration: 0 });
       })();
     },
     [setBooking, setClientSecret, setIsLocked, setPaymentIntentId],

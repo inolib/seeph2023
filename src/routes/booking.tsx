@@ -98,12 +98,6 @@ export const Booking = () => {
     }
   }, [datetime]);
 
-  useEffect(() => {
-    if (state.clientSecret !== null) {
-      scroller.scrollTo("step-3", { duration: 0 });
-    }
-  }, [state.clientSecret]);
-
   return (
     <>
       <Header />

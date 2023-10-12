@@ -90,7 +90,7 @@ export const CheckoutForm = ({
 
       setIsLocked(false);
 
-      scroller.scrollTo("step-2", { duration: 0 });
+      scroller.scrollTo("step-1", { duration: 0 });
     })();
   }, [paymentIntentId, setClientSecret, setIsLocked]);
 
