@@ -8,7 +8,7 @@ import { useCallback, useEffect, useMemo, useState, type JSX } from "react";
 import { scroller } from "react-scroll";
 
 import { graphqlClient } from "../../graphqlClient";
-import { cn, toLocaleDateString, toLocaleTimeString } from "../../helpers";
+import { toLocaleDateString, toLocaleTimeString } from "../../helpers";
 import { useBooking } from "../../routes/booking";
 import { styles } from "../../styles";
 import { PrimaryButton } from "../Button/PrimaryButton";
@@ -189,7 +189,7 @@ export const CheckoutForm = ({
         <div>
           <PaymentElement className="max-w-[38ch]" />
 
-          <Alert className="text-sm">{paymentMessage}</Alert>
+          <Alert className="text-sm text-red">{paymentMessage}</Alert>
         </div>
       </div>
 

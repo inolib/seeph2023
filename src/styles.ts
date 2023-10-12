@@ -27,7 +27,7 @@ export const styles = {
     ),
   },
   error: cn(
-    "outline outline-2 outline-red focus:outline-red focus:outline focus:outline-2 focus:outline-offset-2",
+    "outline outline-2 outline-offset-2 outline-red focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-red",
   ),
   heading: {
     h1: cn("max-w-[18ch] text-5xl font-bold"),

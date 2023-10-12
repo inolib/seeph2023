@@ -232,7 +232,9 @@ export const BookingForm = ({ isLocked }: Props) => {
               ))}
             </ul>
 
-            <Alert>{getError(bookingForm, "datetime")}</Alert>
+            <Alert className="text-red">
+              {getError(bookingForm, "datetime")}
+            </Alert>
           </div>
         </Landmark>
       </Element>

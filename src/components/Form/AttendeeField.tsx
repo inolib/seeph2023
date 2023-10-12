@@ -52,7 +52,7 @@ export const AttendeeField = ({ disabled, field, fieldProps }: Props) => {
   return (
     <div className="flex flex-col">
       <label
-        className={cn(styles.shrink, "font-bold cursor-pointer", {
+        className={cn(styles.shrink, "cursor-pointer font-bold", {
           "text-red": isInvalid,
         })}
         htmlFor={fieldId}
@@ -80,7 +80,7 @@ export const AttendeeField = ({ disabled, field, fieldProps }: Props) => {
         {...fieldProps}
       />
 
-      <Alert className="mt-0.25" id={`${fieldId}-error`}>
+      <Alert className="mt-0.25 text-red" id={`${fieldId}-error`}>
         {field.error.value}
       </Alert>
     </div>
