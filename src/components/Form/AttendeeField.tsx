@@ -52,9 +52,7 @@ export const AttendeeField = ({ disabled, field, fieldProps }: Props) => {
   return (
     <div className="flex flex-col">
       <label
-        className={cn(styles.shrink, "cursor-pointer font-bold", {
-          "text-red": isInvalid,
-        })}
+        className={cn(styles.shrink, "cursor-pointer font-bold")}
         htmlFor={fieldId}
       >
         {fields[field.name].label}
