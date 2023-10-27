@@ -56,7 +56,11 @@ export const BookingSection = () => {
               {session.date}
             </p>
 
-            <CallToActionLink className="mt-0.75" datetime={key}>
+            <CallToActionLink
+              className="mt-0.75"
+              datetime={key}
+              title={`Réservez pour la session du ${session.label} (84 €)`}
+            >
               Réserver{" "}
               <span className="sr-only">
                 pour la session du {session.label}
