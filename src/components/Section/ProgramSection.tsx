@@ -40,7 +40,7 @@ export const ProgramSection = () => {
               <div className="mt-1 flex w-full self-center">
                 <iframe
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowfullscreen
+                  allowFullScreen
                   className="shrink grow"
                   frameBorder="0"
                   height="315"
