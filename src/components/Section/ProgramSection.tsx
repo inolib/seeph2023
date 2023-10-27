@@ -37,11 +37,18 @@ export const ProgramSection = () => {
 
               <p>{data.description}</p>
 
-              <img
-                alt=""
-                className="mt-1 max-h-12 self-center"
-                src="/illustrations/program.png"
-              />
+              <div className="mt-1 flex w-full self-center">
+                <iframe
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  className="shrink grow"
+                  frameBorder="0"
+                  height="315"
+                  src="https://www.youtube-nocookie.com/embed/Ky2htR6MKiw?si=oWqkiIOVetJnNJZe"
+                  title="Vidéo de présentation"
+                  width="560"
+                ></iframe>
+              </div>
             </li>
           ) : (
             <li
