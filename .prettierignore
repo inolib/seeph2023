@@ -2,4 +2,5 @@
 /coverage/
 /dist/
 /node_modules/
+/public/email.html
 /pnpm-lock.yaml
