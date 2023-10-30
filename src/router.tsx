@@ -17,4 +17,8 @@ export const router = createBrowserRouter([
     path: "/thanks",
     element: <Thanks />,
   },
+  {
+    path: "/video",
+    element: <Home />,
+  },
 ]);

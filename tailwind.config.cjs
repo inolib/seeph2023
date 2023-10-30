@@ -19,6 +19,7 @@ module.exports = {
       orange: "#e26c59",
       purple: "#4c1369",
       red: "#e31c3d",
+      transparent: "transparent",
       turquoise: "#53dbbb",
       white: "#ffffff",
     },
