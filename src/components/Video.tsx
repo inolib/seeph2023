@@ -58,7 +58,7 @@ export const Video = ({ ...rest }: DivProps) => {
       </button>
 
       <Dialog
-        className="bg-transparent backdrop:bg-black open:flex open:flex-col open:items-center open:gap-2"
+        className="hidden bg-transparent backdrop:bg-black open:flex open:flex-col open:items-center open:gap-2"
         open={isVideoRoute}
         ref={dialogRef}
       >
