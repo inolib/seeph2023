@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { Booking } from "./routes/booking";
 import { Home } from "./routes/home";
 import { Thanks } from "./routes/thanks";
+import { Video } from "./routes/video";
 
 export const router = createBrowserRouter([
   {
@@ -19,6 +20,6 @@ export const router = createBrowserRouter([
   },
   {
     path: "/video",
-    element: <Home />,
+    element: <Video />,
   },
 ]);
