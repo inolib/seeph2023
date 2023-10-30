@@ -1,11 +1,11 @@
 import { useId } from "react";
+import { Link } from "react-router-dom";
 
 import { program } from "../../data";
 import { cn } from "../../helpers";
 import { styles } from "../../styles";
 import { ExternalLink } from "../Link/ExternalLink";
 import { Landmark } from "../ui/Landmark/Landmark";
-import { Video } from "../Video";
 
 export const ProgramSection = () => {
   const id = useId();
@@ -38,7 +38,13 @@ export const ProgramSection = () => {
 
               <p>{data.description}</p>
 
-              <Video className="mt-1" />
+              <Link
+                aria-label="Vidéo de présentation"
+                className="mt-1"
+                to="/video"
+              >
+                <img alt="" src="/illustrations/video.png" />
+              </Link>
             </li>
           ) : (
             <li
