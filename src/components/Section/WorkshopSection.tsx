@@ -17,7 +17,7 @@ export const WorkshopSection = () => {
         "mt-2",
       )}
     >
-      <div className="mx-auto flex w-fit flex-col justify-center gap-2 bg-orange p-2 text-white shadow-[-2rem_2rem_0.25rem_0_rgba(226,108,89,0.25)] sm:flex-row">
+      <div className="mx-auto flex w-fit flex-col justify-center gap-2 bg-orange p-2 shadow-[-2rem_2rem_0.25rem_0_rgba(226,108,89,0.25)] sm:flex-row">
         <div className="flex flex-col gap-1">
           <div className="flex flex-col gap-1">
             <Landmark.Heading
@@ -43,14 +43,14 @@ export const WorkshopSection = () => {
           aria-label="Réservez avec atomota"
           className={cn(
             styles.outline("white"),
-            "flex flex-none items-center gap-0.25 self-center rounded-full bg-blue px-1 py-0.5 text-center font-bold text-white hover:bg-turquoise hover:text-black sm:self-end",
+            "flex flex-none items-center gap-0.25 self-center rounded-full bg-blue px-1 py-0.5 text-center font-bold hover:bg-turquoise sm:self-end",
           )}
           href="https://www.atomota.fr/interventions/l-accessibilite-numerique-un-monde-d-opportunites"
         >
           Réservez sur
           <img
             alt=""
-            className="relative top-[0.2rem] h-1"
+            className="relative top-[3px] h-1"
             src="/logos/atomota.png"
           />
         </ExternalLink>

@@ -17,7 +17,7 @@ export const CallToActionLink = ({
     <Link
       className={cn(
         styles.outline("white"),
-        "rounded-full bg-turquoise px-1 py-0.5 text-center font-bold text-black hover:bg-blue hover:text-white",
+        "rounded-full bg-turquoise px-1 py-0.5 text-center font-bold text-black hover:bg-blue",
         className,
       )}
       to={`/booking${datetime !== undefined ? `/${datetime}` : ""}`}
