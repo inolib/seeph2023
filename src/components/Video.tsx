@@ -24,12 +24,18 @@ export const Video = ({ ...rest }: DivProps) => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const isVideoRoute = location.pathname === "/video";
-
   const dialogRef = useRef<DialogHandle>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+
+  const isVideoRoute = location.pathname === "/video";
 
   const handleCloseDialog: ButtonProps["onClick"] = useCallback(() => {
     dialogRef.current?.close();
+
+    if (iframeRef.current !== null) {
+      // eslint-disable-next-line no-self-assign
+      iframeRef.current.src = iframeRef.current.src;
+    }
 
     if (isVideoRoute) {
       navigate("/", { replace: true });
@@ -61,6 +67,7 @@ export const Video = ({ ...rest }: DivProps) => {
           allowFullScreen
           className="h-[calc(100vh_-_10rem)] w-[calc(100vw_-_5rem)]"
           frameBorder="0"
+          ref={iframeRef}
           src="https://www.youtube-nocookie.com/embed/Ky2htR6MKiw?si=oWqkiIOVetJnNJZe"
           title="Vidéo de présentation"
         />
