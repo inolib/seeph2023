@@ -39,7 +39,7 @@ export const ToolkitSection = () => {
         </div>
 
         <div className="flex flex-col items-center gap-2 self-center sm:flex-row xl:self-start">
-          <p className="h-fit min-w-[12rem] max-w-sm rounded-3xl rounded-tr-none bg-blue p-1 text-center">
+          <p className="h-fit min-w-[12rem] max-w-sm rounded-3xl rounded-tr-none bg-blue p-1 text-center text-black">
             En prime, tentez de remporter un audit en accessibilité de votre
             site ou application web, par tirage au sort.
           </p>
