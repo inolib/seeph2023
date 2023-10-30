@@ -5,6 +5,7 @@ import { cn } from "../../helpers";
 import { styles } from "../../styles";
 import { ExternalLink } from "../Link/ExternalLink";
 import { Landmark } from "../ui/Landmark/Landmark";
+import { Video } from "../Video";
 
 export const ProgramSection = () => {
   const id = useId();
@@ -37,18 +38,7 @@ export const ProgramSection = () => {
 
               <p>{data.description}</p>
 
-              <div className="mt-1 flex w-full self-center">
-                <iframe
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                  className="shrink grow"
-                  frameBorder="0"
-                  height="315"
-                  src="https://www.youtube-nocookie.com/embed/Ky2htR6MKiw?si=oWqkiIOVetJnNJZe"
-                  title="Vidéo de présentation"
-                  width="560"
-                ></iframe>
-              </div>
+              <Video className="mt-1" />
             </li>
           ) : (
             <li
