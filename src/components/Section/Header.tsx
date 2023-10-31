@@ -15,8 +15,7 @@ import { PartnersSection } from "./PartnersSection";
 export const Header = () => {
   const location = useLocation();
 
-  const isHomeRoute =
-    location.pathname === "/" || location.pathname === "/video";
+  const isHomeRoute = location.pathname === "/";
 
   return (
     <Landmark
