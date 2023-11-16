@@ -29,7 +29,7 @@ export const BookingSection = () => {
           )}
           id={id}
         >
-          Participez aux conférences INOLIB, pour un monde digital inclusif
+          Participez à la conférence INOLIB, pour un monde digital inclusif
         </Landmark.Heading>
 
         <p className={styles.heading.sub}>Réservez votre place</p>
@@ -44,7 +44,7 @@ export const BookingSection = () => {
         </p>
       </div>
 
-      <ul className="grid w-fit grid-cols-1 gap-1 self-center sm:grid-cols-2 lg:grid-cols-4">
+      <ul className="grid w-fit grid-cols-1 gap-1 self-center">
         {Object.entries(sessions).map(([key, session]) => (
           <li
             className="flex flex-col items-center gap-0.25 rounded-3xl rounded-tr-none bg-blue-dark p-1 text-center text-white"
@@ -56,11 +56,7 @@ export const BookingSection = () => {
               {session.date}
             </p>
 
-            <CallToActionLink
-              className="mt-0.75"
-              datetime={key}
-              title={`Réservez pour la session du ${session.label} (84 €)`}
-            >
+            <CallToActionLink className="mt-0.75">
               Réserver{" "}
               <span className="sr-only">
                 pour la session du {session.label}

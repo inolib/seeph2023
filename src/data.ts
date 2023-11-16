@@ -86,24 +86,9 @@ export const program = [
 ];
 
 export const sessions = {
-  "2023-11-20T11:00:00.000Z": {
-    date: "20 NOV. 2023",
-    label: "20 novembre 2023",
-    time: "12 h – 14 h",
-  },
-  "2023-11-21T11:00:00.000Z": {
-    date: "21 NOV. 2023",
-    label: "21 novembre 2023",
-    time: "12 h – 14 h",
-  },
   "2023-11-23T16:00:00.000Z": {
     date: "23 NOV. 2023",
     label: "23 novembre 2023",
-    time: "17 h – 19 h",
-  },
-  "2023-11-24T16:00:00.000Z": {
-    date: "24 NOV. 2023",
-    label: "24 novembre 2023",
     time: "17 h – 19 h",
   },
 };

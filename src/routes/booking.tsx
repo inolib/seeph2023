@@ -1,148 +1,26 @@
-import { Elements } from "@stripe/react-stripe-js";
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-  type Dispatch,
-  type SetStateAction,
-} from "react";
-import { useParams } from "react-router-dom";
-import { Element, scroller } from "react-scroll";
+import { useEffect } from "react";
+import { scroller } from "react-scroll";
 
-import {
-  BookingForm,
-  type Booking as BookingType,
-} from "../components/Form/BookingForm";
-import {
-  CheckoutForm,
-  type Props as CheckoutFormProps,
-} from "../components/Form/CheckoutForm";
-import { Icon } from "../components/Image/Icon";
+import { BookingForm } from "../components/Form/BookingForm";
 import { Footer } from "../components/Section/Footer";
 import { Header } from "../components/Section/Header";
 import { Landmark } from "../components/ui/Landmark/Landmark";
-import { cn, options as scrollerOptions } from "../helpers";
+import { options as scrollerOptions } from "../helpers";
 import { useDocumentTitle } from "../hooks";
-import { getOptions, stripePromise } from "../stripe";
-import { styles } from "../styles";
-
-type SetState = Dispatch<SetStateAction<State>>;
-
-type State = {
-  booking: BookingType | null;
-  clientSecret: CheckoutFormProps["clientSecret"];
-  isLocked: boolean;
-  paymentIntentId: string | null;
-};
-
-const setBooking = (setState: SetState) => (booking: BookingType) => {
-  setState((state) =>
-    state.booking !== booking ? { ...state, booking } : state,
-  );
-};
-
-const setClientSecret =
-  (setState: SetState) => (clientSecret: State["clientSecret"]) => {
-    setState((state) =>
-      state.clientSecret !== clientSecret ? { ...state, clientSecret } : state,
-    );
-  };
-
-const setIsLocked = (setState: SetState) => (isLocked: boolean) => {
-  setState((state) =>
-    state.isLocked !== isLocked ? { ...state, isLocked } : state,
-  );
-};
-
-const setPaymentIntentId = (setState: SetState) => (id: string) => {
-  setState((state) =>
-    state.paymentIntentId !== id ? { ...state, paymentIntentId: id } : state,
-  );
-};
-
-export const useBooking = () => {
-  const setState = useContext(SetStateContext);
-
-  if (setState === null) {
-    throw new Error(""); // TODO: error message
-  }
-
-  return {
-    setBooking: setBooking(setState),
-    setClientSecret: setClientSecret(setState),
-    setIsLocked: setIsLocked(setState),
-    setPaymentIntentId: setPaymentIntentId(setState),
-  };
-};
-
-const SetStateContext = createContext<SetState | null>(null);
 
 export const Booking = () => {
   useDocumentTitle("Formulaire de réservation");
 
-  const [state, setState] = useState<State>({
-    booking: null,
-    clientSecret: null,
-    isLocked: false,
-    paymentIntentId: null,
-  });
-
-  const { datetime } = useParams();
-
   useEffect(() => {
-    if (datetime !== undefined) {
-      scroller.scrollTo("step-2", scrollerOptions);
-    } else {
-      scroller.scrollTo("step-1", scrollerOptions);
-    }
-  }, [datetime]);
+    scroller.scrollTo("form", scrollerOptions);
+  }, []);
 
   return (
     <>
       <Header />
 
       <Landmark TagName="main" className="flex flex-col gap-4">
-        <SetStateContext.Provider value={setState}>
-          <BookingForm isLocked={state.isLocked} />
-        </SetStateContext.Provider>
-
-        <Element name="step-3">
-          <Landmark TagName="section" className="flex flex-col gap-2">
-            <Landmark.Heading
-              className={cn(styles.heading.h2, "flex flex-col gap-1 text-left")}
-            >
-              <div className="flex gap-0.5">
-                <Icon className="h-2 w-2 flex-none bg-blue text-white">
-                  <span className="sr-only">Étape</span>
-                  <span>3</span>
-                </Icon>
-
-                <div className="relative top-0.25">Réglez votre commande</div>
-              </div>
-            </Landmark.Heading>
-
-            {state.clientSecret !== null ? (
-              <Elements
-                options={getOptions(state.clientSecret)}
-                stripe={stripePromise}
-              >
-                <SetStateContext.Provider value={setState}>
-                  <CheckoutForm
-                    booking={state.booking}
-                    clientSecret={state.clientSecret}
-                    paymentIntentId={state.paymentIntentId}
-                  />
-                </SetStateContext.Provider>
-              </Elements>
-            ) : (
-              <p className="max-w-lg">
-                Veuillez choisir une session de conférence et compléter votre
-                inscription avant de régler votre commande.
-              </p>
-            )}
-          </Landmark>
-        </Element>
+        <BookingForm />
       </Landmark>
 
       <Footer />

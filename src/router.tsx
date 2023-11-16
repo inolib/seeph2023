@@ -11,7 +11,7 @@ export const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/booking/:datetime?",
+    path: "/booking",
     element: <Booking />,
   },
   {

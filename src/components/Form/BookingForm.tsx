@@ -1,15 +1,7 @@
-import {
-  getError,
-  reset,
-  setValue,
-  useForm,
-  valiForm,
-  type SubmitHandler,
-} from "@modular-forms/react";
+import { useForm, valiForm, type SubmitHandler } from "@modular-forms/react";
 // import { isPossiblePhoneNumber } from "libphonenumber-js";
-import { useCallback, useEffect, useState, type JSX } from "react";
-import { useParams } from "react-router-dom";
-import { Element, scroller } from "react-scroll";
+import { useCallback } from "react";
+import { Element } from "react-scroll";
 import {
   // custom,
   email,
@@ -20,33 +12,14 @@ import {
   type Input,
 } from "valibot";
 
-import { sessions } from "../../data";
 import { graphqlClient } from "../../graphqlClient";
-import {
-  cn /*, toPhoneNumber*/,
-  options as scrollerOptions,
-} from "../../helpers";
-import { useBooking } from "../../routes/booking";
+import { cn /*, toPhoneNumber*/ } from "../../helpers";
 import { styles } from "../../styles";
 import { PrimaryButton } from "../Button/PrimaryButton";
-import { SecondaryButton } from "../Button/SecondaryButton";
-import { Icon } from "../Image/Icon";
-import { Alert } from "../ui/Alert";
-import { Landmark } from "../ui/Landmark/Landmark";
 import { AttendeeField, type FieldName } from "./AttendeeField";
 import { SessionField } from "./SessionField";
 
 export type Booking = Input<typeof BookingSchema>;
-
-type Props = {
-  isLocked: boolean;
-};
-
-type State = {
-  paymentIntent: {
-    id: string;
-  };
-};
 
 const BookingSchema = object({
   datetime: string("Veuillez sélectionner une date."),
@@ -78,198 +51,79 @@ const BookingSchema = object({
   ]),
 });
 
-export const BookingForm = ({ isLocked }: Props) => {
-  const [state, setState] = useState<State>({
-    paymentIntent: {
-      id: "",
-    },
-  });
-
-  const { datetime } = useParams();
-
-  const { setBooking, setClientSecret, setIsLocked, setPaymentIntentId } =
-    useBooking();
-
-  const [bookingForm, { Form, Field }] = useForm<Booking>({
+export const BookingForm = () => {
+  const [, { Form, Field }] = useForm<Booking>({
     validate: valiForm(BookingSchema),
   });
 
-  const handleEditButtonClick: NonNullable<
-    JSX.IntrinsicElements["button"]["onClick"]
-  > = useCallback(() => {
+  const handleSubmit: SubmitHandler<Booking> = useCallback((booking) => {
     void (async () => {
-      setClientSecret(null);
-
-      await graphqlClient.request(
+      await graphqlClient.request<{
+        createBooking: {
+          id: string;
+        };
+      }>(
         /* GraphQL */ `
-          mutation CancelPaymentIntent($id: String!) {
-            cancelPaymentIntent(id: $id) {
+          mutation CreateBooking(
+            $datetime: DateTime!
+            $firstName: String!
+            $lastName: String!
+            $organization: String!
+            $organizationTitle: String!
+            $email: String!
+            $tel: String!
+          ) {
+            createBooking(
+              datetime: $datetime
+              firstName: $firstName
+              lastName: $lastName
+              organization: $organization
+              organizationTitle: $organizationTitle
+              email: $email
+              tel: $tel
+            ) {
               id
             }
           }
         `,
         {
-          id: state.paymentIntent.id,
+          datetime: booking.datetime,
+          firstName: booking.firstName,
+          lastName: booking.lastName,
+          organization: booking.organization,
+          organizationTitle: booking.organizationTitle,
+          email: booking.email,
+          tel: booking.tel,
         },
       );
-
-      setIsLocked(false);
-
-      scroller.scrollTo("step-1", scrollerOptions);
     })();
-  }, [setClientSecret, setIsLocked, state.paymentIntent.id]);
-
-  const handleSubmit: SubmitHandler<Booking> = useCallback(
-    (booking) => {
-      void (async () => {
-        setIsLocked(true);
-
-        const data = await graphqlClient.request<{
-          createPaymentIntent: {
-            client_secret: string;
-            id: string;
-          };
-        }>(
-          /* GraphQL */ `
-            mutation CreatePaymentIntent(
-              $datetime: DateTime!
-              $firstName: String!
-              $lastName: String!
-              $organization: String!
-              $organizationTitle: String!
-              $email: String!
-              $tel: String!
-            ) {
-              createPaymentIntent(
-                datetime: $datetime
-                firstName: $firstName
-                lastName: $lastName
-                organization: $organization
-                organizationTitle: $organizationTitle
-                email: $email
-                tel: $tel
-              ) {
-                client_secret
-                id
-              }
-            }
-          `,
-          {
-            datetime: booking.datetime,
-            firstName: booking.firstName,
-            lastName: booking.lastName,
-            organization: booking.organization,
-            organizationTitle: booking.organizationTitle,
-            email: booking.email,
-            tel: booking.tel,
-          },
-        );
-
-        setState((state) =>
-          state.paymentIntent.id !== data.createPaymentIntent.id
-            ? {
-                ...state,
-                paymentIntent: {
-                  ...state.paymentIntent,
-                  id: data.createPaymentIntent.id,
-                },
-              }
-            : state,
-        );
-
-        setBooking(booking);
-        setClientSecret(data.createPaymentIntent.client_secret);
-        setPaymentIntentId(data.createPaymentIntent.id);
-
-        scroller.scrollTo("step-3", scrollerOptions);
-      })();
-    },
-    [setBooking, setClientSecret, setIsLocked, setPaymentIntentId],
-  );
-
-  useEffect(() => {
-    if (datetime !== undefined) {
-      setValue(bookingForm, "datetime", datetime);
-    } else {
-      reset(bookingForm, datetime);
-    }
-  }, [bookingForm, datetime]);
+  }, []);
 
   return (
-    <Form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-      <Element name="step-1">
-        <Landmark TagName="section" className="flex flex-col gap-2">
-          <Landmark.Heading
-            className={cn(styles.heading.h2, "flex flex-col gap-1 text-left")}
-          >
-            <div className="flex gap-0.5">
-              <Icon className="h-2 w-2 flex-none bg-blue text-white">
-                <span className="sr-only">Étape</span>
-                <span>1</span>
-              </Icon>
+    <Element name="form">
+      <Form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+        <Field name="datetime">
+          {(field, props) => (
+            <SessionField
+              datetime="2023-11-23T16:00:00.000Z"
+              fieldProps={props}
+            />
+          )}
+        </Field>
 
-              <div className="relative top-0.25">
-                <p>Choisissez votre session de conférence</p>
-
-                <p className={styles.heading.sub}>
-                  Toutes les réservations sont individuelles
-                </p>
-              </div>
-            </div>
-          </Landmark.Heading>
-
-          <div className="flex flex-col gap-0.25 text-center">
-            <ul className="grid grid-cols-2 gap-1 self-center md:grid-cols-4">
-              {Object.entries(sessions).map(([datetime, session]) => (
-                <li key={datetime}>
-                  <Field name="datetime">
-                    {(field, props) => (
-                      <SessionField
-                        datetime={datetime}
-                        disabled={isLocked}
-                        fieldProps={props}
-                        form={bookingForm}
-                        session={session}
-                      />
-                    )}
-                  </Field>
-                </li>
-              ))}
-            </ul>
-
-            <Alert className="text-red">
-              {getError(bookingForm, "datetime")}
-            </Alert>
-          </div>
-        </Landmark>
-      </Element>
-
-      <Element name="step-2">
-        <Landmark
-          TagName="section"
+        <div
           className={cn(
             styles.bleeding.middle,
-            "-my-2 flex flex-col gap-2 bg-gray py-2",
+            "-my-2 flex flex-col gap-2 py-2",
           )}
         >
-          <Landmark.Heading
-            className={cn(styles.heading.h2, "flex flex-col gap-1 text-left")}
-          >
-            <div className="flex gap-0.5">
-              <Icon className="h-2 w-2 flex-none bg-blue text-white">
-                <span className="sr-only">Étape</span>
-                <span>2</span>
-              </Icon>
+          <h2 className={cn(styles.heading.h2, "flex flex-col")}>
+            <span>Session du 23 novembre 2023 de 17 h à 19 h</span>
 
-              <div className="relative top-0.25">
-                <p>Complétez votre inscription</p>
-
-                <p className={styles.heading.sub}>
-                  Tous les champs sont obligatoires
-                </p>
-              </div>
-            </div>
-          </Landmark.Heading>
+            <span className={styles.heading.sub}>
+              Tous les champs sont obligatoires
+            </span>
+          </h2>
 
           <div className="flex flex-col gap-1">
             {Object.entries(BookingSchema.object).map(([_fieldName]) => {
@@ -287,11 +141,7 @@ export const BookingForm = ({ isLocked }: Props) => {
                     // }
                   >
                     {(field, props) => (
-                      <AttendeeField
-                        disabled={isLocked}
-                        field={field}
-                        fieldProps={props}
-                      />
+                      <AttendeeField field={field} fieldProps={props} />
                     )}
                   </Field>
                 );
@@ -299,39 +149,11 @@ export const BookingForm = ({ isLocked }: Props) => {
             })}
           </div>
 
-          <div className="flex justify-center gap-1 lg:justify-end">
-            {isLocked ? (
-              <>
-                <PrimaryButton
-                  aria-label="Modifier vos informations"
-                  disabled={!isLocked}
-                  onClick={handleEditButtonClick}
-                >
-                  Modifier
-                </PrimaryButton>
-
-                <SecondaryButton disabled={isLocked} type="submit">
-                  Confirmer
-                </SecondaryButton>
-              </>
-            ) : (
-              <>
-                <SecondaryButton
-                  aria-label="Modifier vos informations"
-                  disabled={!isLocked}
-                  onClick={handleEditButtonClick}
-                >
-                  Modifier
-                </SecondaryButton>
-
-                <PrimaryButton disabled={isLocked} type="submit">
-                  Confirmer
-                </PrimaryButton>
-              </>
-            )}
+          <div className="flex justify-center lg:justify-end">
+            <PrimaryButton type="submit">Confirmer</PrimaryButton>
           </div>
-        </Landmark>
-      </Element>
-    </Form>
+        </div>
+      </Form>
+    </Element>
   );
 };

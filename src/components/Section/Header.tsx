@@ -15,8 +15,7 @@ import { PartnersSection } from "./PartnersSection";
 export const Header = () => {
   const location = useLocation();
 
-  const isHomeRoute =
-    location.pathname === "/" || location.pathname === "/video";
+  const isHomeRoute = location.pathname === "/";
 
   return (
     <Landmark
@@ -50,7 +49,7 @@ export const Header = () => {
             <img alt="" className="h-1" src="/icons/calendar.svg" />
 
             <p className="before:relative before:right-0.5 before:top-0.125 before:inline-block before:h-[1rem] before:border-[1px]">
-              4 sessions en novembre
+              1 session en novembre
             </p>
           </div>
         </div>
