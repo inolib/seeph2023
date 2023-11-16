@@ -62,8 +62,6 @@ export const BookingForm = () => {
 
   const handleSubmit: SubmitHandler<Booking> = useCallback(
     (booking) => {
-      console.log(booking);
-
       void (async () => {
         const data = await graphqlClient.request<{
           createBooking: {
@@ -103,8 +101,6 @@ export const BookingForm = () => {
             tel: booking.tel,
           },
         );
-
-        console.log(data);
 
         navigate("/thanks");
       })();
