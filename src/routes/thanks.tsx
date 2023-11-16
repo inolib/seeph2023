@@ -30,10 +30,7 @@ export const Thanks = () => {
         </Landmark.Heading>
 
         <div className="flex max-w-xl flex-col gap-1">
-          <p>
-            Vous recevrez bientôt un e-mail de confirmation ainsi que le reçu de
-            votre paiement.
-          </p>
+          <p>Vous recevrez bientôt un e-mail de confirmation.</p>
 
           {state.booking !== null ? (
             <>
@@ -46,11 +43,6 @@ export const Thanks = () => {
                 <p>Fonction : {state.booking.organizationTitle}</p>
                 <p>Adresse e-mail : {state.booking.email}</p>
                 <p>Numéro de téléphone : {state.booking.tel}</p>
-              </div>
-
-              <div>
-                <p>Prix HT : 70 €</p>
-                <p className="font-bold">Prix TTC : 84 €</p>
               </div>
             </>
           ) : null}

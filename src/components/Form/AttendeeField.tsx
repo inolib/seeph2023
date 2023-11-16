@@ -16,7 +16,6 @@ export type FieldName = keyof Omit<Booking, "datetime">;
 type InputProps = JSX.IntrinsicElements["input"];
 
 type Props = {
-  disabled?: InputProps["disabled"];
   field: FieldStore<Booking, FieldName>;
   fieldProps: FieldElementProps<Booking, FieldName>;
 };
@@ -44,7 +43,7 @@ const fields: Record<FieldName, Field> = {
   },
 };
 
-export const AttendeeField = ({ disabled, field, fieldProps }: Props) => {
+export const AttendeeField = ({ field, fieldProps }: Props) => {
   const id = useId();
   const fieldId = `${id}-${field.name}`;
   const isInvalid = field.error.value !== "";
@@ -59,17 +58,16 @@ export const AttendeeField = ({ disabled, field, fieldProps }: Props) => {
       </label>
 
       <input
-        aria-errormessage={`${fieldId}-error`}
+        aria-describedby={`${fieldId}-error`}
         aria-invalid={isInvalid}
         className={cn(
           styles.shrink,
           styles.outline("black"),
-          "mt-0.25 rounded-lg px-0.5 py-0.25 disabled:bg-white",
+          "mt-0.25 rounded-lg bg-gray px-0.5 py-0.25 disabled:bg-white",
           {
             [styles.error]: isInvalid,
           },
         )}
-        disabled={disabled}
         id={fieldId}
         inputMode={fields[field.name].inputMode}
         placeholder={field.name === "tel" ? "" : undefined}

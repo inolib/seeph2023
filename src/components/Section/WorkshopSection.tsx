@@ -50,7 +50,7 @@ export const WorkshopSection = () => {
           Réservez sur
           <img
             alt=""
-            className="relative top-[3px] h-1"
+            className="relative top-[4px] h-1"
             src="/logos/atomota.png"
           />
         </ExternalLink>
