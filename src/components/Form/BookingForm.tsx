@@ -1,6 +1,7 @@
 import { useForm, valiForm, type SubmitHandler } from "@modular-forms/react";
 // import { isPossiblePhoneNumber } from "libphonenumber-js";
 import { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import { Element } from "react-scroll";
 import {
   // custom,
@@ -11,8 +12,6 @@ import {
   toTrimmed,
   type Input,
 } from "valibot";
-
-import { useNavigate } from "react-router-dom";
 
 import { graphqlClient } from "../../graphqlClient";
 import { cn /*, toPhoneNumber*/ } from "../../helpers";
@@ -62,8 +61,6 @@ export const BookingForm = () => {
 
   const handleSubmit: SubmitHandler<Booking> = useCallback(
     (booking) => {
-      console.log(booking);
-
       void (async () => {
         const data = await graphqlClient.request<{
           createBooking: {
@@ -103,8 +100,6 @@ export const BookingForm = () => {
             tel: booking.tel,
           },
         );
-
-        console.log(data);
 
         navigate("/thanks");
       })();
