@@ -12,6 +12,8 @@ import {
   type Input,
 } from "valibot";
 
+import { useNavigate } from "react-router-dom";
+
 import { graphqlClient } from "../../graphqlClient";
 import { cn /*, toPhoneNumber*/ } from "../../helpers";
 import { styles } from "../../styles";
@@ -56,48 +58,55 @@ export const BookingForm = () => {
     validate: valiForm(BookingSchema),
   });
 
-  const handleSubmit: SubmitHandler<Booking> = useCallback((booking) => {
-    void (async () => {
-      await graphqlClient.request<{
-        createBooking: {
-          id: string;
-        };
-      }>(
-        /* GraphQL */ `
-          mutation CreateBooking(
-            $datetime: DateTime!
-            $firstName: String!
-            $lastName: String!
-            $organization: String!
-            $organizationTitle: String!
-            $email: String!
-            $tel: String!
-          ) {
-            createBooking(
-              datetime: $datetime
-              firstName: $firstName
-              lastName: $lastName
-              organization: $organization
-              organizationTitle: $organizationTitle
-              email: $email
-              tel: $tel
+  const navigate = useNavigate();
+
+  const handleSubmit: SubmitHandler<Booking> = useCallback(
+    (booking) => {
+      void (async () => {
+        await graphqlClient.request<{
+          createBooking: {
+            id: string;
+          };
+        }>(
+          /* GraphQL */ `
+            mutation CreateBooking(
+              $datetime: DateTime!
+              $firstName: String!
+              $lastName: String!
+              $organization: String!
+              $organizationTitle: String!
+              $email: String!
+              $tel: String!
             ) {
-              id
+              createBooking(
+                datetime: $datetime
+                firstName: $firstName
+                lastName: $lastName
+                organization: $organization
+                organizationTitle: $organizationTitle
+                email: $email
+                tel: $tel
+              ) {
+                id
+              }
             }
-          }
-        `,
-        {
-          datetime: booking.datetime,
-          firstName: booking.firstName,
-          lastName: booking.lastName,
-          organization: booking.organization,
-          organizationTitle: booking.organizationTitle,
-          email: booking.email,
-          tel: booking.tel,
-        },
-      );
-    })();
-  }, []);
+          `,
+          {
+            datetime: booking.datetime,
+            firstName: booking.firstName,
+            lastName: booking.lastName,
+            organization: booking.organization,
+            organizationTitle: booking.organizationTitle,
+            email: booking.email,
+            tel: booking.tel,
+          },
+        );
+
+        navigate("/thanks");
+      })();
+    },
+    [navigate],
+  );
 
   return (
     <Element name="form">
