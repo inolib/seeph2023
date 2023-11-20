@@ -38,16 +38,11 @@ export const ToolkitSection = () => {
           </Landmark.Heading>
         </div>
 
-        <div className="flex flex-col items-center gap-2 self-center sm:flex-row xl:self-start">
-          <p className="h-fit min-w-[12rem] max-w-sm rounded-3xl rounded-tr-none bg-blue p-1 text-center text-black">
-            En prime, tentez de remporter un audit en accessibilité de votre
-            site ou application web, par tirage au sort.
-          </p>
-
-          <div className="order-last">
-            <img alt="" className="max-h-12" src="/illustrations/toolkit.png" />
-          </div>
-        </div>
+        <img
+          alt=""
+          className="max-h-12 self-start"
+          src="/illustrations/toolkit.png"
+        />
       </div>
 
       <img
